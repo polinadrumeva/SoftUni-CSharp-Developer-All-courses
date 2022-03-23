@@ -1,0 +1,33 @@
+using System;
+using System.Text.RegularExpressions;
+
+namespace FE02._Ad_Astra
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = Console.ReadLine();
+            string pattern = @"([\||\#]{1})(?<name>[A-Za-z ]+)\1(?<expDate>\d{2}\/\d{2}\/\d{2})\1(?<calories>\d+)\1";
+            int total = 0;
+
+            MatchCollection maches = Regex.Matches(text, pattern);
+            foreach (Match m in maches)
+            {
+                int cal = int.Parse(m.Groups["calories"].Value);
+                total += cal;   
+            }
+
+            int days = (int) total / 2000;
+            Console.WriteLine($"You have food to last you for: {days} days!");
+
+            foreach (Match match in maches)
+            {
+                string name = match.Groups["name"].Value;
+                string date = match.Groups["expDate"].Value;
+                string calories = match.Groups["calories"].Value;
+                Console.WriteLine($"Item: {name}, Best before: {date}, Nutrition: {calories}");
+            }
+        }
+    }
+}
