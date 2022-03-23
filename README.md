@@ -1,2 +1,2 @@
 # SoftUni: Fundamentals-Course
-Here are all problems from fundamentals course in SoftUni.
+All problems from fundamentals course - Exercises in SoftUni.
