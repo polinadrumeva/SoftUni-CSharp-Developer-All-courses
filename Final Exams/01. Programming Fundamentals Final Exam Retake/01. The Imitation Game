@@ -1,0 +1,38 @@
+using System;
+
+namespace FE01._The_Imitation_Game
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string encryptedMessage = Console.ReadLine();
+            string command;
+            while ((command = Console.ReadLine()) != "Decode")
+            {
+                string[] cmdArr = command.Split("|");
+                switch (cmdArr[0])
+                {
+                    case "Move":
+                        int numberOfLtters = int.Parse(cmdArr[1]);
+                        string substr = encryptedMessage.Substring(0, numberOfLtters);
+                        encryptedMessage = encryptedMessage.Replace(substr, " ").Trim();
+                        encryptedMessage = encryptedMessage.Insert(encryptedMessage.Length, substr);
+                        break;
+                    case "Insert":
+                        int index = int.Parse(cmdArr[1]);
+                        string value = cmdArr[2];
+                        encryptedMessage = encryptedMessage.Insert(index, value);
+                        break;
+                    case "ChangeAll":
+                        string substring = cmdArr[1];
+                        string replacement = cmdArr[2];
+                        encryptedMessage = encryptedMessage.Replace(substring, replacement);
+                        break;
+                }
+            }
+
+            Console.WriteLine($"The decrypted message is: {encryptedMessage}");
+        }
+    }
+}
