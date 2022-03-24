@@ -1,0 +1,91 @@
+using System;
+using System.Linq;
+
+namespace ME03._Heart_Delivery
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] neighborhood = Console.ReadLine().Split("@").Select(int.Parse).ToArray();
+            string[] commands = Console.ReadLine().Split().ToArray();
+            string command = string.Empty;
+            int index = 0;
+            int lastPosition = 0;
+            int houseCount = 0;
+
+            for (int i = 0; i < neighborhood.Length; i++)
+            {
+
+                while (command != "Love!")
+                {
+                    for (int k = 0; k < commands.Length - 1; k++)
+                    {
+                        command = commands[0];
+                        index = int.Parse(commands[1]);
+                        
+                        if (command == "Love!")
+                        {
+                            break;
+                        }
+
+                        if (index + i >= neighborhood.Length)
+                        {
+                            index = 0;
+                            i = 0;
+                        }
+                        else
+                        {
+                            i += index;
+                        }
+
+                        if (neighborhood[i] == 0)
+                        {
+                            Console.WriteLine($"Place {i} already had Valentine's day.");
+                        }
+                        else
+                        {
+                            neighborhood[i] -= 2;
+                            
+                            if (neighborhood[i] == 0)
+                            {
+                                Console.WriteLine($"Place {i} has Valentine's day.");
+                                houseCount++;
+                            }
+                        }
+
+                       
+                        lastPosition = i;
+                        commands = Console.ReadLine().Split().ToArray();
+                        command = commands[0];
+                    }
+
+                    if (command == "Love!")
+                    {
+                        break;
+                    }
+
+                }
+                if (command == "Love!")
+                {
+                    break;
+                }
+
+            }
+
+            Console.WriteLine($"Cupid's last position was {lastPosition}.");
+            houseCount = neighborhood.Length - houseCount;
+
+            if (houseCount == neighborhood.Length)
+            {
+                Console.WriteLine("Mission was successful.");
+            }
+            else
+            {
+                Console.WriteLine($"Cupid has failed {houseCount} places.");
+            }
+
+
+        }
+    }
+}
