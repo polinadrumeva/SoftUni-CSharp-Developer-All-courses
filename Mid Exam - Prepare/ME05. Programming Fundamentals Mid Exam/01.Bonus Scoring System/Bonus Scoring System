@@ -1,0 +1,45 @@
+using System;
+
+namespace ME01._Bonus_Scoring_System
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfStudents = int.Parse(Console.ReadLine());
+            int numberOfLectures = int.Parse(Console.ReadLine());
+            double additionalBonus = double.Parse(Console.ReadLine());
+            double maxBonus = double.MinValue;
+            double lectures = double.MinValue;
+
+            
+            for (int i = 1; i <= numberOfStudents; i++)
+            {
+                double attendanceOfEachStudent = double.Parse(Console.ReadLine());
+                double totalBonus = (attendanceOfEachStudent / numberOfLectures) * (5.0 + additionalBonus);
+                if (numberOfLectures <= 0)
+                {
+                    maxBonus = 0;
+                    lectures = 0;
+                }
+                else if (totalBonus > maxBonus)
+                {
+                    maxBonus = totalBonus;
+                    lectures = attendanceOfEachStudent;
+                }
+                
+            }
+
+            if (numberOfStudents <= 0)
+            {
+                double attendanceOfEachStudent = double.Parse(Console.ReadLine());
+                maxBonus = 0;
+                lectures = 0;
+            }
+
+            Console.WriteLine($"Max Bonus: {Math.Ceiling(maxBonus)}.");
+            Console.WriteLine($"The student has attended {lectures} lectures.");
+
+        }
+    }
+}
