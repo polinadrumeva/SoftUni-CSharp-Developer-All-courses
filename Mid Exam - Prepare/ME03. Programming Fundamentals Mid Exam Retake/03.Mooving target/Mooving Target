@@ -1,0 +1,113 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ME03._Moving_Target
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
+            string command = Console.ReadLine();
+
+            while (command != "End")
+            {
+                string[] commands = command.Split().ToArray();
+                int index = int.Parse(commands[1]);
+                int value = int.Parse(commands[2]);
+
+                switch (commands[0])
+                {
+                    case "Shoot":
+
+                        numbers = GetShootList(numbers, commands, index, value);
+                        break;
+                    case "Add":
+                        if (index >= numbers.Count)
+                        {
+                            Console.WriteLine("Invalid placement!");
+                        }
+                        else
+                        {
+                            numbers = GetAddList(numbers, commands, index, value);
+                        }
+                        break;
+                    case "Strike":
+                        if (index >= numbers.Count || index + value >= numbers.Count || index - value < 0)
+                        {
+                            Console.WriteLine("Strike missed!");
+                        }
+                        else
+                        {
+                            numbers = GetStrikeList(numbers, commands, index, value);
+                        }
+                        
+                        break;
+                }
+
+                command = Console.ReadLine();
+            }
+
+            Console.WriteLine(String.Join("|", numbers));
+         
+        }
+        static List<int> GetShootList(List<int> numbers, string[] commands, int index, int value)
+        {
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (index == i && numbers[i] >= value)
+                {
+                    numbers[i] -= value;
+                }
+                else if (index == i && value > numbers[i])
+                {
+                    numbers.RemoveAt(i);
+                }
+            }
+
+            return numbers;
+        }
+        static List<int> GetAddList(List<int> numbers, string[] commands, int index, int value)
+        {
+            
+            numbers.Insert(index, value);
+            return numbers;
+        }
+
+        static List<int> GetStrikeList(List<int> numbers, string[] commands, int index, int value)
+        {
+              int originalValue = value;
+                for (int i = 0; i < numbers.Count; i++)
+                {
+                    if (i == index + originalValue)
+                    {
+                        while (originalValue != 0)
+                        {
+                            numbers.RemoveAt(i);
+                            originalValue--;
+                            i--;
+                        }
+                    }
+                    
+                }
+
+                numbers.RemoveAt(index);
+
+                for (int i = 0; i < numbers.Count; i++)
+                {
+                    if (i == index - value)
+                    {
+                        while (value != 0)
+                        {
+                            numbers.RemoveAt(i);
+                            value--;
+                        }
+                    }
+
+                }
+
+            return numbers;
+        }
+    }
+}
