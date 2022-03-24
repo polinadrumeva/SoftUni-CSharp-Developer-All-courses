@@ -1,0 +1,38 @@
+using System;
+
+namespace ME01._Black_Flag
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int days = int.Parse(Console.ReadLine());
+            int dailyPlunder = int.Parse(Console.ReadLine());
+            double expectedPlunder = double.Parse(Console.ReadLine());
+            double total = 0;
+
+            for (int i = 1; i <= days; i++)
+            {
+                total += dailyPlunder;
+                if (i % 3 == 0)
+                {
+                    total += 0.50 * dailyPlunder;
+                }
+                if (i % 5 == 0)
+                {
+                    total -= 0.30 * total;
+                }
+            }
+            if (total >= expectedPlunder)
+            {
+                Console.WriteLine($"Ahoy! {total:f2} plunder gained.");
+            }
+            else
+            {
+                double percent = (total * 100) / expectedPlunder;
+                Console.WriteLine($"Collected only {percent:f2}% of the plunder.");
+            }
+
+        }
+    }
+}
