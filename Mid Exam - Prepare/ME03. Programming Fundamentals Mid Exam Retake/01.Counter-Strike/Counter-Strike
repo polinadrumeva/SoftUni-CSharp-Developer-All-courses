@@ -1,0 +1,40 @@
+using System;
+
+namespace PDE._011Counter_Strike
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double initialEnergy = double.Parse(Console.ReadLine());
+            string command = Console.ReadLine();
+            int countWin = 0;
+
+            while (command != "End of battle")
+            {
+                if (initialEnergy <= 0)
+                {
+                    Console.WriteLine($"Not enough energy! Game ends with {countWin} won battles and {initialEnergy} energy");
+                    return;
+                }
+
+                double distance = double.Parse(command);
+                if (distance <= initialEnergy)
+                {
+                    initialEnergy -= distance;
+                    countWin++;
+                }
+                if (countWin % 3 == 0)
+                {
+                    initialEnergy += countWin;
+                }
+
+                command = Console.ReadLine();
+            }
+
+            
+                Console.WriteLine($"Won battles: {countWin}. Energy left: {initialEnergy} ");
+            
+        }
+    }
+}
