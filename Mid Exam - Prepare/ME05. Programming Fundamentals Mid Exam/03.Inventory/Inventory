@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ME03._Inventory
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           List<string> items = Console.ReadLine().Split(", ").ToList();
+            string commands = Console.ReadLine();
+
+            while (commands != "Craft!")
+            {
+                string[] command = commands.Split().ToArray();
+                switch (command[0])
+                {
+                    case "Collect":
+                        if (!items.Contains(command[2]))
+                        {
+                            items.Add(command[2]);
+                        }
+                        break;
+                    case "Drop":
+                        if (items.Contains(command[2]))
+                        {
+                            items.Remove(command[2]);
+                        }
+                        break;
+                    case "Combine":
+                        string[] combineCommands = command[3].Split(":").ToArray();
+                        for (int i = 0; i < items.Count; i++)
+                        {
+                            if (combineCommands[0] == items[i])
+                            {
+                                items.Insert(i + 1, combineCommands[1]);
+                            }
+                        }
+                        break;
+                    case "Renew":
+                        for (int i = 0; i < items.Count; i++)
+                        {
+                            if (command[2] == items[i])
+                            {
+                                items.Remove(items[i]);
+                                items.Add(command[2]);
+
+                            }
+                        }
+                        break;
+                }
+
+                commands = Console.ReadLine();
+            }
+
+            Console.WriteLine(String.Join(", ", items));
+        }
+    }
+}
