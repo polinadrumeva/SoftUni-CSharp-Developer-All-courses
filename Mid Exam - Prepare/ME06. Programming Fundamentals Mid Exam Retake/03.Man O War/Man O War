@@ -1,0 +1,97 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ME03._Man_O_War
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> pirateShip = Console.ReadLine().Split(">").Select(int.Parse).ToList();    
+            List<int> warShip = Console.ReadLine().Split(">").Select(int.Parse).ToList();    
+            int maxHealthCapasity = int.Parse(Console.ReadLine());
+
+            string command = Console.ReadLine();
+
+            while (command != "Retire")
+            {
+                string[] commands = command.Split(" ",StringSplitOptions.RemoveEmptyEntries).ToArray();
+                switch (commands[0])
+                {
+                    case "Fire":
+                        int index = int.Parse(commands[1]);
+                        int damage = int.Parse(commands[2]);
+                        for (int i = 0; i < warShip.Count; i++)
+                        {
+                            if (index == i)
+                            {
+                                warShip[i] -= damage;
+                                if (warShip[i] <= 0)
+                                {
+                                    Console.WriteLine("You won! The enemy ship has sunken.");
+                                    return;
+                                }
+                            }
+                        }
+                        break;
+                    case "Defend":
+                        int startIndex = int.Parse(commands[1]);
+                        int endIndex = int.Parse(commands[2]);
+                        int damages = int.Parse(commands[3]);
+                        if (startIndex >= 0 && startIndex < pirateShip.Count && endIndex >= 0 && endIndex < pirateShip.Count)
+                        {
+                            for (int i = startIndex; i <= endIndex; i++)
+                            {
+                                pirateShip[i] -= damages;
+                                if (pirateShip[i] <= 0)
+                                {
+                                    Console.WriteLine("You lost! The pirate ship has sunken.");
+                                    return;
+                                }
+
+                            }
+                        }
+                        break;
+                    case "Repair":
+                        int indexes = int.Parse(commands[1]);
+                        int healthForDamage = int.Parse(commands[2]);
+                        for (int i = 0; i < pirateShip.Count; i++)
+                        {
+                            if (indexes == i)
+                            {
+                                if (healthForDamage + pirateShip[i] <= maxHealthCapasity)
+                                {
+                                    pirateShip[i] += healthForDamage;
+                                }
+                                else
+                                {
+                                    pirateShip[i] = maxHealthCapasity;
+                                }
+                            }
+                        }
+                        break;
+                    case "Status":
+                        int count = 0;
+                        for (int i = 0; i < pirateShip.Count; i++)
+                        {
+                            if (pirateShip[i] < maxHealthCapasity * 0.20)
+                            {
+                                count++;
+                            }
+                        }
+                        Console.WriteLine($"{count} sections need repair.");
+                        break;
+                }
+
+                command = Console.ReadLine();
+            }
+
+            int pirateShipSum = pirateShip.Sum();
+            int warShipSum = warShip.Sum();
+            Console.WriteLine($"Pirate ship status: {pirateShipSum}");
+            Console.WriteLine($"Warship status: {warShipSum}");
+        }
+    }
+}
