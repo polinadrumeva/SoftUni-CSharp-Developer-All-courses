@@ -1,0 +1,113 @@
+using System;
+using System.Linq;
+
+namespace PE.Shoot_for_thw_win
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            string command = Console.ReadLine();
+            int shotTargets = 0;
+
+            while (command != "End")
+            {
+                int index = int.Parse(command);
+                if (index > numbers.Length - 1)
+                {
+                    command = Console.ReadLine();
+                    continue;
+                }
+                int number = numbers[index];
+                numbers[index] = -1;
+                shotTargets++;
+
+                if (index < numbers.Length - 1 && number >= numbers[index + 1] || index != 0 && number >= numbers[index - 1])
+                {
+
+                    for (int k = index + 1; k < numbers.Length; k++)
+                    {
+                        if (numbers[k] == -1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if (numbers[k] <= number)
+                            {
+                                numbers[k] += number;
+                            }
+                            else
+                            {
+                                numbers[k] -= number;
+                            }
+                        }
+
+                    }
+                    for (int k = index - 1; k >= 0; k--)
+                    {
+                        if (numbers[k] == -1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if (numbers[k] <= number)
+                            {
+                                numbers[k] += number;
+                            }
+                            else
+                            {
+                                numbers[k] -= number;
+                            }
+                        }
+                    }
+                }
+                else if (index < numbers.Length - 1 && number <= numbers[index + 1] || index != 0 && number <= numbers[index - 1])
+                {
+                    for (int k = index + 1; k < numbers.Length; k++)
+                    {
+                        if (numbers[k] == -1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if (numbers[k] >= number)
+                            {
+                                numbers[k] -= number;
+                            }
+                            else
+                            {
+                                numbers[k] += number;
+                            }
+                        }
+                    }
+                    for (int k = index - 1; k >= 0; k--)
+                    {
+                        if (numbers[k] == -1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if (numbers[k] >= number)
+                            {
+                                numbers[k] -= number;
+                            }
+                            else
+                            {
+                                numbers[k] += number;
+                            }
+                        }
+                    }
+                }
+
+                command = Console.ReadLine();
+            }
+            Console.WriteLine($"Shot targets: {shotTargets} -> {string.Join(" ", numbers)}");
+
+        }
+    }
+}
