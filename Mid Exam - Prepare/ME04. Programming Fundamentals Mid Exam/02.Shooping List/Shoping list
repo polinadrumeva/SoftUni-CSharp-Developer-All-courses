@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+namespace ME02._Shopping_List
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> products = Console.ReadLine().Split("!").ToList();
+            string commands = Console.ReadLine();
+
+            while (commands != "Go Shopping!")
+            {
+                string[] command = commands.Split().ToArray();
+                switch (command[0])
+                {
+                    case "Urgent":
+                        if (products.Contains(command[1]))
+                        {
+                            commands = Console.ReadLine();
+                            continue;
+                        }
+                        else
+                        {
+                            products.Insert(0, command[1]);
+                        }
+                        break;
+                    case "Unnecessary":
+                        for (int i = 0; i < products.Count; i++)
+                        {
+                            if (products[i] == command[1])
+                            {
+                                products.Remove(products[i]);
+                            }
+                        }
+                        break;
+                    case "Correct":
+
+                        for (int i = 0; i < products.Count; i++)
+                        {
+                            if (products[i] == command[1])
+                            {
+                                products[i] = command[2];
+                            }
+                        }
+
+                        break;
+                    case "Rearrange":
+                        for (int i = 0; i < products.Count; i++)
+                        {
+                            if (products[i] == command[1])
+                            {
+                                products.Remove(products[i]);
+                                products.Add(command[1]);
+                                break;
+                            }
+                            
+                        }
+                        break;
+                }
+
+                commands = Console.ReadLine();
+            }
+
+            Console.Write(String.Join(", ", products));
+        }
+    }
+}
