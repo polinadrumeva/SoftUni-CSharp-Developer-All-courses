@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ME03._Memory_Game
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> numbers = Console.ReadLine().Split().ToList();
+            string indexes = Console.ReadLine();
+            int counter = 0;
+
+            while (indexes != "end")
+            {
+                counter++;
+                string[] indexs = indexes.Split().ToArray();
+                int firstIndex = int.Parse(indexs[0]);
+                int secondIndex = int.Parse(indexs[1]);
+
+                if (firstIndex == secondIndex || firstIndex < 0 || secondIndex < 0 || firstIndex >= numbers.Count || secondIndex >= numbers.Count)
+                {
+                    string numberToAdd = "-2a";
+                    numbers.Insert(numbers.Count / 2, numberToAdd);
+                    numbers.Insert(numbers.Count / 2 + 1, numberToAdd);
+                    Console.WriteLine("Invalid input! Adding additional elements to the board");
+
+                }
+                else
+                {
+                    if (numbers[firstIndex] == numbers[secondIndex])
+                    {
+                        Console.WriteLine($"Congrats! You have found matching elements - {numbers[firstIndex]}!");
+                        numbers.RemoveAt(firstIndex);
+                        if (secondIndex >= 1)
+                        {
+                            if (secondIndex - 1 <= 0)
+                            {
+                                numbers.RemoveAt(0);
+                            }
+                            else
+                            {
+                                numbers.RemoveAt(secondIndex - 1);
+                            }
+
+                        }
+                        else
+                        {
+                            numbers.RemoveAt(secondIndex);
+                        }
+
+                    }
+                    else if (numbers[firstIndex] != numbers[secondIndex])
+                    {
+                        Console.WriteLine("Try again!");
+                    }
+                }
+                if (numbers.Count == 0)
+                {
+                    Console.WriteLine($"You have won in {counter} turns!");
+                    return;
+                }
+
+                indexes = Console.ReadLine();
+
+            }
+
+            Console.WriteLine("Sorry you lose :(");
+            Console.WriteLine(String.Join(" ", numbers));
+
+
+        }
+    }
+}
