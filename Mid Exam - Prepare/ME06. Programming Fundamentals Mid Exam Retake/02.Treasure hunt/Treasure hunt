@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ME02._Treasure_Hunt
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> treasureChest = Console.ReadLine().Split("|").ToList();
+            string command = Console.ReadLine();
+
+            while (command != "Yohoho!")
+            {
+                string[] commands = command.Split().ToArray();
+                switch (commands[0])
+                {
+                    case "Loot":
+                        for (int i = 1; i < commands.Length; i++)
+                        {
+                            for (int k = 0; k < treasureChest.Count; k++)
+                            {
+                                if (!treasureChest.Contains(commands[i]))
+                                {
+                                    treasureChest.Insert(0, commands[i]);
+                                }
+                            }
+                        }
+                        break;
+                    case "Drop":
+                        int index = int.Parse(commands[1]);
+                        if (index >= treasureChest.Count || index < 0)
+                        {
+                            command = Console.ReadLine();
+                            continue;
+                        }
+                        else
+                        {
+                            string movingLoot = treasureChest[index];
+                            treasureChest.RemoveAt(index);
+                            treasureChest.Add(movingLoot);
+                        }
+                        break;
+
+                    case "Steal":
+                        int count = int.Parse(commands[1]);
+                        int difference = treasureChest.Count - count;
+                        for (int i = difference; i < treasureChest.Count; i++)
+                        {
+                            if (i == treasureChest.Count - 1)
+                            {
+                                Console.Write($"{treasureChest[i]}");
+                            }
+                            else
+                            {
+                                Console.Write($"{treasureChest[i]}, ");
+                            }
+                            
+                        }
+                        Console.WriteLine();
+                        treasureChest.RemoveRange(difference, count);
+                        break;
+
+                }
+
+                command = Console.ReadLine();   
+            }
+
+            if (treasureChest.Count <= 0)
+            {
+                Console.WriteLine("Failed treasure hunt.");
+            }
+            else
+            {
+                double sumOfAllItems = 0;
+                for (int i = 0; i < treasureChest.Count; i++)
+                {
+                    sumOfAllItems += treasureChest[i].Length;
+                }
+                double averageSum = sumOfAllItems / treasureChest.Count;
+                Console.WriteLine($"Average treasure gain: {averageSum:f2} pirate credits.");
+            }
+
+           
+        }
+    }
+}
