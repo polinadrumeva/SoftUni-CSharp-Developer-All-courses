@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ME03._Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const int maxNumber = 5;
+            List<int> numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
+            List<int> biggerNumber = new List<int>();
+            double averageValue = (double) numbers.Sum() / numbers.Count;
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (numbers[i] > averageValue)
+                {
+                    biggerNumber.Add(numbers[i]);
+                }
+            }
+
+            int count = 0;
+            biggerNumber.Sort();
+            biggerNumber.Reverse();
+            
+            if (biggerNumber.Count == 0)
+            {
+                Console.WriteLine("No");
+            }
+            
+            for (int k = 0; k < biggerNumber.Count ; k++)
+            {
+                Console.Write($"{biggerNumber[k]} ");
+                count++;
+                if (count == maxNumber)
+                {
+                    break;
+                }
+                
+            }
+            Console.WriteLine();
+        }
+    }
+}
