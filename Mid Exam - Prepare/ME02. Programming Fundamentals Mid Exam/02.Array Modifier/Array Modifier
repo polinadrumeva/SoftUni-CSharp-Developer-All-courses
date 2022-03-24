@@ -1,0 +1,44 @@
+using System;
+using System.Linq;
+
+namespace Array_Modifier
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            string[] command = Console.ReadLine().Split().ToArray();
+
+            while (command[0] != "end")
+            {
+                switch (command[0])
+                {
+                    case "swap":
+                        int firstNumber = numbers[int.Parse(command[1])];
+                        int secondNumber = numbers[int.Parse(command[2])];
+                        numbers[int.Parse(command[2])] = firstNumber;
+                        numbers[int.Parse(command[1])] = secondNumber;
+                        break;
+
+                    case "multiply":
+                        int firstNum = numbers[int.Parse(command[1])];
+                        int secondNum = numbers[int.Parse(command[2])];
+                        numbers[int.Parse(command[1])] = firstNum * secondNum;
+                        break;
+
+                    case "decrease":
+                        for (int i = 0; i < numbers.Length; i++)
+                        {
+                            numbers[i] -= 1;
+                        }
+                        break;
+                }
+                command = Console.ReadLine().Split().ToArray();
+            }
+
+            Console.WriteLine(String.Join(", ", numbers));
+           
+        }
+    }
+}
