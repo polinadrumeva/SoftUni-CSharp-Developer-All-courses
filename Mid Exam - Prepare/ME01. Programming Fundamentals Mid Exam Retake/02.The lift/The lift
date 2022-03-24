@@ -1,0 +1,55 @@
+using System;
+using System.Linq;
+
+namespace ME02._The_Lift
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const int maxTourists = 4;
+            int numOfPeople = int.Parse(Console.ReadLine());
+            int[] currentState = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int[] liftTourist = new int[currentState.Length];
+            int numInWagon = 0;
+
+            for (int i = 0; i < currentState.Length; i++)
+            {
+                liftTourist[i] = currentState[i];
+            }
+
+            for (int k = 0; k < liftTourist.Length; k++)
+            {
+                for (int inwagon = liftTourist[k]; inwagon <= maxTourists; inwagon++)
+                {
+                    if (numOfPeople <= 0 || liftTourist[k] == maxTourists)
+                    {
+                        break;
+                    }
+                    liftTourist[k] += 1;
+                    numOfPeople--;
+                }
+                numInWagon = liftTourist[k];
+            }
+
+            if (numOfPeople == 0 && numInWagon == maxTourists)
+            {
+                Console.WriteLine(string.Join(" ", liftTourist));
+
+            }
+            else if (numOfPeople == 0)
+            {
+                Console.WriteLine("The lift has empty spots!");
+                Console.WriteLine(string.Join(" ", liftTourist));
+            }
+            else
+            {
+                Console.WriteLine($"There isn't enough space! {numOfPeople} people in a queue!");
+                Console.WriteLine(string.Join(" ", liftTourist));
+            }
+
+        }
+    }
+}
+
+
