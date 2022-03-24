@@ -1,0 +1,31 @@
+using System;
+
+namespace ME01._SoftUni_Reception
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int firstEmployeeEfficiency = int.Parse(Console.ReadLine());
+            int secondEmployeeEfficiency = int.Parse(Console.ReadLine());
+            int thirdEmployeeEfficiency = int.Parse(Console.ReadLine());
+            int studentsCount = int.Parse(Console.ReadLine());
+
+            int totalEfficiency = firstEmployeeEfficiency + secondEmployeeEfficiency + thirdEmployeeEfficiency;
+            int hour = 1;
+
+            while (totalEfficiency <= studentsCount)
+            {
+                hour++;
+                studentsCount -= totalEfficiency;
+                if (hour % 4 == 0)
+                {
+                    hour++;
+                }
+               
+            }
+
+            Console.WriteLine($"Time needed: {hour}h.");
+        }
+    }
+}
