@@ -1,0 +1,73 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace ME02._MuOnline
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int health = 100;
+            int bitcoin = 0;
+
+            List<string> rooms = Console.ReadLine().Split("|").ToList();
+            int counter = 0;
+
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                counter++;
+                string[] eachRoom = rooms[i].Split().ToArray();
+
+                if (eachRoom[0] != "potion" && eachRoom[0] != "chest")
+                {
+                    string monster = eachRoom[0];
+                    if (health > int.Parse(eachRoom[1]))
+                    {
+                        health -= int.Parse(eachRoom[1]);
+                        Console.WriteLine($"You slayed {monster}.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You died! Killed by {monster}.");
+                        Console.WriteLine($"Best room: {counter}");
+                        return;
+                    }
+                }
+                switch (eachRoom[0])
+                {
+                    case "potion":
+                        if (health < 100)
+                        {
+                            int diff = 0;
+                            if (health + int.Parse(eachRoom[1]) > 100)
+                            {
+                                diff = 100 - health;
+                                health += diff;
+                            }
+                            else
+                            {
+                                diff = int.Parse(eachRoom[1]);
+                                health += diff;
+                            }
+                            Console.WriteLine($"You healed for {diff} hp.");
+                            Console.WriteLine($"Current health: {health} hp.");
+                        }
+                        break;
+                    case "chest":
+                        bitcoin += int.Parse(eachRoom[1]);
+                        Console.WriteLine($"You found {int.Parse(eachRoom[1])} bitcoins.");
+                        break;
+                }
+
+            }
+
+            if (health > 0)
+            {
+                Console.WriteLine("You've made it!");
+                Console.WriteLine($"Bitcoins: {bitcoin}");
+                Console.WriteLine($"Health: {health}");
+            }
+        }
+    }
+}
