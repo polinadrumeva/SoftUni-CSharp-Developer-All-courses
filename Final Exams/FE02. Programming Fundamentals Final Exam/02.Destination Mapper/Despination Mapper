@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
+namespace FE02._Destination_Mapper
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = Console.ReadLine();
+            string pattern = @"(\=|\/)(?<letters>[A-Z]{1}[A-Za-z]{2,})\1";
+            List<string> destinations = new List<string>();
+            int travelPoints = 0;
+            
+            MatchCollection matches = Regex.Matches(text, pattern);
+
+            foreach (Match match in matches)
+            {
+                string destination = match.Groups["letters"].Value;
+                destinations.Add(destination);
+                travelPoints += destination.Length;
+            }
+
+            Console.WriteLine($"Destinations: {string.Join(", ", destinations)}");
+            Console.WriteLine($"Travel Points: {travelPoints}");
+        }
+    }
+}
