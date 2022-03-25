@@ -1,0 +1,34 @@
+using System;
+
+namespace E11._Orders
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int countOfOrders = int.Parse(Console.ReadLine());
+            double priceForCapsule = 0;
+            int days = 0;
+            int capsulesCount = 0;
+            double priceForOrder = 0;
+            double total = 0;
+            
+
+            for (int i = 0; i < countOfOrders; i++)
+            {
+                priceForCapsule = double.Parse(Console.ReadLine());
+                days = int.Parse(Console.ReadLine());
+                capsulesCount = int.Parse(Console.ReadLine());
+
+                priceForOrder = (days * capsulesCount) * priceForCapsule;
+                total += priceForOrder;
+                Console.WriteLine($"The price for the coffee is: ${priceForOrder:f2}");
+                priceForOrder = 0;
+
+            }
+
+            Console.WriteLine($"Total: ${total:f2}");
+           
+        }
+    }
+}
