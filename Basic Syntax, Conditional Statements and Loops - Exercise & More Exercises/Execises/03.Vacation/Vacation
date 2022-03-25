@@ -1,0 +1,86 @@
+using System;
+
+namespace E03._Vacation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int countOfPeople = int.Parse(Console.ReadLine());
+            string typeOfGroup = Console.ReadLine();
+            string day = Console.ReadLine();
+
+            double price = 0;
+
+            switch (day)
+            {
+                case "Friday":
+                    if (typeOfGroup == "Students")
+                    {
+                        price = 8.45;
+                    }
+                    else if (typeOfGroup == "Business")
+                    {
+                        price = 10.90;
+                    }
+                    else if (typeOfGroup == "Regular")
+                    {
+                        price = 15;
+                    }
+                    break;
+                case "Saturday":
+                    if (typeOfGroup == "Students")
+                    {
+                        price = 9.80;
+                    }
+                    else if (typeOfGroup == "Business")
+                    {
+                        price = 15.60;
+                    }
+                    else if (typeOfGroup == "Regular")
+                    {
+                        price = 20;
+                    }
+                    break;
+                case "Sunday":
+                    if (typeOfGroup == "Students")
+                    {
+                        price = 10.46;
+                    }
+                    else if (typeOfGroup == "Business")
+                    {
+                        price = 16;
+                    }
+                    else if (typeOfGroup == "Regular")
+                    {
+                        price = 22.50;
+                    }
+                    break;
+
+            }
+
+            double totalPrice = 0;
+
+            if (countOfPeople >= 30 && typeOfGroup == "Students")
+            {
+                totalPrice = (price * countOfPeople) - ((price * countOfPeople) * 0.15);
+            }
+            else if (countOfPeople >= 100 && typeOfGroup == "Business")
+            {
+                totalPrice = price * (countOfPeople - 10);
+            }
+            else if (countOfPeople >= 10 && countOfPeople <= 20 && typeOfGroup == "Regular")
+            {
+                totalPrice = (price * countOfPeople) - ((price * countOfPeople) * 0.05);
+            }
+            else
+            {
+                totalPrice = price * countOfPeople;
+            }
+
+            Console.WriteLine($"Total price: {totalPrice:f2}");
+
+        }
+    }
+}
