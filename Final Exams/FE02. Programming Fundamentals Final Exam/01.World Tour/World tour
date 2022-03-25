@@ -1,0 +1,50 @@
+using System;
+
+namespace FE01._World_Tour
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string stops = Console.ReadLine();
+
+            string command;
+            while ((command = Console.ReadLine()) != "Travel")
+            {
+                string[] commands = command.Split(":");
+                switch (commands[0])
+                {
+                    case "Add Stop":
+                        if (int.Parse(commands[1]) < stops.Length)
+                        {
+                            stops = stops.Insert(int.Parse(commands[1]), commands[2]);
+                        }
+                        PrintStops(stops, commands);
+                        break;
+                    case"Remove Stop":
+                        if (int.Parse(commands[1]) < stops.Length && int.Parse(commands[2]) < stops.Length)
+                        {
+                            stops = stops.Remove(int.Parse(commands[1]), (int.Parse(commands[2]) - int.Parse(commands[1]) + 1));
+                        }
+                        PrintStops(stops, commands);
+                        break;
+                        
+                    case "Switch":
+                        if (stops.Contains(commands[1]))
+                        {
+                            stops = stops.Replace(commands[1], commands[2]);
+                        }
+                        PrintStops(stops, commands);
+                        break;
+                }
+            }
+
+            Console.WriteLine($"Ready for world tour! Planned stops: {stops}");
+        }
+
+        static void PrintStops(string stops, string[] commands)
+        {
+            Console.WriteLine(stops);
+        }
+    }
+}
