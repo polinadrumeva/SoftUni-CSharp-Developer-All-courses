@@ -1,0 +1,100 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace FE03._Plant_Discovery
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            Dictionary<string, List<double>> plantsInfo = new Dictionary<string, List<double>>();
+            for (int i = 0; i < n; i++)
+            {
+                string[] plants = Console.ReadLine().Split("<->");
+                if (plantsInfo.ContainsKey(plants[0]))
+                {
+                    plantsInfo[plants[0]][0] = double.Parse(plants[1]);
+                }
+                else
+                {
+                    plantsInfo.Add(plants[0], new List<double>());
+                    plantsInfo[plants[0]].Add(double.Parse(plants[1]));
+
+                }
+            }
+            string command;
+            while ((command = Console.ReadLine()) != "Exhibition")
+            {
+                string[] cmdArr = command.Split(":");
+                switch (cmdArr[0])
+                {
+                    case "Rate":
+                        string[] infosRate = cmdArr[1].Split("-", StringSplitOptions.RemoveEmptyEntries).ToArray();
+                        string typePlants = infosRate[0].TrimStart().TrimEnd();
+                        if (plantsInfo.ContainsKey(typePlants))
+                        {
+                            plantsInfo[typePlants].Add(double.Parse(infosRate[1]));
+                        }
+                        else
+                        {
+                            Console.WriteLine("error");
+                        }
+                        break;
+                    case "Update":
+                        string[] infosupdate = cmdArr[1].Split("-", StringSplitOptions.RemoveEmptyEntries);
+                        string typePlantsUpdate = infosupdate[0].TrimStart().TrimEnd();
+                        if (plantsInfo.ContainsKey(typePlantsUpdate))
+                        {
+                            plantsInfo[typePlantsUpdate][0] = double.Parse(infosupdate[1]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("error");
+                        }
+                        break;
+                    case "Reset":
+                        string typesPlantReset = cmdArr[1].TrimStart().TrimEnd();
+                        if (plantsInfo.ContainsKey(typesPlantReset))
+                        {
+                            for (int k = plantsInfo[typesPlantReset].Count -1; k >= 1; k--)
+                            {
+                                plantsInfo[typesPlantReset].RemoveAt(k);
+                            }
+                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("error");
+                        }
+                        break;
+                }
+            }
+
+            Console.WriteLine("Plants for the exhibition:");
+            foreach (var item in plantsInfo)
+            {
+                double plantsRating = 0;
+                int count = 0;
+                double averageRating = 0;
+                if (item.Value.Count > 2)
+                {
+                    for (int m = 1; m < item.Value.Count; m++)
+                    {
+                        plantsRating += item.Value[m];
+                        count++;
+                    }
+                    averageRating = (double) plantsRating / count;
+                }
+                else if (item.Value.Count == 2)
+                {
+                    averageRating = item.Value[1];
+                }
+
+                Console.WriteLine($"- {item.Key}; Rarity: {item.Value[0]}; Rating: {averageRating:f2}");
+            }
+
+        }
+    }
+}
