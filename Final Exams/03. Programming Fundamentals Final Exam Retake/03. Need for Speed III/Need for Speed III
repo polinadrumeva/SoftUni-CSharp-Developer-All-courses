@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+
+namespace FE03._Need_for_Speed_III
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double maxKm = 100000;
+            double maxFuel = 75;
+
+            int numberOfCars = int.Parse(Console.ReadLine());
+            Dictionary<string, List<double>> carsInfo = new Dictionary<string, List<double>>();
+
+            for (int i = 0; i < numberOfCars; i++)
+            {
+                string[] singleCar = Console.ReadLine().Split("|");
+                carsInfo.Add(singleCar[0], new List<double>());
+                carsInfo[singleCar[0]].Add(double.Parse(singleCar[1]));
+                carsInfo[singleCar[0]].Add(double.Parse(singleCar[2]));
+            }
+
+            string command;
+            while ((command = Console.ReadLine()) != "Stop")
+            {
+                string[] cmdArr = command.Split(" : ", StringSplitOptions.RemoveEmptyEntries);
+                switch (cmdArr[0])
+                {
+                    case "Drive":
+                        if (carsInfo[cmdArr[1]][1] < double.Parse(cmdArr[3]))
+                        {
+                            Console.WriteLine("Not enough fuel to make that ride");
+                        }
+                        else
+                        {
+                            carsInfo[cmdArr[1]][0] += double.Parse(cmdArr[2]);
+                            carsInfo[cmdArr[1]][1] -= double.Parse(cmdArr[3]);
+                            Console.WriteLine($"{cmdArr[1]} driven for {cmdArr[2]} kilometers. {cmdArr[3]} liters of fuel consumed.");
+                        }
+                        if (carsInfo[cmdArr[1]][0] >= maxKm)
+                        {
+                            Console.WriteLine($"Time to sell the {cmdArr[1]}!");
+                            carsInfo.Remove(cmdArr[1]);
+                        }
+                        break;
+                    case "Refuel":
+                        double diff = maxFuel - carsInfo[cmdArr[1]][1];
+                        if (diff > double.Parse(cmdArr[2]))
+                        {
+                            Console.WriteLine($"{cmdArr[1]} refueled with {cmdArr[2]} liters");
+                            carsInfo[cmdArr[1]][1] += double.Parse(cmdArr[2]);
+                        }
+                        else
+                        {
+                            ;
+                            Console.WriteLine($"{cmdArr[1]} refueled with {diff} liters");
+                            carsInfo[cmdArr[1]][1] += diff;
+                        }
+                        break;
+                    case "Revert":
+                        carsInfo[cmdArr[1]][0] -= double.Parse(cmdArr[2]);
+                        if (carsInfo[cmdArr[1]][0] < 10000)
+                        {
+                            carsInfo[cmdArr[1]][0] = 10000;
+                        }
+                        else
+                        {
+
+                            Console.WriteLine($"{cmdArr[1]} mileage decreased by {cmdArr[2]} kilometers");
+                        }
+                        break;  
+                }
+            }
+
+            foreach (var item in carsInfo)
+            {
+                Console.WriteLine($"{item.Key} -> Mileage: {item.Value[0]} kms, Fuel in the tank: {item.Value[1]} lt.");
+            }
+        }
+    }
+}
