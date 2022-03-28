@@ -1,0 +1,26 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace ME04._Reverse_String
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string forReverse = Console.ReadLine();
+            string stringReversed = "";
+           
+            for (int i = forReverse.Length - 1; i >= 0; --i)
+            {
+                stringReversed += forReverse[i];
+            }
+
+            Console.WriteLine(stringReversed);
+
+
+        }
+
+
+    }
+}
