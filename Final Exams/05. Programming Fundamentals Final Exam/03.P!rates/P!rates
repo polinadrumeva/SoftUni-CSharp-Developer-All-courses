@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+
+namespace FE03._P_rates
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, List<double>> citiesInfo = new Dictionary<string, List<double>>();
+
+            string cities;
+            while ((cities = Console.ReadLine()) != "Sail")
+            {
+                string[] eachCity = cities.Split("||");
+                string name = eachCity[0];
+                double population = double.Parse(eachCity[1]);
+                double gold = double.Parse(eachCity[2]);
+                if (!citiesInfo.ContainsKey(name))
+                {
+                    citiesInfo.Add(name, new List<double>());
+                    citiesInfo[name].Add(population);
+                    citiesInfo[name].Add(gold);
+                }
+                else
+                {
+                    citiesInfo[name][0] += population;
+                    citiesInfo[name][1] += gold;
+                }
+                
+            }
+
+            string events;
+            while ((events = Console.ReadLine()) != "End")
+            {
+                string[] eventsFacts = events.Split("=>");
+                string city = eventsFacts[1];
+                string command = eventsFacts[0];
+                switch (command)
+                {
+                    case "Plunder":
+                        double populat = double.Parse(eventsFacts[2]);
+                        double goldInCity = double.Parse(eventsFacts[3]);
+                        citiesInfo[city][0] -= populat;
+                        citiesInfo[city][1] -= goldInCity;
+                        Console.WriteLine($"{city} plundered! {goldInCity} gold stolen, {populat} citizens killed.");
+                        if (citiesInfo[city][0] <= 0 || citiesInfo[city][1] <= 0)
+                        {
+                            citiesInfo.Remove(city);
+                            Console.WriteLine($"{city} has been wiped off the map!");
+                        }
+                        break;
+                    case "Prosper":
+                        double goldForProsper = double.Parse(eventsFacts[2]);
+                        if (goldForProsper < 0)
+                        {
+                            Console.WriteLine($"Gold added cannot be a negative number!");
+                        }
+                        else
+                        {
+                            citiesInfo[city][1] += goldForProsper;
+                            Console.WriteLine($"{goldForProsper} gold added to the city treasury. {city} now has {citiesInfo[city][1]} gold.");
+                        }
+                        break;
+                }
+
+            }
+
+            if (citiesInfo.Count > 0)
+            {
+                Console.WriteLine($"Ahoy, Captain! There are {citiesInfo.Count} wealthy settlements to go to:");
+                foreach (var item in citiesInfo)
+                {
+                    Console.WriteLine($"{item.Key} -> Population: {item.Value[0]} citizens, Gold: {item.Value[1]} kg");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Ahoy, Captain! All targets have been plundered and destroyed!");
+            }
+        }
+    }
+}
