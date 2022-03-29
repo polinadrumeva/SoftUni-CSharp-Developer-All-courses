@@ -1,0 +1,59 @@
+using System;
+
+namespace FE01._Activation_Keys
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string rawKey = Console.ReadLine();
+
+            string command;
+            while ((command = Console.ReadLine()) != "Generate")
+            {
+                string[] cmdArr = command.Split(">>>");
+                string comand = cmdArr[0];
+                switch (comand)
+                {
+                    case "Contains":
+                        string substring = cmdArr[1];
+                        if (rawKey.Contains(substring))
+                        {
+                            Console.WriteLine($"{rawKey} contains {substring}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Substring not found!");
+                        }
+                        break;
+                    case "Flip":
+                        string caseType = cmdArr[1];
+                        int startIndex = int.Parse(cmdArr[2]);
+                        int endIndex = int.Parse(cmdArr[3]);
+                        switch (caseType)
+                        {
+                            case "Upper":
+                                string substrUpper = rawKey.Substring(startIndex, endIndex - startIndex);
+                                rawKey = rawKey.Replace(substrUpper, substrUpper.ToUpper());
+                                break;
+                            case "Lower":
+                                string substrLower = rawKey.Substring(startIndex, endIndex - startIndex);
+                                rawKey = rawKey.Replace(substrLower, substrLower.ToLower());
+                                break;
+                        }
+                        Console.WriteLine(rawKey);
+                        break;
+                    case "Slice":
+                        int startInd = int.Parse(cmdArr[1]);
+                        int endInd = int.Parse(cmdArr[2]);
+                        rawKey = rawKey.Remove(startInd, endInd - startInd);
+                        Console.WriteLine(rawKey);
+                        break;
+
+                }
+            }
+
+            Console.WriteLine($"Your activation key is: {rawKey}");
+        }
+    }
+}
