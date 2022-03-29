@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
+namespace FE02._Emoji_Detector
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = Console.ReadLine();
+            int treshold = 1;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (char.IsDigit(text[i]))
+                {
+                    treshold *= (text[i] - 48);
+                }
+            }
+
+            string emojiPattern = @"(\:{2}|\*{2})(?<emoji>[A-Z]{1}[a-z]{2,})\1";
+            int countEmoji = 0;
+            MatchCollection maches = Regex.Matches(text, emojiPattern);
+            List<string> coolEmoji = new List<string>();
+            foreach (Match m in maches)
+            {
+                string emoji = m.Value;
+                string currentEmoji = m.Groups["emoji"].Value;
+                int coolness = 0;
+                countEmoji++;
+                for (int i = 0; i < currentEmoji.Length; i++)
+                {
+                    coolness += (int) currentEmoji[i];
+                }
+                if (coolness > treshold)
+                {
+                    coolEmoji.Add(emoji);
+                }
+            }
+
+            Console.WriteLine($"Cool threshold: {treshold}");
+            Console.WriteLine($"{countEmoji} emojis found in the text. The cool ones are:");
+            foreach (var item in coolEmoji)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
