@@ -1,0 +1,32 @@
+using System;
+
+namespace E01._Smallest_of_Three_Numbers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int first = int.Parse(Console.ReadLine());
+            int second = int.Parse(Console.ReadLine());
+            int third = int.Parse(Console.ReadLine());
+            PrintSmallestNumber(first, second, third);
+        }
+        static void PrintSmallestNumber(int first, int second, int third)
+        {
+            int smallestNumber = int.MaxValue;
+            if (first >= second && second <= third)
+            {
+                smallestNumber = second;
+            }
+            else if (second >= third && third <= first)
+            {
+                smallestNumber = third;
+            }
+            else if (second >= first && first <= third)
+            {
+                smallestNumber = first;
+            }
+            Console.WriteLine(smallestNumber);
+        }
+    }
+}
