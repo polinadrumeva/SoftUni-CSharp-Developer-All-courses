@@ -1,0 +1,40 @@
+using System;
+
+namespace E09._Palindrome_Integers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string command = Console.ReadLine();
+            PrintResult(command);
+        }
+        static void PrintResult(string command)
+        {
+            int count = 0;
+            while (command != "END")
+            {
+                int index = command.Length - 1;
+                for (int i = 0; i < command.Length; i++)
+                {
+                    if (command[index] == command[i])
+                    {
+                        count++;
+                    }
+                    index--;
+                }
+
+                if (count == command.Length)
+                {
+                    Console.WriteLine("true");
+                }
+                else
+                {
+                    Console.WriteLine("false");
+                }
+                count = 0;
+                command = Console.ReadLine();
+            }
+        }
+    }
+}
