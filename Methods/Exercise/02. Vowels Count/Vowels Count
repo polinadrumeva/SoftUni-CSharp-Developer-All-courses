@@ -1,0 +1,27 @@
+using System;
+using System.Linq;
+
+namespace E02._Vowels_Count
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] word = Console.ReadLine().ToArray();
+            PrintNum(word);
+        }
+        static void PrintNum(char[] word)
+        {
+            int count = 0;
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] == 'a' || word[i] == 'e' || word[i] == 'o' || word[i] == 'u' || word[i] == 'i'
+                    || word[i] == 'A' || word[i] == 'E' || word[i] == 'O' || word[i] == 'U' || word[i] == 'I')
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine(count);
+        }
+    }
+}
