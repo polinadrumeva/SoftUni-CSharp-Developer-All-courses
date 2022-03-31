@@ -1,0 +1,96 @@
+using System;
+using System.Collections.Generic;
+
+namespace FE03._Heroes_of_Code_and_Logic_VII
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfHeroes = int.Parse(Console.ReadLine());
+            Dictionary<string, List<double>> heroes = new Dictionary<string, List<double>>();
+            for (int i = 0; i < numberOfHeroes; i++)
+            {
+                string[] heroInfo = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                heroes.Add(heroInfo[0], new List<double>());
+                heroes[heroInfo[0]].Add(double.Parse(heroInfo[1]));
+                if (heroes[heroInfo[0]][0] > 100)
+                {
+                    heroes[heroInfo[0]][0] = 100;
+                }
+                heroes[heroInfo[0]].Add(double.Parse(heroInfo[2]));
+                if (heroes[heroInfo[0]][1] > 200)
+                {
+                    heroes[heroInfo[0]][1] = 200;
+                }
+
+            }
+
+            string command;
+            while ((command = Console.ReadLine()) != "End")
+            {
+                string[] cmdArr = command.Split(" - ", StringSplitOptions.RemoveEmptyEntries);
+                switch (cmdArr[0])
+                {
+                    case "CastSpell":
+                        if (heroes[cmdArr[1]][1] >= double.Parse(cmdArr[2]))
+                        {
+                            heroes[cmdArr[1]][1] -= double.Parse(cmdArr[2]);
+                            Console.WriteLine($"{cmdArr[1]} has successfully cast {cmdArr[3]} and now has {heroes[cmdArr[1]][1]} MP!");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{cmdArr[1]} does not have enough MP to cast {cmdArr[3]}!");
+                        }
+                        break;
+                    case "TakeDamage":
+                        if ((heroes[cmdArr[1]][0] - double.Parse(cmdArr[2])) > 0)
+                        {
+                            heroes[cmdArr[1]][0] -= double.Parse(cmdArr[2]);
+                            Console.WriteLine($"{cmdArr[1]} was hit for {cmdArr[2]} HP by {cmdArr[3]} and now has {heroes[cmdArr[1]][0]} HP left!");
+                        }
+                        else
+                        {
+                            heroes.Remove(cmdArr[1]);
+                            Console.WriteLine($"{cmdArr[1]} has been killed by {cmdArr[3]}!");
+                        }
+                        break;
+                    case "Recharge":
+                        double difference = 200 - heroes[cmdArr[1]][1];
+                        if (difference < double.Parse(cmdArr[2]))
+                        {
+                            Console.WriteLine($"{cmdArr[1]} recharged for {difference} MP!");
+                            heroes[cmdArr[1]][1] += difference;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{cmdArr[1]} recharged for {cmdArr[2]} MP!");
+                            heroes[cmdArr[1]][1] += double.Parse(cmdArr[2]);
+                        }
+                        break;
+                    case "Heal":
+                        double diff = 100 - heroes[cmdArr[1]][0];
+                        if (diff < double.Parse(cmdArr[2]))
+                        {
+                            Console.WriteLine($"{cmdArr[1]} healed for {diff} HP!");
+                            heroes[cmdArr[1]][0] += diff;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{cmdArr[1]} healed for {cmdArr[2]} HP!");
+                            heroes[cmdArr[1]][0] += double.Parse(cmdArr[2]);
+                        }
+                        break;
+
+                }
+            }
+
+            foreach (var item in heroes)
+            {
+                Console.WriteLine($"{item.Key}");
+                Console.WriteLine($"  HP: {item.Value[0]}");
+                Console.WriteLine($"  MP: {item.Value[1]}");
+            }
+        }
+    }
+}
