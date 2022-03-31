@@ -1,0 +1,50 @@
+using System;
+using System.Text.RegularExpressions;
+
+namespace FE02._Fancy_Barcodes
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int countOfBarcode = int.Parse(Console.ReadLine());
+            
+
+            for (int i = 0; i < countOfBarcode; i++)
+            {
+                string barcode = Console.ReadLine();
+                string barcodePattern = @"\@\#{1,}(?<product>([A-Z]{1}[A-Za-z0-9]{4,}[A-Z]{1}))\@\#{1,}";
+                string productGroup = string.Empty;
+                bool doesMissDigits = false;
+
+                Match match = Regex.Match(barcode, barcodePattern);
+                if (match.Success)
+                { 
+                   string product = match.Groups["product"].Value;
+                    for (int k = 0; k < product.Length; k++)
+                    {
+                        if (char.IsDigit(product[k]))
+                        {
+                            productGroup += product[k];
+                            doesMissDigits = true;
+                        }
+                    }
+                    if (!doesMissDigits)
+                    {
+                        Console.WriteLine($"Product group: 00");
+                    }
+                    else 
+                    {
+                        Console.WriteLine($"Product group: {productGroup}");
+                        doesMissDigits = false;
+                    }
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Invalid barcode");
+                }
+            }
+        }
+    }
+}
