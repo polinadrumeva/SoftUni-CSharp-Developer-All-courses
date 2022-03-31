@@ -1,0 +1,37 @@
+using System;
+
+namespace E08._Factorial_Division
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double first = double.Parse(Console.ReadLine());
+            double second = double.Parse(Console.ReadLine());
+            double firstSum = GetFirstSum(first);
+            double secondSum = GetSecondSum(second);
+            double result = firstSum / secondSum;
+            Console.WriteLine($"{result:f2}");
+        }
+
+        static double GetFirstSum(double first)
+        {
+            double firstSum = 1;
+            for (int i = 1; i <= first; i++)
+            {
+                firstSum *= i;
+            }
+            return firstSum;
+        }
+        static double GetSecondSum(double second)
+        {
+            double secondSum = 1;
+            for (int k = 1; k <= second; k++)
+            {
+                secondSum *= k;
+            }
+            return secondSum;
+        }
+
+    }
+}
