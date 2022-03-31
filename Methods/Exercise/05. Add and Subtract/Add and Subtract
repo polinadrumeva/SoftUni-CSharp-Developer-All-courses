@@ -1,0 +1,27 @@
+using System;
+
+namespace E05._Add_and_Subtract
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int first = int.Parse(Console.ReadLine());
+            int second = int.Parse(Console.ReadLine());
+            int third = int.Parse(Console.ReadLine());
+            int result = GetSubtract(first, second, third);
+            Console.WriteLine(result);
+        }
+        static int GetSum(int first, int second)
+        {
+            return first + second;
+        }
+        static int GetSubtract(int first, int second, int third)
+        {
+            int sum = GetSum(first, second);
+            return sum - third;
+
+        }
+
+    }
+}
