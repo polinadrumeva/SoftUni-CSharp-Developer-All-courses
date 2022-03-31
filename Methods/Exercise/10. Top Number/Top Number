@@ -1,0 +1,40 @@
+using System;
+
+namespace E10._Top_Number
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int endValue = int.Parse(Console.ReadLine());
+            int symbol = 0;
+            int sumOfDigits = 0;
+
+            for (int i = 1; i <= endValue; i++)
+            {
+                int digit = i;
+                int count = 0;
+                while (digit != 0)
+                {
+                    symbol = digit % 10;
+                    if (symbol % 2 != 0)
+                    {
+                        count++;
+                    }
+                    sumOfDigits += symbol;
+                    digit /= 10;
+                }
+                if (sumOfDigits % 8 == 0 && count > 0)
+                {
+                    Console.WriteLine(i);
+                }
+
+                sumOfDigits = 0;
+                count = 0;
+
+
+            }
+        }
+
+    }
+}
