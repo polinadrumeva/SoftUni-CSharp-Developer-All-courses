@@ -7,6 +7,6 @@ Courses:
 
    a) [**C# Advanced course**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20Advanced%20-%20course)
    
-   b) [**C# OOP**]
+   b) C# OOP
 
 
