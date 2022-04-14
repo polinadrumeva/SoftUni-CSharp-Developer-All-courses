@@ -9,6 +9,6 @@ All problems from fundamentals course - Exercises & More exercise in SoftUni.
 6. Objects & Classes - exercise & more exercise
 7. [**Associative Arrays - Exercise & More exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/Associative%20Arrays%20-%20Exercise%20%26%20More%20exercise)
 8. Text Processing - exercise & more exercise
-9. Regular Expressions - exercise & more exercise
+9. [**Regular Expressions - exercise & more exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/Regular%20Expressions%20-%20Exercise%20%26%20More%20exercise/Exercise)
 10. [**Mid Exams - Prepare**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/Mid%20Exam%20-%20Prepare)
 11. [**Final Exams - Prepare**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/Final%20Exams)
