@@ -2,7 +2,7 @@
 All problems from fundamentals course - Exercises & More exercise in SoftUni.
 
 1. [**Basic Syntax, Conditional Statement and Loops - exercise & more exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/Basic%20Syntax%2C%20Conditional%20Statements%20and%20Loops%20-%20Exercise%20%26%20More%20Exercises)
-2. Data Types & Variables - exercise & more exercise
+2. [**Data Types & Variables - exercise & more exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/Data%20types%20and%20variables%20-%20Exercise%20%26%20More%20exercise)
 3. [**Arrays - exercise & more exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/Arrays%20-%20Exercise%20%26%20More%20exercise)
 4. [**Methods - exercise & more exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/Methods)
 5. [**Lists - exercise & more exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals/List%20-%20Exercise%20%26%20More%20exercise)
