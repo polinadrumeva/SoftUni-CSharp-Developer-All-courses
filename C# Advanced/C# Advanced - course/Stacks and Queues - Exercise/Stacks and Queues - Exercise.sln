@@ -15,7 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E05. Fashion Boutique", "E0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E06. Songs Queue", "E06. Songs Queue\E06. Songs Queue.csproj", "{AA9F6568-EF09-43B1-9E36-C8E3811EABF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E07. Truck Tour", "E07. Truck Tour\E07. Truck Tour.csproj", "{70CB0523-0CF9-4349-A375-5ACC816CEBB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E07. Truck Tour", "E07. Truck Tour\E07. Truck Tour.csproj", "{70CB0523-0CF9-4349-A375-5ACC816CEBB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E08.Balanced Parenthesis", "E08.Balanced Parenthesis\E08.Balanced Parenthesis.csproj", "{3F1BE849-8B6E-477A-BEB9-18ECB42A5274}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E09. Simple Text Editor", "E09. Simple Text Editor\E09. Simple Text Editor.csproj", "{121F839D-4C45-46E8-92F2-2217A97FD4AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E10. Crossroads", "E10. Crossroads\E10. Crossroads.csproj", "{BC137D97-B594-4211-B045-258A7B8C8CA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +57,18 @@ Global
 		{70CB0523-0CF9-4349-A375-5ACC816CEBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70CB0523-0CF9-4349-A375-5ACC816CEBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70CB0523-0CF9-4349-A375-5ACC816CEBB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F1BE849-8B6E-477A-BEB9-18ECB42A5274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F1BE849-8B6E-477A-BEB9-18ECB42A5274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F1BE849-8B6E-477A-BEB9-18ECB42A5274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F1BE849-8B6E-477A-BEB9-18ECB42A5274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{121F839D-4C45-46E8-92F2-2217A97FD4AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{121F839D-4C45-46E8-92F2-2217A97FD4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{121F839D-4C45-46E8-92F2-2217A97FD4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{121F839D-4C45-46E8-92F2-2217A97FD4AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC137D97-B594-4211-B045-258A7B8C8CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC137D97-B594-4211-B045-258A7B8C8CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC137D97-B594-4211-B045-258A7B8C8CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC137D97-B594-4211-B045-258A7B8C8CA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
