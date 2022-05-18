@@ -4,20 +4,48 @@ using System.Linq;
 
 namespace E07._Truck_Tour
 {
-    internal class Program
+    public class Pump
+    {
+        public int Number { get; set; }
+        public int Amount { get; set; }
+        public int Distance { get; set; }
+
+        public Pump(int number, int amount, int distance)
+        {
+            this.Number = number;
+            this.Amount = amount;
+            this.Distance = distance;
+        }
+    }
+    public class Program
     {
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
-            Stack<int> pumps = new Stack<int>();
+            Queue<Pump> pumps = new Queue<Pump>();
+
             for (int i = 0; i < n; i++)
             {
-                int[] petrolPump = Console.ReadLine().Split().Select(int.Parse).ToArray();
-                pumps.Push(petrolPump[0]);
-                pumps.Push(petrolPump[1]);
+                string data = Console.ReadLine();
+                int amount = int.Parse(data.Split()[0]);
+                int distance = int.Parse(data.Split()[1]);
+                Pump pump = new Pump(i, amount, distance);
+                pumps.Enqueue(pump);
             }
 
-            Console.WriteLine(pumps.Min());
+            int totalDistance = pumps.Sum(pump => pump.Distance);
+            int truckDistance = 0;
+            int truckFuel = 0;
+
+            while (truckDistance < totalDistance)
+            {
+                Pump currentPump = pumps.Peek();
+                truckFuel += currentPump.Amount;
+                truckDistance+= currentPump.Distance;
+                pumps.Dequeue();
+                
+            }
+           
         }
     }
 }
