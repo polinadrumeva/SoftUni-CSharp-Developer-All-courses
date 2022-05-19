@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace E10._Crossroads
 {
@@ -7,75 +8,65 @@ namespace E10._Crossroads
     {
         static void Main(string[] args)
         {
-            int durationOfGreenLight = int.Parse(Console.ReadLine());
-            int durationOffreeWindow = int.Parse(Console.ReadLine());
-            Queue<char> queueOfCars = new Queue<char>();
-            Queue<char> cars = new Queue<char>();
-            int passCars = 0;
-            string lastCar = string.Empty;
-            bool isPass = false;
-            int countLight = 0; 
+            int greenLightDuration = int.Parse(Console.ReadLine());
+            int freeWindow = int.Parse(Console.ReadLine());
 
-            string commmand;
-            while ((commmand = Console.ReadLine()) != "END")
+            Queue<string> carsToPass = new Queue<string>();
+            Stack<string> passedCars = new Stack<string>();
+
+            string command;
+            while ((command = Console.ReadLine()) != "END")
             {
-                if (commmand != "green")
+                if (command != "green")
                 {
-                    for (int i = 0; i < commmand.Length; i++)
-                    {
-                        if (countLight <= durationOfGreenLight)
-                        {
-                            queueOfCars.Enqueue(commmand[i]);
-                            countLight++;
-                        }
-                        else
-                        {
-                            countLight = 0;
-                            break;
-                        }
-                        
-                    }
-                    lastCar = commmand;
+                    carsToPass.Enqueue(command);
                 }
-                else if (commmand == "green")
+                else
                 {
-                    if (queueOfCars.Count <= durationOfGreenLight + durationOffreeWindow)
-                    {
-                        passCars++;
-                    }
+                    int greenLight = greenLightDuration;
+                    int freePass = freeWindow;
 
-                    for (int i = 0; i < durationOfGreenLight + durationOffreeWindow; i++)
+                    int counter = carsToPass.Count;
+
+                    for (int i = 0; i < counter; i++)
                     {
-                        if (queueOfCars.Count == 1)
+                        if (greenLight >= carsToPass.Peek().Length && carsToPass.Any())
                         {
-                            isPass = true;
-                            break;
+                            greenLight -= carsToPass.Peek().Length;
+                            passedCars.Push(carsToPass.Dequeue());
                         }
-                        else
+                        else if (greenLight < carsToPass.Peek().Length && carsToPass.Any())
                         {
-                            queueOfCars.Dequeue();
+                            int timeLeft = greenLight + freePass;
+
+                            if (greenLight <= 0)
+                            {
+                                continue;
+                            }
+                            else if (timeLeft > 0 && timeLeft >= carsToPass.Peek().Length)
+                            {
+                                string car = carsToPass.Peek();
+                                timeLeft -= car.Length;
+                                passedCars.Push(carsToPass.Dequeue());
+                                greenLight = 0;
+                                freePass = 0;
+                            }
+                            else if (timeLeft > 0 && timeLeft < carsToPass.Peek().Length)
+                            {
+                                string car = carsToPass.Peek();
+
+                                Console.WriteLine("A crash happened!");
+                                int hit = timeLeft;
+                                Console.WriteLine($"{car} was hit at {car[hit]}.");
+                                return;
+                            }
                         }
-                       
                     }
-
-                    if (isPass)
-                    {
-                        isPass = false;
-                        continue;
-                    }
-
-                    if (queueOfCars.Peek() != ' ')
-                    {
-                        Console.WriteLine("A crash happened!");
-                        Console.WriteLine($"{lastCar} was hit at {queueOfCars.Peek()}.");
-                        return;
-                    }
-                } 
+                }
             }
 
             Console.WriteLine("Everyone is safe.");
-            Console.WriteLine($"{passCars} total cars passed the crossroads.");
-           
+            Console.WriteLine($"{passedCars.Count} total cars passed the crossroads.");
         }
     }
 }
