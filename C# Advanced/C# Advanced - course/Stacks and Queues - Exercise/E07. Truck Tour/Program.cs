@@ -2,50 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace E07._Truck_Tour
+namespace Е07.__Truck_Tour
 {
-    public class Pump
-    {
-        public int Number { get; set; }
-        public int Amount { get; set; }
-        public int Distance { get; set; }
-
-        public Pump(int number, int amount, int distance)
-        {
-            this.Number = number;
-            this.Amount = amount;
-            this.Distance = distance;
-        }
-    }
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
-            Queue<Pump> pumps = new Queue<Pump>();
+            int countOfPumps = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < n; i++)
+            var original = new Queue<int>();
+
+            int index = 0;
+
+            for (int i = 0; i < countOfPumps; i++)
             {
-                string data = Console.ReadLine();
-                int amount = int.Parse(data.Split()[0]);
-                int distance = int.Parse(data.Split()[1]);
-                Pump pump = new Pump(i, amount, distance);
-                pumps.Enqueue(pump);
+                int[] input = Console.ReadLine()
+                    .Split()
+                    .Select(int.Parse)
+                    .ToArray();
+                original.Enqueue(input[0]);
+                original.Enqueue(input[1]);
             }
 
-            int totalDistance = pumps.Sum(pump => pump.Distance);
-            int truckDistance = 0;
-            int truckFuel = 0;
-
-            while (truckDistance < totalDistance)
+            while (true)
             {
-                Pump currentPump = pumps.Peek();
-                truckFuel += currentPump.Amount;
-                truckDistance+= currentPump.Distance;
-                pumps.Dequeue();
-                
+                var copy = new Queue<int>(original);
+
+                long litres = copy.Dequeue();
+                long distance = copy.Dequeue();
+
+                if (litres < distance)
+                {
+                    original.Enqueue(original.Dequeue());
+                    original.Enqueue(original.Dequeue());
+                }
+                else if (litres >= distance)
+                {
+                    long leftFuel = litres - distance;
+
+                    while (copy.Any())
+                    {
+                        var litresInternal = copy.Dequeue();
+                        var distanceInternal = copy.Dequeue();
+
+                        if (litresInternal + leftFuel >= distanceInternal)
+                        {
+                            leftFuel = litresInternal + leftFuel - distanceInternal;
+                        }
+                        else
+                        {
+                            original.Enqueue(original.Dequeue());
+                            original.Enqueue(original.Dequeue());
+                            leftFuel = -1;
+                            break;
+                        }
+                    }
+
+                    if (leftFuel >= 0)
+                    {
+                        Console.WriteLine(index);
+                        break;
+                    }
+                }
+                index++;
             }
-           
         }
     }
 }
