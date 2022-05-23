@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E06.", "E06\E06..csproj", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E07.", "E07\E07..csproj", "{ED40E827-F88D-45C0-B786-2A18681B9338}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E08. Bombs", "E08. Bombs\E08. Bombs.csproj", "{796422A0-0D89-4295-B3AA-717C629B3D2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E08. Bombs", "E08. Bombs\E08. Bombs.csproj", "{796422A0-0D89-4295-B3AA-717C629B3D2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E09. Miner", "E09. Miner\E09. Miner.csproj", "{FDB63DDE-08F1-418E-94B3-9788E5C2B731}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E10.", "E10\E10..csproj", "{BEB64731-D5D3-4B9B-9447-F20A025F18E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{796422A0-0D89-4295-B3AA-717C629B3D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{796422A0-0D89-4295-B3AA-717C629B3D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{796422A0-0D89-4295-B3AA-717C629B3D2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB63DDE-08F1-418E-94B3-9788E5C2B731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB63DDE-08F1-418E-94B3-9788E5C2B731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB63DDE-08F1-418E-94B3-9788E5C2B731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB63DDE-08F1-418E-94B3-9788E5C2B731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB64731-D5D3-4B9B-9447-F20A025F18E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB64731-D5D3-4B9B-9447-F20A025F18E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB64731-D5D3-4B9B-9447-F20A025F18E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB64731-D5D3-4B9B-9447-F20A025F18E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
