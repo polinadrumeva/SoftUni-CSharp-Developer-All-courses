@@ -9,29 +9,36 @@ namespace E02._Sets_of_Elements
         static void Main(string[] args)
         {
             int[] lengthNumbers = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
-            HashSet<double> numbers = new HashSet<double>();
-            HashSet<double> dublicateNumbers = new HashSet<double>();
-
             int first = lengthNumbers[0];
             int second = lengthNumbers[1];
+            double[] numbersFirst = new double[first];
+            double[] numbersSecond = new double[second];
+            HashSet<double> duplicateNumbers = new HashSet<double>();
 
-            for (int i = 0; i < first; i++)
+            for (int i = 0; i < numbersFirst.Length; i++)
             {
                 double num = double.Parse(Console.ReadLine());
-                numbers.Add(num);
+                numbersFirst[i] = num;
+            }
+            for (int j = 0; j < numbersSecond.Length; j++)
+            {
+                double num = double.Parse(Console.ReadLine());
+                numbersSecond[j] = num;
             }
 
-            for (int j = 0; j < second; j++)
+
+            for (int i = 0; i < numbersFirst.Length; i++)
             {
-                double number = double.Parse(Console.ReadLine());
-                if (numbers.Contains(number))
+                for (int j = 0; j < numbersSecond.Length; j++)
                 {
-                    dublicateNumbers.Add(number);
+                    if (numbersFirst[i] == numbersSecond[j])
+                    {
+                        duplicateNumbers.Add(numbersFirst[i]);
+                    }
                 }
             }
-
-
-            foreach (var item in dublicateNumbers)
+            
+            foreach (var item in duplicateNumbers)
             {
                 Console.Write($"{item} ");
             }
