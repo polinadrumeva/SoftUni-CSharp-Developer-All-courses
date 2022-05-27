@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L01. Odd Lines", "L01. Odd Lines\L01. Odd Lines.csproj", "{B705DFF9-DB71-4E5B-897C-CE31000F703E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L02. Line Numbers", "L02. Line Numbers\L02. Line Numbers.csproj", "{8D835534-A3FC-4333-8369-197666C95E65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L03. Word Count", "L03. Word Count\L03. Word Count.csproj", "{A3E9FC87-6035-4D42-A851-F5587A58F177}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L04. Merge Files", "L04. Merge Files\L04. Merge Files.csproj", "{2FEA8D6F-353E-4C89-81A1-7274F9B4521B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L05. Extract Special Bytes", "L05. Extract Special Bytes\L05. Extract Special Bytes.csproj", "{9477D51D-8B0E-4B6E-9DBF-1657E6744B03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L06. Split Merge Binary Files", "L06. Split Merge Binary Files\L06. Split Merge Binary Files.csproj", "{B7D79B2C-92F2-4D38-B69D-3B23BF5EC120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L07. Folder Size", "L07. Folder Size\L07. Folder Size.csproj", "{37B4A2C3-C333-4B81-9B4F-6DB62845E72E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B705DFF9-DB71-4E5B-897C-CE31000F703E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B705DFF9-DB71-4E5B-897C-CE31000F703E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B705DFF9-DB71-4E5B-897C-CE31000F703E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B705DFF9-DB71-4E5B-897C-CE31000F703E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D835534-A3FC-4333-8369-197666C95E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D835534-A3FC-4333-8369-197666C95E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D835534-A3FC-4333-8369-197666C95E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D835534-A3FC-4333-8369-197666C95E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E9FC87-6035-4D42-A851-F5587A58F177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E9FC87-6035-4D42-A851-F5587A58F177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E9FC87-6035-4D42-A851-F5587A58F177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E9FC87-6035-4D42-A851-F5587A58F177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FEA8D6F-353E-4C89-81A1-7274F9B4521B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FEA8D6F-353E-4C89-81A1-7274F9B4521B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FEA8D6F-353E-4C89-81A1-7274F9B4521B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FEA8D6F-353E-4C89-81A1-7274F9B4521B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9477D51D-8B0E-4B6E-9DBF-1657E6744B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9477D51D-8B0E-4B6E-9DBF-1657E6744B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9477D51D-8B0E-4B6E-9DBF-1657E6744B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9477D51D-8B0E-4B6E-9DBF-1657E6744B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D79B2C-92F2-4D38-B69D-3B23BF5EC120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D79B2C-92F2-4D38-B69D-3B23BF5EC120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D79B2C-92F2-4D38-B69D-3B23BF5EC120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D79B2C-92F2-4D38-B69D-3B23BF5EC120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B4A2C3-C333-4B81-9B4F-6DB62845E72E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B4A2C3-C333-4B81-9B4F-6DB62845E72E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B4A2C3-C333-4B81-9B4F-6DB62845E72E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B4A2C3-C333-4B81-9B4F-6DB62845E72E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FCD436D-EBA9-4F3E-9A23-39C9CAFC2B8E}
+	EndGlobalSection
+EndGlobal
