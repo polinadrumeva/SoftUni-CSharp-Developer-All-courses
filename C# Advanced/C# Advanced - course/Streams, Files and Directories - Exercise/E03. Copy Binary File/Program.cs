@@ -1,12 +1,19 @@
-﻿using System;
-
-namespace E03._Copy_Binary_File
+﻿namespace CopyBinaryFile
 {
-    internal class Program
+    using System;
+    public class CopyBinaryFile
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            string inputFilePath = @"..\..\..\copyMe.png";
+            string outputFilePath = @"..\..\..\copyMe-copy.png";
+
+            CopyFile(inputFilePath, outputFilePath);
+        }
+
+        public static void CopyFile(string inputFilePath, string outputFilePath)
+        {
+            throw new NotImplementedException();
         }
     }
 }
