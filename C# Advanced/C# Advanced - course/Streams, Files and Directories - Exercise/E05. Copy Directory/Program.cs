@@ -1,12 +1,32 @@
-﻿using System;
-
-namespace E05._Copy_Directory
+﻿namespace CopyDirectory
 {
-    internal class Program
+    using System;
+    using System.IO;
+
+    public class CopyDirectory
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            string inputPath = @$"{Console.ReadLine()}";
+            string outputPath = @$"{Console.ReadLine()}";
+
+            CopyAllFiles(inputPath, outputPath);
+        }
+
+        public static void CopyAllFiles(string inputPath, string outputPath)
+        {
+            if (Directory.Exists(outputPath))
+            {
+                Directory.Delete(outputPath, true);
+            }
+            Directory.CreateDirectory(outputPath);
+            string[] files = Directory.GetFiles(inputPath);
+            foreach (var file in files)
+            {
+                var fileName = Path.GetFileName(file);
+                var copyDestination = Path.Combine(outputPath, fileName);
+                File.Copy(fileName, copyDestination);
+            }
         }
     }
 }
