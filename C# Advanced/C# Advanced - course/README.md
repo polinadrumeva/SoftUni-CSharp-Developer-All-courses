@@ -1,4 +1,5 @@
-## C# Advanced modul - Exercise
+## C# Advanced modul 
+All themes in C# Advanced modul
 
 1. [**Archive**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20Advanced%20-%20course/Archive%20-%20Judge)
 2. [**Stack and Queue - Lab**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20Advanced%20-%20course/Stacks%20and%20Queues%20-%20Lab)
