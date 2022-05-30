@@ -1,5 +1,5 @@
 # SoftUni-CSharp-Developer-All-courses
-Here are all problems from C# Developer courses in SoftUni.
+Here are all problems from [**C# Developer courses**](https://softuni.bg/professions/csharp) in SoftUni.
 
 ## Courses:
 1. [**Fundamentals Module**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/Fundamentals)
