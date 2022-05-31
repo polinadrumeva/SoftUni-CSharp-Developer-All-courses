@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace L07._Predicate_for_Names
 {
@@ -6,7 +7,12 @@ namespace L07._Predicate_for_Names
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int lentgh = int.Parse(Console.ReadLine());
+            string[] names = Console.ReadLine().Split(" ");
+
+            Func<string[], string[]> modifyNames = x => x.Where(x => x.Length <= lentgh).ToArray();
+            names = modifyNames(names);
+            Console.WriteLine(string.Join(Environment.NewLine, names));
         }
     }
 }
