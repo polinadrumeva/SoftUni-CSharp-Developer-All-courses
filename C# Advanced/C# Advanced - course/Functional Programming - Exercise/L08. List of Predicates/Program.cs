@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace L08._List_of_Predicates
 {
@@ -6,7 +7,14 @@ namespace L08._List_of_Predicates
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int n = int.Parse(Console.ReadLine());
+            int[] dividers = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+
+
+            for (int i = 1; i <= n; i++)
+            {
+
+            }
         }
     }
 }
