@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace L11._TriFunction
+namespace E11._TriFunction
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int n = int.Parse(Console.ReadLine());
+            List<string> names = Console.ReadLine().Split(" ").ToList();
+
+            Console.WriteLine(names.First(name => name.Select(symbol => (int)symbol).Sum() >=n));
         }
     }
 }
