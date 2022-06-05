@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E05. Date Modifier", "E05. 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E06.SpeedRacing", "E06. Speed Racing\E06.SpeedRacing.csproj", "{A04B6F43-2C35-4513-94CD-92B10FF6AC7B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E07. Raw Data", "E07. Raw Data\E07. Raw Data.csproj", "{E41FBE24-672D-4A2A-8B30-38EACF41E3F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E07.RawData", "E07. Raw Data\E07.RawData.csproj", "{E41FBE24-672D-4A2A-8B30-38EACF41E3F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E08. Car Salesman", "E08. Car Salesman\E08. Car Salesman.csproj", "{EE7F9E04-B15B-4DAC-8BC5-06DF08BDC0BD}"
 EndProject
