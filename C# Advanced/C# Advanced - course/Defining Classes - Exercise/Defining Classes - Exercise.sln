@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01. Define a Class Person", "E01. Define a Class Person\E01. Define a Class Person.csproj", "{154A577D-84F0-4572-A508-FDBA402A10A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E01. Define a Class Person", "E01. Define a Class Person\E01. Define a Class Person.csproj", "{154A577D-84F0-4572-A508-FDBA402A10A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02. Creating Constructors", "E02. Creating Constructors\E02. Creating Constructors.csproj", "{080D4266-4FF7-4ADC-ACDB-C0E86430D58D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E02. Creating Constructors", "E02. Creating Constructors\E02. Creating Constructors.csproj", "{080D4266-4FF7-4ADC-ACDB-C0E86430D58D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E03. Oldest Family Member", "E03. Oldest Family Member\E03. Oldest Family Member.csproj", "{B6A185ED-C040-4F79-A734-5CAB8A18C7E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E03.OldestFamilyMember", "E03. Oldest Family Member\E03.OldestFamilyMember.csproj", "{B6A185ED-C040-4F79-A734-5CAB8A18C7E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04. Opinion Poll", "E04. Opinion Poll\E04. Opinion Poll.csproj", "{8CBF9936-6EDC-43B2-B3AC-4FFE7D6CF5B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E04.OpinionPoll", "E04. Opinion Poll\E04.OpinionPoll.csproj", "{8CBF9936-6EDC-43B2-B3AC-4FFE7D6CF5B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05. Date Modifier", "E05. Date Modifier\E05. Date Modifier.csproj", "{02D5EB87-D7D1-431A-A03A-1C56BD998AC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E05. Date Modifier", "E05. Date Modifier\E05. Date Modifier.csproj", "{02D5EB87-D7D1-431A-A03A-1C56BD998AC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E06. Speed Racing", "E06. Speed Racing\E06. Speed Racing.csproj", "{A04B6F43-2C35-4513-94CD-92B10FF6AC7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E06.SpeedRacing", "E06. Speed Racing\E06.SpeedRacing.csproj", "{A04B6F43-2C35-4513-94CD-92B10FF6AC7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E07. Raw Data", "E07. Raw Data\E07. Raw Data.csproj", "{E41FBE24-672D-4A2A-8B30-38EACF41E3F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E07. Raw Data", "E07. Raw Data\E07. Raw Data.csproj", "{E41FBE24-672D-4A2A-8B30-38EACF41E3F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E08. Car Salesman", "E08. Car Salesman\E08. Car Salesman.csproj", "{EE7F9E04-B15B-4DAC-8BC5-06DF08BDC0BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E08. Car Salesman", "E08. Car Salesman\E08. Car Salesman.csproj", "{EE7F9E04-B15B-4DAC-8BC5-06DF08BDC0BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E09. Pokemon Trainer", "E09. Pokemon Trainer\E09. Pokemon Trainer.csproj", "{1FA60A4E-8A89-42BD-A143-6C7B4EF50C39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E09. Pokemon Trainer", "E09. Pokemon Trainer\E09. Pokemon Trainer.csproj", "{1FA60A4E-8A89-42BD-A143-6C7B4EF50C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E10. SoftUni Parking", "E10. SoftUni Parking\E10. SoftUni Parking.csproj", "{424BCD47-9CFB-4C86-9339-26FFDC167BEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E10. SoftUni Parking", "E10. SoftUni Parking\E10. SoftUni Parking.csproj", "{424BCD47-9CFB-4C86-9339-26FFDC167BEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

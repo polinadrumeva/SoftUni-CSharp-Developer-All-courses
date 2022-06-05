@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace E04._Opinion_Poll
+namespace E04.OpinionPoll
 {
     public class Person
     {
