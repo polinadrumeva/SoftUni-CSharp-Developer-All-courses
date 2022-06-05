@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E06.SpeedRacing", "E06. Spe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E07.RawData", "E07. Raw Data\E07.RawData.csproj", "{E41FBE24-672D-4A2A-8B30-38EACF41E3F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E08. Car Salesman", "E08. Car Salesman\E08. Car Salesman.csproj", "{EE7F9E04-B15B-4DAC-8BC5-06DF08BDC0BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E08.CarSalesman", "E08. Car Salesman\E08.CarSalesman.csproj", "{EE7F9E04-B15B-4DAC-8BC5-06DF08BDC0BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E09. Pokemon Trainer", "E09. Pokemon Trainer\E09. Pokemon Trainer.csproj", "{1FA60A4E-8A89-42BD-A143-6C7B4EF50C39}"
 EndProject
