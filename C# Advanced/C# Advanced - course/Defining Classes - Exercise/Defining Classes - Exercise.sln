@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E08.CarSalesman", "E08. Car
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E09.PokemonTrainer", "E09. Pokemon Trainer\E09.PokemonTrainer.csproj", "{1FA60A4E-8A89-42BD-A143-6C7B4EF50C39}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E10. SoftUni Parking", "E10. SoftUni Parking\E10. SoftUni Parking.csproj", "{424BCD47-9CFB-4C86-9339-26FFDC167BEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftUniParking", "E10. SoftUni Parking\SoftUniParking.csproj", "{424BCD47-9CFB-4C86-9339-26FFDC167BEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
