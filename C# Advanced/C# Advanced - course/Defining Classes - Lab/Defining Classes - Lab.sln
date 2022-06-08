@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L01.Car", "L01.Car\L01.Car.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02. Car Extension", "L02. Car Extension\L02. Car Extension.csproj", "{D5D8984B-BC35-41AB-9F2F-B30BAC2592B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L03. Car Constructors", "L03. Car Constructors\L03. Car Constructors.csproj", "{0B0AB20B-1AF6-463D-9E90-3D1DEED653B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L03.CarConstructors", "L03. Car Constructors\L03.CarConstructors.csproj", "{0B0AB20B-1AF6-463D-9E90-3D1DEED653B3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L04. Car Engine and Tires", "L04. Car Engine and Tires\L04. Car Engine and Tires.csproj", "{FA8231FD-38E7-417B-BD3E-66EE18C8B4B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L05. Special Cars", "L05. Special Cars\L05. Special Cars.csproj", "{619A3114-EB86-4E14-A8FF-8EDE4C7F6E67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L05. Special Cars", "L05. Special Cars\L05. Special Cars.csproj", "{619A3114-EB86-4E14-A8FF-8EDE4C7F6E67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
