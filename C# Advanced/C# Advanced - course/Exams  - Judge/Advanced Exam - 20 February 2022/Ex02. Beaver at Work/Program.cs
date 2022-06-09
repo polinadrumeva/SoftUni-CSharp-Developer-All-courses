@@ -9,8 +9,13 @@ namespace Ex02._Beaver_at_Work
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
-            char[,] pond = new char[n,n];
+            char[,] pond = new char[n, n];
             List<char> branches = new List<char>();
+            int currentRow = 0;
+            int currentCol = 0;
+            int countLeft = 0;
+            int allBranch = 0;
+            int checkBranch = 0;
 
             for (int row = 0; row < pond.GetLength(0); row++)
             {
@@ -18,269 +23,235 @@ namespace Ex02._Beaver_at_Work
 
                 for (int col = 0; col < pond.GetLength(1); col++)
                 {
-                    pond[row,col] = data[col];
+                    pond[row, col] = data[col];
+                    if (pond[row, col] == 'B')
+                    {
+                        currentRow = row;
+                        currentCol = col;
+                    }
+                    if (Char.IsLower(pond[row, col]))
+                    {
+                        allBranch++;
+                    }
                 }
             }
-            
+
             string command;
             while ((command = Console.ReadLine()) != "end")
             {
                 switch (command)
                 {
                     case "up":
-                        pond = MoveUp(pond,branches);
+                        if (currentRow - 1 < 0)
+                        {
+                            if (branches.Count != 0)
+                            {
+                                branches.RemoveAt(branches.Count-1);
+                            }
+                        }
+                        else if (Char.IsLower(pond[currentRow - 1, currentCol]))
+                        {
+                            branches.Add(pond[currentRow - 1, currentCol]);
+                            checkBranch++;
+                            pond[currentRow, currentCol] = '-';
+                            currentRow--;
+                            pond[currentRow, currentCol] = 'B';
+                        }
+                        else if (pond[currentRow - 1, currentCol] == 'F')
+                        {
+                            pond[currentRow - 1, currentCol] = '-';
+                            pond[currentRow, currentCol] = '-';
+                            currentRow--;
+
+                            if (currentRow == 0)
+                            {
+                                currentRow = pond.GetLength(0) - 1;
+                                if (Char.IsLower(pond[currentRow, currentCol]))
+                                {
+                                    branches.Add(pond[currentRow, currentCol]);
+                                    checkBranch++;
+                                    pond[currentRow, currentCol] = 'B';
+                                }
+                                else
+                                {
+                                    pond[currentRow, currentCol] = 'B';
+                                }
+
+                            }
+                            else
+                            {
+                                currentRow = 0;
+                                pond[currentRow, currentCol] = 'B';
+                            }
+
+                        }
                         break;
                     case "down":
-                        pond = MoveDown(pond, branches);
-                        break;
-                    case "right":
-                        pond = MoveRight(pond, branches);
+                        if (currentRow + 1 > pond.GetLength(0) - 1)
+                        {
+                            if (branches.Count != 0)
+                            {
+                                branches.RemoveAt(branches.Count - 1);
+                            }
+                        }
+                        else if (Char.IsLower(pond[currentRow + 1, currentCol]))
+                        {
+                            branches.Add(pond[currentRow + 1, currentCol]);
+                            checkBranch++;
+                            pond[currentRow, currentCol] = '-';
+                            currentRow++;
+                            pond[currentRow, currentCol] = 'B';
+                        }
+                        else if (pond[currentRow + 1, currentCol] == 'F')
+                        {
+                            pond[currentRow + 1, currentCol] = '-';
+                            pond[currentRow, currentCol] = '-';
+                            currentRow++;
+
+                            if (currentRow == pond.GetLength(0) - 1)
+                            {
+                                currentRow = 0;
+                                if (Char.IsLower(pond[currentRow, currentCol]))
+                                {
+                                    branches.Add(pond[currentRow, currentCol]);
+                                    checkBranch++;
+                                    pond[currentRow, currentCol] = 'B';
+                                }
+                                else
+                                {
+                                    pond[currentRow, currentCol] = 'B';
+                                }
+                            }
+                            else
+                            {
+                                currentRow = pond.GetLength(0) - 1;
+                                pond[currentRow, currentCol] = 'B';
+                            }
+                        }
                         break;
                     case "left":
-                        pond = MoveLeft(pond, branches);
+                        if (currentCol - 1 < 0)
+                        {
+                            if (branches.Count != 0)
+                            {
+                                branches.RemoveAt(branches.Count - 1);
+                            }
+                        }
+                        else if (Char.IsLower(pond[currentRow, currentCol - 1]))
+                        {
+                            branches.Add(pond[currentRow, currentCol - 1]);
+                            checkBranch++;
+                            pond[currentRow, currentCol] = '-';
+                            currentCol--;
+                            pond[currentRow, currentCol] = 'B';
+                        }
+                        else if (pond[currentRow, currentCol - 1] == 'F')
+                        {
+                            pond[currentRow, currentCol - 1] = '-';
+                            pond[currentRow, currentCol] = '-';
+                            currentRow--;
+
+                            if (currentRow == 0)
+                            {
+                                currentRow = pond.GetLength(1) - 1;
+                                if (Char.IsLower(pond[currentRow, currentCol]))
+                                {
+                                    branches.Add(pond[currentRow, currentCol]);
+                                    checkBranch++;
+                                    pond[currentRow, currentCol] = 'B';
+                                }
+                                else
+                                {
+                                    pond[currentRow, currentCol] = 'B';
+                                }
+                            }
+                            else
+                            {
+                                currentRow = 0;
+                                pond[currentRow, currentCol] = 'B';
+                            }
+                        }
                         break;
-                
+                    case "right":
+                        if (currentCol + 1 > pond.GetLength(1)-1)
+                        {
+                            if (branches.Count != 0)
+                            {
+                                branches.RemoveAt(branches.Count - 1);
+                            }
+                        }
+                        else if (Char.IsLower(pond[currentRow, currentCol + 1]))
+                        {
+                            branches.Add(pond[currentRow, currentCol + 1]);
+                            checkBranch++;
+                            pond[currentRow, currentCol] = '-';
+                            currentCol++;
+                            pond[currentRow, currentCol] = 'B';
+                        }
+                        else if (pond[currentRow, currentCol + 1] == 'F')
+                        {
+                            pond[currentRow, currentCol + 1] = '-';
+                            pond[currentRow, currentCol] = '-';
+                            currentRow++;
+
+                            if (currentRow == pond.GetLength(1) - 1)
+                            {
+                                currentRow = 0;
+                                if (Char.IsLower(pond[currentRow, currentCol]))
+                                {
+                                    branches.Add(pond[currentRow, currentCol]);
+                                    checkBranch++;
+                                    pond[currentRow, currentCol] = 'B';
+                                }
+                                else
+                                {
+                                    pond[currentRow, currentCol] = 'B';
+                                }
+                            }
+                            else
+                            {
+                                currentRow = pond.GetLength(1) - 1;
+                                pond[currentRow, currentCol] = 'B';
+                            }
+                        }
+                        break;
+                }
+
+                if (allBranch == checkBranch)
+                {
+                    break;
                 }
             }
 
-            for (int row = 0; row < pond.GetLength(0); row++)
+            for (int i = 0; i < n; i++)
             {
-                for (int co = 0; co < pond.GetLength(1); co++)
+                for (int j = 0; j < n; j++)
                 {
-                    Console.Write(pond[row,co]);
+                    if (Char.IsLower(pond[i, j]))
+                    {
+                        countLeft++;
+                    }
+                }
+            }
+
+            if (countLeft != 0)
+            {
+                Console.WriteLine($"The Beaver failed to collect every wood branch. There are {countLeft} branches left.");
+            }
+            else
+            {
+                Console.WriteLine($"The Beaver successfully collect {branches.Count} wood branches: {string.Join(", ", branches)}.");
+            }
+
+            for (int row = 0; row < n; row++)
+            {
+                for (int col = 0; col < n; col++)
+                {
+                    Console.Write($"{pond[row, col]} ");
                 }
                 Console.WriteLine();
             }
         }
 
-        private static char[,] MoveLeft(char[,] pond, List<char> branches)
-        {
-            bool isStop = false;
-            for (int row = 0; row < pond.GetLength(0); row++)
-            {
-                if (isStop)
-                {
-                    break;
-                }
-                for (int col = 0; col < pond.GetLength(1); col++)
-                {
-                    if (isStop)
-                    {
-                        break;
-                    }
-                    if (pond[row, col] == 'B')
-                    {
-                        isStop = true;
-                        if (col - 1 < 0)
-                        {
-                            CheckBranches(branches);
-                        }
-                        else if (Char.IsLower((char)pond[row, col - 1]))
-                        {
-                            branches.Add(pond[row, col - 1]);
-                            pond[row, col] = '-';
-                            pond[row, col - 1] = 'B';
-                        }
-                        else if (pond[row, col - 1] == 'F')
-                        {
-                            pond[row, col - 1] = '-';
-                            pond[row, 0] = 'B';
-                            if (pond[row, 0] == 'F')
-                            {
-                                pond[row, 0] = '-';
-                                pond[row, pond.GetLength(1) - 1] = 'B';
-                                if (Char.IsLower(pond[row, pond.GetLength(1) - 1]))
-                                {
-                                    branches.Add(pond[row, pond.GetLength(1) - 1]);
-                                }
-                            }
-                        }
-
-                        row = 0;
-                        col = 0;
-                    }
-                   
-                }
-                
-            }
-
-            return pond;
-        }
-
-        private static char[,] MoveRight(char[,] pond, List<char> branches)
-        {
-            bool isStop = false;
-            for (int row = 0; row < pond.GetLength(0); row++)
-            {
-                if (isStop)
-                {
-                    break;
-                }
-                for (int col = 0; col < pond.GetLength(1); col++)
-                {
-                    if (isStop)
-                    {
-                        break;
-                    }
-                    if (pond[row, col] == 'B')
-                    {
-                        isStop = true;
-                        if (col + 1 > pond.GetLength(1) - 1)
-                        {
-                            CheckBranches(branches);
-                        }
-                        else if (Char.IsLower((char)pond[row, col+1]))
-                        {
-                            branches.Add(pond[row, col+1]);
-                            pond[row, col] = '-';
-                            pond[row, col+1] = 'B';
-                        }
-                        else if (pond[row, col+1] == 'F')
-                        {
-                            pond[row, col+1] = '-';
-                            pond[row, pond.GetLength(1) - 1] = 'B';
-                            if (pond[row, pond.GetLength(1) - 1] == 'F')
-                            {
-                                pond[row, pond.GetLength(1) - 1] = '-';
-                                pond[row, 0] = 'B';
-                                if (Char.IsLower(pond[row, 0]))
-                                {
-                                    branches.Add(pond[row, 0]);
-                                }
-                            }
-                        }
-
-                        row = 0;
-                        col = 0;
-                       
-
-                    }
-                }
-                
-            }
-
-            return pond;
-        }
-
-        private static char[,] MoveDown(char[,] pond, List<char> branches)
-        {
-            bool isStop = false;
-            for (int row = 0; row < pond.GetLength(0); row++)
-            {
-                if (isStop)
-                {
-                    break;
-                }
-                for (int col = 0; col < pond.GetLength(1); col++)
-                {
-                    if (isStop)
-                    {
-                        break;
-                    }
-                    if (pond[row, col] == 'B')
-                    {
-                        isStop = true;
-                        if (row + 1 > pond.GetLength(0) -1)
-                        {
-                            CheckBranches(branches);
-                        }
-                        else if (Char.IsLower((char)pond[row + 1, col]))
-                        {
-                            branches.Add(pond[row + 1, col]);
-                            pond[row, col] = '-';
-                            pond[row + 1, col] = 'B';
-                        }
-                        else if (pond[row + 1, col] == 'F')
-                        {
-                            pond[row + 1, col] = '-';
-                            pond[pond.GetLength(0)-1, col] = 'B';
-                            if (pond[pond.GetLength(0) - 1, col] == 'F')
-                            {
-                                pond[pond.GetLength(0) - 1, col] = '-';
-                                pond[0, col] = 'B';
-                                if (Char.IsLower(pond[0, col]))
-                                {
-                                    branches.Add(pond[0, col]);
-                                }
-                            }
-                        }
-
-                        row = 0;
-                        col = 0;
-                        
-
-                    }
-                }
-                
-            }
-
-            return pond;
-        }
-
-        public static char[,] MoveUp(char[,] pond, List<char> branches)
-        {
-            bool isStop = false;
-            for (int row = 0; row < pond.GetLength(0); row++)
-            {
-                if (isStop)
-                {
-                    break;
-                }
-                for (int col = 0; col < pond.GetLength(1); col++)
-                {
-                    if (isStop)
-                    {
-                        break;
-                    }
-                    if (pond[row, col] == 'B')
-                    {
-                        isStop = true;
-                        if (row - 1 < 0)
-                        {
-                            CheckBranches(branches);
-                        }
-                        else if (Char.IsLower((char)pond[row - 1, col]))
-                        { 
-                            branches.Add(pond[row-1, col]);
-                            pond[row, col] = '-';
-                            pond[row-1, col] = 'B';
-                        }
-                        else if (pond[row-1,col] == 'F')
-                        {
-                            pond[row - 1, col] = '-';
-                            pond[0, col] = 'B';
-                            if (pond[0,col] == 'F')
-                            {
-                                pond[0, col] = '-';
-                                pond[pond.GetLength(0) - 1, col] = 'B';
-                                if (Char.IsLower(pond[pond.GetLength(0) - 1, col]))
-                                {
-                                    branches.Add(pond[pond.GetLength(0) - 1, col]);
-                                }
-                            }
-                        }
-
-                        row = 0;
-                        col = 0;
-                        
-
-                    }
-                    
-                }
-                
-            }
-
-            return pond;
-        }
-
-        public static List<char> CheckBranches(List<char> branches)
-        {
-            if (branches.Count> 0)
-            {
-                branches.RemoveAt(branches.Count - 1);
-            }
-
-            return branches;
-        }
     }
 }
