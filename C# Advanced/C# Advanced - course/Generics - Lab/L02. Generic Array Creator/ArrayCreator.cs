@@ -1,18 +1,18 @@
 ﻿using System;
 
-namespace L02._Generic_Array_Creator
+namespace GenericArrayCreator
 {
     public static class ArrayCreator
     {
-        public static T[] Create<T>(int lenght, T item)
+        public static T[] Create<T>(int length, T item)
         {
-            T[] itemsArr = new T[lenght];
+            T[] array = new T[length];
 
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < length; i++)
             {
-                itemsArr[i] = item;
+                array[i] = item;
             }
-            return itemsArr;
+            return array;
         }
 
         

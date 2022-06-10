@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L01._Box_of_T
+namespace BoxOfT
 {
     public class StartUp
     {

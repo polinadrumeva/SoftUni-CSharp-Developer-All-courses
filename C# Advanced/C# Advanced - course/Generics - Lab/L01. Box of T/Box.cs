@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace L01._Box_of_T
+namespace BoxOfT
 {
     public class Box<T>
     {
-        private List<T> items = new List<T>();
+        private List<T> items;
 
-        public int Count { get; set; }
+        public int Count { get { return items.Count; } }
+
+        public Box()
+        {
+            this.items = new List<T>();
+        }
 
         public void Add(T element)
         { 
@@ -16,14 +21,16 @@ namespace L01._Box_of_T
 
         public T Remove()
         {
+            if (this.items.Count == 0)
+            {
+                throw new InvalidOperationException("The box is empty.");
+            }
+
             T elementForRemove = items[items.Count - 1];
             items.RemoveAt(items.Count - 1);
             return elementForRemove;
         }
-        //        Create a class Box<> that can store anything.It should have two public methods:
-        //•	void Add(element) – adds an element on the top of the list.
-        //•	element Remove() – removes the topmost element.
-        //•	int Count { get; }
+       
 
     }
 }

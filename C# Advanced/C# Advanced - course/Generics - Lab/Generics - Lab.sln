@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L01. Box of T", "L01. Box of T\L01. Box of T.csproj", "{C3F4361F-60B8-4669-9931-83098CFD22E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxOfT", "L01. Box of T\BoxOfT.csproj", "{C3F4361F-60B8-4669-9931-83098CFD22E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L02. Generic Array Creator", "L02. Generic Array Creator\L02. Generic Array Creator.csproj", "{BAAE2D99-DC4B-4605-8ED2-FFA1BFBA399F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02.GenericArrayCreator", "L02. Generic Array Creator\L02.GenericArrayCreator.csproj", "{BAAE2D99-DC4B-4605-8ED2-FFA1BFBA399F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L03. Generic Scale", "L03. Generic Scale\L03. Generic Scale.csproj", "{54509B43-7A88-43AA-A471-092BA2391FA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L03. Generic Scale", "L03. Generic Scale\L03. Generic Scale.csproj", "{54509B43-7A88-43AA-A471-092BA2391FA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
