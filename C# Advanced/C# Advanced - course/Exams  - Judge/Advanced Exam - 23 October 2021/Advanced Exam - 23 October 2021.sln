@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex01. Food Finder", "Ex01. Food Finder\Ex01. Food Finder.csproj", "{DAE0E479-D5A9-43C7-BA4D-AF69A5DAE1FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ex01. Food Finder", "Ex01. Food Finder\Ex01. Food Finder.csproj", "{DAE0E479-D5A9-43C7-BA4D-AF69A5DAE1FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex02. Pawn Wars", "Ex02. Pawn Wars\Ex02. Pawn Wars.csproj", "{B1C30BFF-5673-4C58-851F-EB6BC6775574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ex02. Pawn Wars", "Ex02. Pawn Wars\Ex02. Pawn Wars.csproj", "{B1C30BFF-5673-4C58-851F-EB6BC6775574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex03. Stock Market", "Ex03. Stock Market\Ex03. Stock Market.csproj", "{114D9085-7AB0-4D33-8126-19CD2F16D8B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockMarket", "Ex03. Stock Market\StockMarket.csproj", "{114D9085-7AB0-4D33-8126-19CD2F16D8B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
