@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L03._Generic_Scale
+namespace GenericScale
 {
     public class StartUp
     {
