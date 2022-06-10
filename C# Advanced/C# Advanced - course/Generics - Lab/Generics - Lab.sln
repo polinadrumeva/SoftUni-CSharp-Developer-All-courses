@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxOfT", "L01. Box of T\BoxOfT.csproj", "{C3F4361F-60B8-4669-9931-83098CFD22E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02.GenericArrayCreator", "L02. Generic Array Creator\L02.GenericArrayCreator.csproj", "{BAAE2D99-DC4B-4605-8ED2-FFA1BFBA399F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericArrayCreator", "L02. Generic Array Creator\GenericArrayCreator.csproj", "{BAAE2D99-DC4B-4605-8ED2-FFA1BFBA399F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L03. Generic Scale", "L03. Generic Scale\L03. Generic Scale.csproj", "{54509B43-7A88-43AA-A471-092BA2391FA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericScale", "L03. Generic Scale\GenericScale.csproj", "{54509B43-7A88-43AA-A471-092BA2391FA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
