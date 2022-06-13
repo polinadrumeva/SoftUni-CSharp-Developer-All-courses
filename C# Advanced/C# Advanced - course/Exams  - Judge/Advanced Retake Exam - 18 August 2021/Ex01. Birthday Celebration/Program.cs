@@ -6,7 +6,8 @@ namespace Ex01._Birthday_Celebration
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int[] sequenceGuests = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+            int[] sequencePlate = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
         }
     }
 }

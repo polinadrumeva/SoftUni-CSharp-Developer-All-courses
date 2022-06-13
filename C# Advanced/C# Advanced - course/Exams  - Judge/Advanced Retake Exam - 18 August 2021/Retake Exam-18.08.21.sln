@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ex01. Birthday Celebration", "Ex01. Birthday Celebration\Ex01. Birthday Celebration.csproj", "{1A63AE7F-ADF0-460C-8ED3-9C20E8B91350}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ex03.StreetRacing", "Ex03.StreetRacing\Ex03.StreetRacing.csproj", "{5551E384-8F99-4089-AEEA-B8E18748B954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreetRacing", "Ex03.StreetRacing\StreetRacing.csproj", "{5551E384-8F99-4089-AEEA-B8E18748B954}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex2", "Ex2\Ex2.csproj", "{69E33DE9-0BAD-4C38-BDE7-95D2AE3396B7}"
 EndProject
