@@ -44,7 +44,7 @@ namespace Ex02._Pawn_Wars
                     Console.WriteLine($"Game over! White pawn is promoted to a queen at {coordinate}.");
                     return;
                 }
-                else if (whitePawnCol + 1 <= matrix.GetLength(1) - 1 || whitePawnCol - 1 >= 0)
+                else if (whitePawnCol - 1 >= 0 && whitePawnCol + 1 < matrix.GetLength(1))
                 {
                     if (matrix[whitePawnRow - 1, whitePawnCol + 1] == 'b')
                     {
@@ -79,7 +79,7 @@ namespace Ex02._Pawn_Wars
                     Console.WriteLine($"Game over! Black pawn is promoted to a queen at {coordinate}.");
                     return;
                 }
-                else if (blackPawnCol + 1 <= matrix.GetLength(1)-1 || blackPawnCol - 1 >= 0)
+                else if (blackPawnCol - 1 >= 0 && blackPawnCol + 1 < matrix.GetLength(1))
                 {
                     if (matrix[blackPawnRow + 1, blackPawnCol + 1] == 'w')
                     {
