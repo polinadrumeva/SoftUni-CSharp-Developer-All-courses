@@ -5,10 +5,6 @@ namespace Drones
 {
     public class Drone
     {
-        private string name;
-        private string brand;
-        private int range;
-        private bool available;
         public string Name { get; set; }
         public string Brand { get; set; }
         public int Range { get; set; }
