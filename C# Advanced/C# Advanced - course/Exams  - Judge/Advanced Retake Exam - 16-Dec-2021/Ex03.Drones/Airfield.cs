@@ -24,7 +24,7 @@ namespace Drones
 
         public string AddDrone(Drone drone)
         {
-            if (drone.Name == null || drone.Name == " " || drone.Range < 5 || drone.Range > 15)
+            if (drone.Name == null || drone.Name == " " || drone.Brand == null || drone.Brand == " " || drone.Range < 5 || drone.Range > 15)
             {
                 return "Invalid drone.";
             }
@@ -41,13 +41,11 @@ namespace Drones
 
         public bool RemoveDrone(string name)
         {
-            foreach (var drone in Drones)
+            List<Drone> dronesToRemove = Drones.Where(x => x.Name == name).ToList();
+            if (dronesToRemove.Count != 0)
             {
-                if (drone.Name == name)
-                {
-                    Drones.Remove(drone);
-                    return true;
-                }
+                Drones.RemoveAll(x => x.Name == name);
+                return true;
             }
 
             return false;
@@ -71,43 +69,40 @@ namespace Drones
 
         public Drone FlyDrone(string name)
         {
-            foreach (var drone in Drones)
-            {
-                if (drone.Name == name)
+            Drone droneToFly = Drones.FirstOrDefault(x => x.Name == name);
+            
+                if (droneToFly != null)
                 {
-                    drone.Available = false;
-                    return drone;
+                    droneToFly.Available = false;    
+                    return droneToFly;
                 }
-            }
-
+            
             return null;
         }
 
         public List<Drone> FlyDronesByRange(int range)
         { 
             var flyDrones = Drones.Where(drone => drone.Range >= range).ToList();
+            foreach (var drone in flyDrones)
+            {
+                drone.Available = false;
+            }
             return flyDrones;
         }
 
         public string Report()
         {
-            int count = 0;
+            
             StringBuilder sb = new StringBuilder();
             sb.Append($"Drones available at {Name}:");
             sb.Append(Environment.NewLine);
             
             foreach (var drone in Drones.Where(drone => drone.Available == true))
             {
-                sb.Append($"Drone: {drone.Name}");
-                sb.Append(Environment.NewLine);
-                sb.Append($"Manufactured by: {drone.Brand}");
-                sb.Append(Environment.NewLine);
+                sb.AppendLine($"Drone: {drone.Name}");
+                sb.AppendLine($"Manufactured by: {drone.Brand}");
                 sb.Append($"Range: {drone.Range} kilometers");
-                count++;
-                if (count < Drones.Count)
-                {
-                    sb.Append(Environment.NewLine);
-                }
+               
             }
             
             return sb.ToString();

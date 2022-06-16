@@ -26,10 +26,8 @@ namespace Drones
         {
 
             StringBuilder sb = new StringBuilder();
-            sb.Append($"Drone: {Name}");
-            sb.Append(Environment.NewLine);
-            sb.Append($"Manufactured by: {Brand}");
-            sb.Append(Environment.NewLine);
+            sb.AppendLine($"Drone: {Name}");
+            sb.AppendLine($"Manufactured by: {Brand}");
             sb.Append($"Range: {Range} kilometers");
 
             return sb.ToString();
