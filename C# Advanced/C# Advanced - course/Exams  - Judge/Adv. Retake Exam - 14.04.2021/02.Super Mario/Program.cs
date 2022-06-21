@@ -45,23 +45,25 @@ namespace _02.Super_Mario
                     else if (maze[marioRow - 1][marioCol] == 'B')
                     {
                         lives -= 2;
+                        maze[marioRow][marioCol] = '-';
+
                         if (lives <= 0)
                         {
-                            maze[marioRow][marioCol] = '-';
                             marioRow--;
                             maze[marioRow][marioCol] = 'X';
                             break;
                         }
                         else
                         {
-                            maze[marioRow - 1][marioCol] = '-';
                             marioRow--;
+                            maze[marioRow][marioCol] = 'M';
                         }
                     }
                     else if (maze[marioRow - 1][marioCol] == 'P')
                     {
                         maze[marioRow][marioCol] = '-';
-                        maze[marioRow - 1][marioCol] = '-';
+                        marioRow--;
+                        maze[marioRow][marioCol] = '-';
                         break;
                     }
                     else
@@ -80,23 +82,24 @@ namespace _02.Super_Mario
                     else if (maze[marioRow + 1][marioCol] == 'B')
                     {
                         lives -= 2;
+                        maze[marioRow][marioCol] = '-';
                         if (lives <= 0)
                         {
-                            maze[marioRow][marioCol] = '-';
                             marioRow++;
                             maze[marioRow][marioCol] = 'X';
                             break;
                         }
                         else
                         {
-                            maze[marioRow + 1][marioCol] = '-';
                             marioRow++;
+                            maze[marioRow][marioCol] = '-';
                         }
                     }
                     else if (maze[marioRow + 1][marioCol] == 'P')
                     {
                         maze[marioRow][marioCol] = '-';
-                        maze[marioRow + 1][marioCol] = '-';
+                        marioRow++;
+                        maze[marioRow][marioCol] = '-';
                         break;
                     }
                     else
@@ -115,23 +118,24 @@ namespace _02.Super_Mario
                     else if (maze[marioRow][marioCol -1] == 'B')
                     {
                         lives -= 2;
+                        maze[marioRow][marioCol] = '-';
                         if (lives <= 0)
                         {
-                            maze[marioRow][marioCol] = '-';
                             marioCol--;
                             maze[marioRow][marioCol] = 'X';
                             break;
                         }
                         else
                         {
-                            maze[marioRow][marioCol - 1] = '-';
                             marioCol--;
+                            maze[marioRow][marioCol - 1] = '-';
                         }
                     }
                     else if (maze[marioRow][marioCol - 1] == 'P')
                     {
                         maze[marioRow][marioCol] = '-';
-                        maze[marioRow][marioCol - 1] = '-';
+                        marioCol--;
+                        maze[marioRow][marioCol] = '-';
                         break;
                     }
                     else
@@ -150,23 +154,24 @@ namespace _02.Super_Mario
                     else if (maze[marioRow][marioCol + 1] == 'B')
                     {
                         lives -= 2;
+                        maze[marioRow][marioCol] = '-';
                         if (lives <= 0)
                         {
-                            maze[marioRow][marioCol] = '-';
                             marioCol++;
                             maze[marioRow][marioCol] = 'X';
                             break;
                         }
                         else
                         {
-                            maze[marioRow][marioCol + 1] = '-';
                             marioCol++;
+                            maze[marioRow][marioCol] = '-';
                         }
                     }
                     else if (maze[marioRow][marioCol + 1] == 'P')
                     {
                         maze[marioRow][marioCol] = '-';
-                        maze[marioRow][marioCol + 1] = '-';
+                        marioCol++;
+                        maze[marioRow][marioCol] = '-';
                         break;
                     }
                     else
