@@ -19,20 +19,17 @@ namespace Ex02._Beaver_at_Work
 
             for (int row = 0; row < pond.GetLength(0); row++)
             {
-                char[] data = Console.ReadLine().Split(' ').Select(char.Parse).ToArray();
+                string[] data = Console.ReadLine().Split(' ').ToArray();
 
                 for (int col = 0; col < pond.GetLength(1); col++)
                 {
-                    pond[row, col] = data[col];
+                    pond[row, col] = data[col][0];
                     if (pond[row, col] == 'B')
                     {
                         currentRow = row;
                         currentCol = col;
                     }
-                    if (Char.IsLower(pond[row, col]))
-                    {
-                        allBranch++;
-                    }
+                    
                 }
             }
 
