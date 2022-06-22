@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Scheduling", "01. Scheduling\01. Scheduling.csproj", "{3DE25814-16A0-4D70-AFA3-8AFCE701D073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. Scheduling", "01. Scheduling\01. Scheduling.csproj", "{3DE25814-16A0-4D70-AFA3-8AFCE701D073}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Garden", "02. Garden\02. Garden.csproj", "{635AF21E-E2D8-41B6-8827-2FFF173B5F25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. Garden", "02. Garden\02. Garden.csproj", "{635AF21E-E2D8-41B6-8827-2FFF173B5F25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Classroom", "03. Classroom\03. Classroom.csproj", "{B89EE198-C136-4C20-98DD-7038B2D13C85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassroomProject", "03. Classroom\ClassroomProject.csproj", "{B89EE198-C136-4C20-98DD-7038B2D13C85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
