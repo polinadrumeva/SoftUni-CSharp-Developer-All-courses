@@ -18,4 +18,5 @@ All themes in C# Advanced modul
 15. [**Generics - Lab**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20Advanced%20-%20course/Generics%20-%20Lab)
 16. [**Generics - Exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20Advanced%20-%20course/Generics%20-%20Exercise)
 17. [**Iterators and Comparators - Lab**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20Advanced%20-%20course/Iterators%20and%20Comparators%20-%20Lab)
+18. [**Exams exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20Advanced%20-%20course/Exams%20%20-%20Judge)
 
