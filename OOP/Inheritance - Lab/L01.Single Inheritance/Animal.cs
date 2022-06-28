@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace L01.Single_Inheritance
+namespace Farm
 {
     public class Animal
     {

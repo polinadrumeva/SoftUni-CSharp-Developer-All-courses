@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace L01.Single_Inheritance
+namespace Farm
 {
-    internal class StartUp
+    public class StartUp
     {
         static void Main(string[] args)
         {
