@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace L03._Hierarchical_Inheritance
+namespace Farm
 {
     public class Animal
     {

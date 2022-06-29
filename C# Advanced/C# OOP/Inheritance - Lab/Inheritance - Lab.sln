@@ -3,15 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L01.Single Inheritance", "L01.Single Inheritance\L01.Single Inheritance.csproj", "{212FECE2-47B4-4A3F-A534-0FD643ECEB5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L01.SingleInheritance", "L01.Single Inheritance\L01.SingleInheritance.csproj", "{212FECE2-47B4-4A3F-A534-0FD643ECEB5D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02. Multiple Inheritance", "L02. Multiple Inheritance\L02. Multiple Inheritance.csproj", "{16F0B7D0-FF8C-4A78-A99B-36B3752C9B10}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L03. Hierarchical Inheritance", "L03. Hierarchical Inheritance\L03. Hierarchical Inheritance.csproj", "{33FA26CD-582A-4748-86FA-0DE43EB0DB6D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L04. Random List", "L04. Random List\L04. Random List.csproj", "{4146F2EA-339E-49BE-9ADF-EC48347462FB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L05. Stack of Strings", "L05. Stack of Strings\L05. Stack of Strings.csproj", "{5FC5374D-B96D-4185-BBA5-FD3FF719C017}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +27,6 @@ Global
 		{33FA26CD-582A-4748-86FA-0DE43EB0DB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33FA26CD-582A-4748-86FA-0DE43EB0DB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33FA26CD-582A-4748-86FA-0DE43EB0DB6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4146F2EA-339E-49BE-9ADF-EC48347462FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4146F2EA-339E-49BE-9ADF-EC48347462FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4146F2EA-339E-49BE-9ADF-EC48347462FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4146F2EA-339E-49BE-9ADF-EC48347462FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FC5374D-B96D-4185-BBA5-FD3FF719C017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FC5374D-B96D-4185-BBA5-FD3FF719C017}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FC5374D-B96D-4185-BBA5-FD3FF719C017}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FC5374D-B96D-4185-BBA5-FD3FF719C017}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
