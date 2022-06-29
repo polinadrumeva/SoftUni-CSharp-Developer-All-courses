@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L03._Hierarchical_Inheritance
+namespace Farm
 {
     public class StartUp
     {
