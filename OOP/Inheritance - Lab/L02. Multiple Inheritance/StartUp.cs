@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L02._Multiple_Inheritance
+namespace Farm
 {
     public class StartUp
     {
