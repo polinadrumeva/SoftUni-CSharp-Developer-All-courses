@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace _06._Merge_Sort
 {
@@ -9,49 +10,55 @@ namespace _06._Merge_Sort
 
             int[] numbers = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
 
-            QuickSort(numbers, 0, numbers.Length - 1);
-            Console.WriteLine(string.Join(" ", numbers));
+            int[] sorted = MergeSort(numbers);
+            Console.WriteLine(string.Join(" ", sorted));
         }
 
-        private static void QuickSort(int[] numbers, int start, int end)
+        private static int[] MergeSort(int[] numbers)
         {
-            if (start >= end)
+            if (numbers.Length <= 1)
             {
-                return;
+                return numbers;
             }
 
-            var pivot = start;
-            var left = start + 1;
-            var right = end;
+            int[] left = numbers.Take(numbers.Length /2).ToArray();
+            int[] right = numbers.Skip(numbers.Length /2).ToArray();
 
-            while (left <= right)
+            return Merge(MergeSort(left), MergeSort(right));
+        }
+
+        private static int[] Merge(int[] left, int[] right)
+        {
+            var merged = new int[left.Length + right.Length];
+            var mergedIndex = 0;
+            var leftIndex = 0;
+            var rightIndex = 0;
+
+            while (leftIndex < left.Length && rightIndex < right.Length)
             {
-                if (numbers[left] > numbers[pivot] && numbers[right] < numbers[pivot])
+                if (left[leftIndex] < right[rightIndex])
                 {
-                    Swap(numbers, left, right);
+                    merged[mergedIndex++] = left[leftIndex++]; 
                 }
-                if (numbers[left] <= numbers[pivot])
+                else
                 {
-                    left++;
+                    merged[mergedIndex++] = right[rightIndex++];
                 }
-                if (numbers[right] >= numbers[pivot])
-                {
-                    right--;
-                }
-
             }
 
-            Swap(numbers, pivot, right);
-            QuickSort(numbers, start, right - 1);
-            QuickSort(numbers, right + 1, end);
+            for (int i = leftIndex; i < left.Length; i++)
+            {
+                merged[mergedIndex++] = left[i];
+            }
 
+            for (int i = rightIndex; i < right.Length; i++)
+            {
+                merged[mergedIndex++] = right[i];
+            }
+
+            return merged;
         }
 
-        private static void Swap(int[] numbers, int first, int second)
-        {
-            int current = numbers[first];
-            numbers[first] = numbers[second];
-            numbers[second] = current;
-        }
+       
     }
 }
