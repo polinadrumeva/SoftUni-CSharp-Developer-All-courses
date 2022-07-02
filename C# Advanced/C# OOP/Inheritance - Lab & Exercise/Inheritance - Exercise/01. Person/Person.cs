@@ -14,16 +14,31 @@ namespace Person
         { 
             get 
             {
-                return this.Age; 
+                return this.age; 
             } 
             set
             {
-                if (value >= 0)
+                if (value > 0)
                 {
-                    this.Age = value;
+                    this.age = value;
+                }
+                else
+                {
+                    this.age = 0;
                 }
                 
             } 
+        }
+
+        public Person(string name, int age)
+        {
+            this.Name = name;
+            this.Age = age;
+        }
+
+        public override string ToString()
+        {
+            return $"Name: {this.Name}, Age: {this.Age}";
         }
     }
 }

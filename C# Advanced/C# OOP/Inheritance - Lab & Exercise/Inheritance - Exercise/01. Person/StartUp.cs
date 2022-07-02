@@ -1,4 +1,6 @@
-﻿namespace Person
+﻿using System;
+
+namespace Person
 {
     public class StartUp
     {
