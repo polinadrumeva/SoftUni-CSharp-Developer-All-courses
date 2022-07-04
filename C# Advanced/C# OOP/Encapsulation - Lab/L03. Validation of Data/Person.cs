@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace L01._Sort_Persons_by_Name_and_Age
+namespace PersonsInfo
 {
     public class Person
     {
@@ -45,7 +45,7 @@ namespace L01._Sort_Persons_by_Name_and_Age
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Age cannot be zero or a negative integer!");
+                    throw new ArgumentException("Age cannot be zero or a negative integer!");
                     
                 }
 
@@ -60,7 +60,7 @@ namespace L01._Sort_Persons_by_Name_and_Age
             {
                 if (value < 460)
                 {
-                    throw new ArgumentOutOfRangeException("Salary cannot be less than 650 leva!");
+                    throw new ArgumentException("Salary cannot be less than 650 leva!");
                 }
 
                 salary = value;

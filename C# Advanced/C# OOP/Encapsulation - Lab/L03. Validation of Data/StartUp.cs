@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace L01._Sort_Persons_by_Name_and_Age
+namespace PersonsInfo
 {
     public class StartUp
     {
@@ -13,10 +13,18 @@ namespace L01._Sort_Persons_by_Name_and_Age
 
             for (int i = 0; i < numberOfLines; i++)
             {
-                var singleLine = Console.ReadLine()
-                    .Split(" ");
-                var person = new Person(singleLine[0], singleLine[1], int.Parse(singleLine[2]), decimal.Parse(singleLine[3]));
-                persons.Add(person);
+                var singleLine = Console.ReadLine().Split(" ");
+                try
+                {
+                    var person = new Person(singleLine[0], singleLine[1], int.Parse(singleLine[2]), decimal.Parse(singleLine[3]));
+
+                    persons.Add(person);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
             }
 
             decimal percentage = decimal.Parse(Console.ReadLine());
