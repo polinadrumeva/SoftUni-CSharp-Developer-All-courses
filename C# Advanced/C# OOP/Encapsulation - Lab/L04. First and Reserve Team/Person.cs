@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace L04._First_and_Reserve_Team
+namespace PersonsInfo
 {
     public class Person
     {

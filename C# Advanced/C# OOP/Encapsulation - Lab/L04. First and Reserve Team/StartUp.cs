@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace L04._First_and_Reserve_Team
+namespace PersonsInfo
 {
     public class StartUp
     {

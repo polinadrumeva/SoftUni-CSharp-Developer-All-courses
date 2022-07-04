@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L04._First_and_Reserve_Team
+namespace PersonsInfo
 {
     public class Team 
     {
