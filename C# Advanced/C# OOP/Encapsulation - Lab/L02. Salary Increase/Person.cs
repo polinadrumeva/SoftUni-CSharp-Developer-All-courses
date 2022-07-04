@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace L01._Sort_Persons_by_Name_and_Age
+namespace PersonsInfo
 {
     public class Person
     {
@@ -31,7 +31,7 @@ namespace L01._Sort_Persons_by_Name_and_Age
         }
         public override string ToString()
         {
-            return $"{this.FirstName} {this.LastName} receives {this.Salary} leva.";
+            return $"{this.FirstName} {this.LastName} receives {this.Salary:f2} leva.";
         }
     }
 }

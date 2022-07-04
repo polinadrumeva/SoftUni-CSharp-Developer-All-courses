@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace L01._Sort_Persons_by_Name_and_Age
+namespace PersonsInfo
 {
     public class Person
     {
