@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Class Box Data", "1. Class Box Data\1. Class Box Data.csproj", "{3AD8DC7F-5F0D-4364-8469-E2E30FD923F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1.ClassBoxData", "1. Class Box Data\1.ClassBoxData.csproj", "{3AD8DC7F-5F0D-4364-8469-E2E30FD923F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Animal Farm", "2. Animal Farm\2. Animal Farm.csproj", "{4A91E378-3900-4685-8DF8-0E42B6134B8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalFarm", "2. Animal Farm\AnimalFarm.csproj", "{4A91E378-3900-4685-8DF8-0E42B6134B8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Shopping Spree", "3. Shopping Spree\3. Shopping Spree.csproj", "{D3D56832-07C7-421B-A715-91D9C0268C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3. Shopping Spree", "3. Shopping Spree\3. Shopping Spree.csproj", "{D3D56832-07C7-421B-A715-91D9C0268C80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Pizza Calories", "4. Pizza Calories\4. Pizza Calories.csproj", "{8724611E-EB3D-40BC-AFB1-0FE2E030A9AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4. Pizza Calories", "4. Pizza Calories\4. Pizza Calories.csproj", "{8724611E-EB3D-40BC-AFB1-0FE2E030A9AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Football Team Generator", "5. Football Team Generator\5. Football Team Generator.csproj", "{42EE3DA7-8838-4202-AEA4-A343C430ABD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5. Football Team Generator", "5. Football Team Generator\5. Football Team Generator.csproj", "{42EE3DA7-8838-4202-AEA4-A343C430ABD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
