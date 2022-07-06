@@ -19,7 +19,7 @@ namespace ShoppingSpree
 
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Name cannot be empty");
                 }
@@ -61,7 +61,7 @@ namespace ShoppingSpree
 
         public void BuyProduct(Product product)
         {
-            if (this.Money - product.Cost >= 0 )
+            if (this.Money - product.Cost >= 0)
             {
                 this.Money -= product.Cost;
                 this.BagOfProducts.Add(product);

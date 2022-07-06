@@ -18,7 +18,7 @@ namespace ShoppingSpree
                 {
                     for (int j = 0; j < data.Length; j++)
                     {
-                        if (data[j] == "" || data[j] == " ")
+                        if (data[j] == string.Empty || data[j] == " ")
                         {
                             continue;
                         }
@@ -38,7 +38,7 @@ namespace ShoppingSpree
                                 return;
                             }
                         }
-                        
+
                     }
 
                 }
@@ -46,18 +46,29 @@ namespace ShoppingSpree
                 {
                     for (int k = 0; k < data.Length; k++)
                     {
-                        if (data[k] == "" || data[k] == " ")
+                        if (data[k] == string.Empty || data[k] == " ")
                         {
                             continue;
                         }
                         else
                         {
-                            string[] personInfo = data[k].Split("=");
+                            string[] personInfo = data[k].Split("=", StringSplitOptions.RemoveEmptyEntries);
 
-                            Product product = new Product(personInfo[0], decimal.Parse(personInfo[1]));
-                            products.Add(product);
+                            try
+                            {
+                                Product product = new Product(personInfo[0], decimal.Parse(personInfo[1]));
+                                products.Add(product);
+
+                            }
+                            catch (ArgumentException ex)
+                            {
+
+                                Console.WriteLine(ex.Message);
+                                return;
+                            }
+
                         }
-                       
+
 
                     }
                 }
@@ -85,7 +96,7 @@ namespace ShoppingSpree
 
                     Console.WriteLine($"{person.Name} - {string.Join(", ", person.BagOfProducts.Select(x => x.Name).ToArray())}");
                 }
-                
+
             }
         }
     }
