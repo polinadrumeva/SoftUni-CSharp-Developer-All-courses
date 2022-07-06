@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1.ClassBoxData", "1. Class 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalFarm", "2. Animal Farm\AnimalFarm.csproj", "{4A91E378-3900-4685-8DF8-0E42B6134B8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4. Pizza Calories", "4. Pizza Calories\4. Pizza Calories.csproj", "{8724611E-EB3D-40BC-AFB1-0FE2E030A9AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4.PizzaCalories", "4. Pizza Calories\4.PizzaCalories.csproj", "{8724611E-EB3D-40BC-AFB1-0FE2E030A9AD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5. Football Team Generator", "5. Football Team Generator\5. Football Team Generator.csproj", "{42EE3DA7-8838-4202-AEA4-A343C430ABD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.ShoppingSpree", "3.ShoppingSpree\3.ShoppingSpree.csproj", "{28E8C86D-2050-4702-BC77-66BD511C6CE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3.ShoppingSpree", "3.ShoppingSpree\3.ShoppingSpree.csproj", "{28E8C86D-2050-4702-BC77-66BD511C6CE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
