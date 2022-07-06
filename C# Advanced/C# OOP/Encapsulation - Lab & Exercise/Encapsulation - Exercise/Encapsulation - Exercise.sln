@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1.ClassBoxData", "1. Class 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalFarm", "2. Animal Farm\AnimalFarm.csproj", "{4A91E378-3900-4685-8DF8-0E42B6134B8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3. Shopping Spree", "3. Shopping Spree\3. Shopping Spree.csproj", "{D3D56832-07C7-421B-A715-91D9C0268C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3.ShoppingSpree", "3. Shopping Spree\3.ShoppingSpree.csproj", "{D3D56832-07C7-421B-A715-91D9C0268C80}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4. Pizza Calories", "4. Pizza Calories\4. Pizza Calories.csproj", "{8724611E-EB3D-40BC-AFB1-0FE2E030A9AD}"
 EndProject
