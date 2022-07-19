@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L01._MathOperation
+namespace Operations
 {
     public class StartUp
     {
