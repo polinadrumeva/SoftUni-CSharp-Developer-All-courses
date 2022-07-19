@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L02._Animals
+namespace Animals
 {
     public class Dog : Animal
     {

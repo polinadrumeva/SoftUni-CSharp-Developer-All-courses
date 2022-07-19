@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L03._Shapes
+namespace Shapes
 {
     public abstract class Shape
     {
@@ -21,7 +21,7 @@ namespace L03._Shapes
 
         public virtual string Draw()
         {
-            return "Shape - Type:";
+            return "Drawing ";
         }
        
     }

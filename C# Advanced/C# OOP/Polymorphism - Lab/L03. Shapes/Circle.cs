@@ -4,11 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L03._Shapes
+namespace Shapes
 {
     public class Circle : Shape
     {
-        public double Radius { get; private set; }
+        private double radius;
+        public double Radius 
+        {
+
+            get
+            {
+                return this.radius;
+            }
+            private set
+            {
+                this.radius = value;
+            }
+        }
 
         public Circle(double radius)
         {
@@ -22,12 +34,12 @@ namespace L03._Shapes
 
         public override double CalculateArea()
         {
-            return Math.PI * (Radius * Radius);
+            return Math.PI * Math.Pow(this.Radius, 2);
         }
 
         public override string Draw()
         {
-            return base.Draw() + " " + "Circle";
+            return base.Draw() + this.GetType().Name;
         }
     }
 }

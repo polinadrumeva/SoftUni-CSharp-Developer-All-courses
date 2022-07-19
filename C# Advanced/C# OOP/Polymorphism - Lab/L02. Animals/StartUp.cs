@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace L02._Animals
+namespace Animals
 {
     public class StartUp
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace L03._Shapes
+namespace Shapes
 {
     public class Rectangle : Shape
     {
@@ -15,10 +15,33 @@ namespace L03._Shapes
         //•	A public constructor 
         //•	Concrete methods for calculations(perimeter and area)
         //•	Override methods for drawing
+        private double height;
+        private double width;   
 
-        public double Height { get; private set; }
+        public double Height 
+        {
+            get
+            {
+                return this.height;
+            }
+            private set
+            { 
+                 this.height = value;
+            }
+        }
 
-        public double Width { get; private set; }
+        public double Width
+        {
+            get
+            {
+                return this.width;
+            }
+
+            private set
+            { 
+            this.width = value;
+            }
+        }
 
         public Rectangle(double height, double width)
         {
@@ -28,17 +51,17 @@ namespace L03._Shapes
 
         public override double CalculatePerimeter()
         {
-            return Height + Width;
+            return (this.Width + this.Height) * 2;
         }
 
         public override double CalculateArea()
         {
-            return Width * Height;
+            return this.Width * this.Height;
         }
 
         public override string Draw()
         {
-            return base.Draw() + " " + "Rectangle";
+            return base.Draw() + this.GetType().Name;
         }
     }
 }
