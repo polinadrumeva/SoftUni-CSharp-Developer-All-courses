@@ -22,12 +22,12 @@ namespace E02._Enter_Numbers
                 try
                 {
                     int num = int.Parse(number);
-                    if (num >= start && num <= end)
+                    if (num > start && num < end)
                     {
                         result[count] = num;
                         count++;
                     }
-                    else if (num < start || num > end)
+                    else if (num <= start || num >= end)
                     {
                         throw new ArgumentOutOfRangeException();
                     }
