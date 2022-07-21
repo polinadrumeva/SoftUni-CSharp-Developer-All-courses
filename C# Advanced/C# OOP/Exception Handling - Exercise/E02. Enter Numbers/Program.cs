@@ -6,8 +6,10 @@ namespace E02._Enter_Numbers
     {
         static void Main(string[] args)
         {
+            int start = 1;
+
             string number = Console.ReadLine();
-            int[] result = ReadNumber(2, 100, number);
+            int[] result = ReadNumber(start, 100, number);
             Console.WriteLine(string.Join(", ", result));
 
         }
@@ -17,7 +19,7 @@ namespace E02._Enter_Numbers
             int[] result = new int[10];
             int count = 0;
 
-            while (count != 10)
+            while (count <= 10)
             {
                 try
                 {
@@ -26,6 +28,8 @@ namespace E02._Enter_Numbers
                     {
                         result[count] = num;
                         count++;
+                        start = num;
+                        
                     }
                     else if (num <= start || num >= end)
                     {
@@ -35,16 +39,17 @@ namespace E02._Enter_Numbers
                     {
                         throw new FormatException();
                     }
+                    
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    Console.WriteLine($"Your number is not in range {number} -100!");
+                    Console.WriteLine($"Your number is not in range {start} - 100!");
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("Invalid Number!");
                 }
-                
+
                 if (count == 10)
                 {
                     break;
@@ -53,7 +58,6 @@ namespace E02._Enter_Numbers
                 {
                     number = Console.ReadLine();
                 }
-                
             }
             
             return result;
