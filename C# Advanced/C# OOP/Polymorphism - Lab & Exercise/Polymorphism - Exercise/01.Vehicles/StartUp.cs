@@ -1,8 +1,7 @@
-﻿using System;
-
-namespace _01.Vehicles
+﻿namespace Vehicles
 {
-    internal class Program
+    using System;
+    public class StartUp
     {
         static void Main(string[] args)
         {
