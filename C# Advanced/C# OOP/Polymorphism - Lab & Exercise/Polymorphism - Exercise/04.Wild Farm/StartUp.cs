@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace _04.Wild_Farm
+namespace WildFarm
 {
-    internal class Program
+    public class StartUp
     {
         static void Main(string[] args)
         {
