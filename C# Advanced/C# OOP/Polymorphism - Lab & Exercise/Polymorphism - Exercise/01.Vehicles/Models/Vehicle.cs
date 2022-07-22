@@ -8,24 +8,38 @@
 
     public abstract class Vehicle : IVehicle
     {
+        private double fuelQuantity;
+        private double fuelComsumption;
         public double FuelQuantity { get; set; }
 
-        public double FuelComsumption { get; set; }
+        public double FuelComsumption { get; protected set; }
 
         public Vehicle(double quantity, double comsumption)
         {
-            this.FuelComsumption = quantity;
+            this.FuelQuantity = quantity;
             this.FuelComsumption = comsumption;
         }
 
         public string Drive(double distance)
         {
-            throw new NotImplementedException();
+            double neededFuel = distance * this.FuelComsumption;
+            if (neededFuel > this.FuelQuantity)
+            {
+                return $"{this.GetType().Name} needs refueling";
+            }
+            
+            this.FuelQuantity -= neededFuel;
+            return $"{this.GetType().Name} travelled {distance} km";
         }
 
-        public void Refueled(double fuel)
+        public virtual void Refueled(double fuel)
         {
-            throw new NotImplementedException();
+            this.FuelQuantity += fuel;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.GetType().Name}: {this.FuelQuantity:f2}";
         }
     }
 }
