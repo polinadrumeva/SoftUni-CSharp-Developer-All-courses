@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.MissionPrivate", "03.Mis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.Collector", "04.Collector\04.Collector.csproj", "{35E87693-DD9B-40F9-82D0-118D21254831}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.CreateAttribute", "05.CreateAttribute\05.CreateAttribute.csproj", "{DC8E3E42-14F7-49A6-966A-E0CCF9E41BDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateAttribute", "05.CreateAttribute\CreateAttribute.csproj", "{DC8E3E42-14F7-49A6-966A-E0CCF9E41BDF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.CodeTracker", "06.CodeTracker\06.CodeTracker.csproj", "{8FB3E1A7-38E2-42EF-8E43-2CE1601498D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeTracker", "06.CodeTracker\CodeTracker.csproj", "{8FB3E1A7-38E2-42EF-8E43-2CE1601498D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
