@@ -7,61 +7,65 @@ namespace DatabaseExtended.Tests
     [TestFixture]
     public class ExtendedDatabaseTests
     {
-        [SetUp]
-        public void Start()
-        { 
-            Database database = new Database();
-            Person firstPerson = new Person(123456, "Polina");
-            Person secondPerson = new Person(345678, "Maria");
-        }
+       
         [Test]
         public void ShouldHaveExactlyLength()
         {
             Database database = new Database();
-            Person firstPerson = new Person(123456, "Polina");
             for (int i = 0; i < 16; i++)
             {
+                Person firstPerson = new Person(i, $"{i}");
                 database.Add(firstPerson);
             }
 
+            Person newPerson = new Person(84392, "Poli");
             Assert.Throws<InvalidOperationException>(() =>
             {
-                database.Add(firstPerson);
+                database.Add(newPerson);
             }, "Array's capacity must be exactly 16 integers!");
         }
 
-
         //[Test]
-        //public void CheckAddingInArray()
+        //public void ShouldAddRangeSuccessful()
         //{
-        //    Database database = new Database();
-        //    database.Add(1);
-        //    Assert.That(database.Count, Is.EqualTo(1));
-        //}
-
-
-        //[Test]
-        //public void ShouldCanNotAdd17Element()
-        //{
-        //    Database database = new Database();
-        //    int length = 16;
-        //    for (int i = 0; i < length; i++)
+        //    Database data = new Database();
+        //    Person[] people = new Person[16];
+        //    for (int i = 0; i < 16; i++)
         //    {
-        //        database.Add(i);
+        //        Person firstPerson = new Person(i, $"{i}");
+        //        people[i] = firstPerson;
         //    }
-
-        //    Assert.Throws<InvalidOperationException>(() => database.Add(17));
+        //    data.AddRange(people);
+        //    Assert.That(data.Count, Is.EqualTo(people.Length));
         //}
 
+        [Test]
+        public void ShouldThrowExceptionIfAddBiggerThen16Range()
+        {
+            Database data = new Database();
+            Person[] people = new Person[19];
+            for (int i = 0; i < 19; i++)
+            {
+                Person firstPerson = new Person(i, $"{i}");
+                people[i] = firstPerson;
+            }
 
-        //[Test]
-        //public void ShouldFetchReturnAnArray()
-        //{
-        //    int[] numbers = new int[] { 1, 2, 3 };
-        //    Database database = new Database(numbers);
-        //    int[] arrays = database.Fetch();
-        //    Assert.AreEqual(numbers, arrays);
-        //}
+            Assert.Throws<ArgumentException>(() =>
+            {
+                new Database(people);
+            }, "Provided data length should be in range [0..16]!");
+            
+        }
+
+        [Test]
+        public void CheckAddingInArray()
+        {
+            Database data = new Database();
+            Person firstPerson = new Person(123456, "Polina");
+            data.Add(firstPerson);
+            Assert.That(data.Count, Is.EqualTo(1));
+        }
+
 
         [Test]
         public void ShouldThrowExceptionIfUserExist()
@@ -140,6 +144,11 @@ namespace DatabaseExtended.Tests
             {
                 database.FindByUsername(null);
             }, "Username parameter is null!");
+
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                database.FindByUsername("");
+            }, "Username parameter is null!");
         }
 
         [Test]
@@ -155,6 +164,25 @@ namespace DatabaseExtended.Tests
         }
 
         [Test]
+        public void ShouldThrowExceptionIfLowerCase()
+        {
+            Database database = new Database();
+            Person firstPerson = new Person(123456, "Polina");
+            Assert.That(() => database.FindByUsername("polina"),
+                Throws.InvalidOperationException);
+        }
+
+        [Test]
+        public void ShouldReturnPersonWithThatUsernameSuccessful()
+        {
+            Database db = new Database();
+            Person person = new Person(12345, "Polina");
+            db.Add(person);
+            Person result = db.FindByUsername("Polina");
+
+            Assert.AreEqual((result.UserName, result.Id), (person.UserName, person.Id));
+        }
+        [Test]
         public void ShouldThrowArgumentExceptionIfIDIsNegative()
         {
             Database database = new Database();
@@ -164,6 +192,16 @@ namespace DatabaseExtended.Tests
             {
                 database.FindById(-123456);
             }, "Id should be a positive number!");
+        }
+
+        [Test]
+        public void ShouldReturnPersonWithThatIdSuccess()
+        {
+            Database db = new Database(new Person(123456, "Polina"));
+            Person result = db.FindById(123456);
+            Person expected = new Person(123456, "Polina");
+            Assert.AreEqual((result.Id, result.UserName),
+                (expected.Id, expected.UserName));
         }
     }
 }
