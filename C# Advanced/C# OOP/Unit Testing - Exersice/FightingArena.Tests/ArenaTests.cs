@@ -1,110 +1,151 @@
 namespace FightingArena.Tests
 {
-    using NUnit.Framework;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
+    using NUnit.Framework;
 
     [TestFixture]
     public class ArenaTests
     {
-        [Test]
-        public void CountShouldReturnCorrectData()
+        private Arena arena;
+
+        [SetUp]
+        public void SetUp()
         {
-            Arena arena = new Arena();
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            Warrior secondWarrior = new Warrior("Maria", 20, 50);
-            arena.Enroll(firstWarrior);
-            arena.Enroll(secondWarrior);
-
-            int dataCount = arena.Count;
-            int expectedCount = 2;
-
-            Assert.AreEqual(expectedCount, dataCount);
+            this.arena = new Arena();
         }
 
         [Test]
-        public void ShouldThrowErrorIfTryEnrollSamePerson()
+        public void TestConstructorInitializesEmptyCollectionOfWarrior()
         {
-            Arena arena = new Arena();
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            arena.Enroll(firstWarrior);
-            Warrior secondWarrior = new Warrior("Polina", 20, 30);
+            Arena testArena = new Arena();
+
+            List<Warrior> actualCollection = testArena.Warriors.ToList();
+            List<Warrior> expectedCollection = new List<Warrior>();
+
+            CollectionAssert.AreEqual(expectedCollection, actualCollection,
+                "Arena constructor should initialize an empty collection for Warriors!");
+        }
+
+        [Test]
+        public void TestIfWarriorsCollectionIsEncapsulatedProperly()
+        {
+            string actualType = typeof(Arena)
+                .GetProperties()
+                .First(pi => pi.Name == "Warriors")
+                .PropertyType
+                .Name;
+            string expectedType = typeof(IReadOnlyCollection<Warrior>).Name;
+
+            Assert.AreEqual(expectedType, actualType,
+                "Property for the enrolled Warriors should be of type IReadOnlyCollection<Warrior>!");
+        }
+
+        [Test]
+        public void CountShouldReturnZeroOnEmptyArena()
+        {
+            int actualCount = this.arena.Count;
+            int expectedCount = 0;
+
+            Assert.AreEqual(expectedCount, actualCount,
+                "Count should return zero when there are no enrolled Warriors!");
+        }
+
+        [Test]
+        public void CountShouldReturnCorrectValueWhenThereAreEnrolledWarriors()
+        {
+            //Act
+            Warrior warrior = new Warrior("Pesho", 50, 100);
+            this.arena.Enroll(warrior);
+
+            int actualCount = this.arena.Count;
+            int expectedCount = 1;
+
+            Assert.AreEqual(expectedCount, actualCount,
+                "Count should return the count of the enrolled Warriors!");
+        }
+
+        [Test]
+        public void TestEnrollAddsWarriorsToTheArena()
+        {
+            Warrior pesho = new Warrior("Pesho", 30, 100);
+            Warrior gosho = new Warrior("Gosho", 35, 85);
+
+            this.arena.Enroll(pesho);
+            this.arena.Enroll(gosho);
+
+            List<Warrior> actualCollection = this.arena.Warriors.ToList();
+            List<Warrior> expectedCollection = new List<Warrior>()
+            {
+                pesho,
+                gosho
+            };
+
+            CollectionAssert.AreEqual(expectedCollection, actualCollection,
+                "Warriors collection getter should return enrolled warriors!");
+        }
+
+        [Test]
+        public void EnrollShouldThrowAnExceptionWhenEnrollingExistingWarrior()
+        {
+            Warrior warrior = new Warrior("Pesho", 50, 100);
+
+            this.arena.Enroll(warrior);
 
             Assert.Throws<InvalidOperationException>(() =>
             {
-                arena.Enroll(secondWarrior);
+                this.arena.Enroll(warrior);
             }, "Warrior is already enrolled for the fights!");
-
         }
 
         [Test]
-        public void EnrollReturnCorrectAdding()
+        public void FightBetweenInExistingAttackerShouldThrowException()
         {
-            Arena arena = new Arena();
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            Warrior secondWarrior = new Warrior("Maria", 10, 60);
-            arena.Enroll(firstWarrior);
-            arena.Enroll(secondWarrior);
+            Warrior warrior = new Warrior("Pesho", 50, 100);
 
-            int dataCount = arena.Count;
-            int expectedCount = 2;
+            this.arena.Enroll(warrior);
 
-            Assert.AreEqual(expectedCount, dataCount);
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                this.arena.Fight("Invalid", "Pesho");
+            }, "There is no fighter with name Invalid enrolled for the fights!");
         }
 
-
-        [TestCase("Polina", "Maria")]
-        public void FightShouldAttackSuccessful(string attacker, string defender)
+        [Test]
+        public void FightBetweenInExistingDefenderShouldThrowException()
         {
-            Arena arena = new Arena();
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            Warrior secondWarrior = new Warrior("Maria", 10, 60);
-            arena.Enroll(firstWarrior);
-            arena.Enroll(secondWarrior);
+            Warrior warrior = new Warrior("Pesho", 50, 100);
 
-            Warrior attackerWarrior = arena.Warriors.FirstOrDefault(x => x.Name == attacker);
-            Warrior defenderWarrior = arena.Warriors.FirstOrDefault(x => x.Name == defender);
-            attackerWarrior.Attack(defenderWarrior);
+            this.arena.Enroll(warrior);
 
-            string dataAttWarior = attackerWarrior.Name;
-            string expectedAttWarior = "Polina";
-
-            string dataDefendedWarr = defenderWarrior.Name;
-            string expectedDefendedWarior = "Maria";
-
-            Assert.AreEqual(expectedAttWarior, dataAttWarior);
-            Assert.AreEqual(expectedDefendedWarior, dataDefendedWarr);
-
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                this.arena.Fight("Pesho", "Invalid");
+            }, "There is no fighter with name Invalid enrolled for the fights!");
         }
 
-        [TestCase("Poli", "Maria")]
-        public void FightShouldAThrowExceptionIfCantFindAttacker(string attacker, string defender)
+        [Test]
+        public void FightBetweenExistingWarriorsShouldSucceed()
         {
-            Arena arena = new Arena();
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            Warrior secondWarrior = new Warrior("Maria", 10, 60);
-            arena.Enroll(firstWarrior);
-            arena.Enroll(secondWarrior);
+            Warrior warriorA = new Warrior("Pesho", 40, 100);
+            Warrior warriorD = new Warrior("Gosho", 55, 100);
 
+            this.arena.Enroll(warriorA);
+            this.arena.Enroll(warriorD);
 
-            Assert.That(() => arena.Fight(attacker, defender), Throws.InvalidOperationException.With.Message.EqualTo($"There is no fighter with name {attacker} enrolled for the fights!"));
+            this.arena.Fight("Pesho", "Gosho");
 
+            int actualAttackerHp = warriorA.HP;
+            int expectedAttackerHp = 100 - warriorD.Damage;
 
-        }
+            int actualDefenderHp = warriorD.HP;
+            int expectedDefenderHp = 100 - warriorA.Damage;
 
-        [TestCase("Polina", "Mari")]
-        public void FightShouldAThrowExceptionIfCantFindDefender(string attacker, string defender)
-        {
-            Arena arena = new Arena();
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            Warrior secondWarrior = new Warrior("Maria", 10, 60);
-            arena.Enroll(firstWarrior);
-            arena.Enroll(secondWarrior);
-
-
-            Assert.That(() => arena.Fight(attacker, defender), Throws.InvalidOperationException.With.Message.EqualTo($"There is no fighter with name {defender} enrolled for the fights!"));
-
-
+            Assert.AreEqual(expectedAttackerHp, actualAttackerHp,
+                "Fight between existing Warriors should decrease attacker HP!");
+            Assert.AreEqual(expectedDefenderHp, actualDefenderHp,
+                "Fight between existing Warriors should decrease defender HP!");
         }
     }
 }

@@ -18,6 +18,8 @@ namespace FightingArena
 
         public int Count => this.warriors.Count;
 
+        public Warrior FirstOrDefault { get; set; }
+
         public void Enroll(Warrior warrior)
         {
             if (this.warriors.Any(w => w.Name == warrior.Name))

@@ -24,7 +24,8 @@
             Assert.AreEqual(expectedXP, dataXP);
         }
 
-        [TestCase("", 10, 50)]
+        [TestCase(" ", 10, 50)]
+        [TestCase("                 ", 10, 50)]
         [TestCase(null, 10, 50)]
         public void ShouldPropNameThrowErrorForNullOrEmpty(string name, int damage, int xp)
         {
@@ -85,6 +86,7 @@
 
         [TestCase("Maria", 20, 30)]
         [TestCase("Maria", 30, 10)]
+        [TestCase("Maria", 30, 0)]
 
         public void AttackShouldThrowExrrorIfITryDownXPUnder30(string name, int damage, int xp)
         {
@@ -100,6 +102,7 @@
 
         [TestCase("Maria", 20, 30)]
         [TestCase("Maria", 30, 10)]
+        [TestCase("Maria", 30, 0)]
 
         public void AttackShouldThrowExrrorIfTryDownXPUnder30(string name, int damage, int xp)
         {
@@ -127,42 +130,45 @@
 
         }
 
-        [Test]
-        public void AttackShouldReturnCorrectDataWhenWasAttack()
+        [TestCase(70, 50)]
+        [TestCase(60, 60)]
+        public void AttackShouldReturnCorrectDataWhenWasAttack(int attackerXP, int defenderDamage)
         {
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            Warrior secondWarrior = new Warrior("Maria", 20, 50);
-            secondWarrior.Attack(firstWarrior);
+            Warrior firstWarrior = new Warrior("Polina", 10, attackerXP);
+            Warrior secondWarrior = new Warrior("Maria", defenderDamage, 50);
+            firstWarrior.Attack(secondWarrior);
 
             int dataXP = firstWarrior.HP;
-            int expectedXP = 40;
+            int expectedXP = attackerXP - defenderDamage;
 
             Assert.AreEqual(expectedXP, dataXP);
 
         }
 
-        [Test]
-        public void AttackShouldReturnZeroIfAttackIsBigger()
+        [TestCase(70, 40)]
+        [TestCase(60, 59)]
+        public void AttackShouldReturnZeroIfAttackIsBigger(int attackerDamage, int defendedXP)
         {
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            Warrior secondWarrior = new Warrior("Maria", 70, 50);
-            secondWarrior.Attack(firstWarrior);
+            Warrior firstWarrior = new Warrior("Polina", attackerDamage, 60);
+            Warrior secondWarrior = new Warrior("Maria", 40, defendedXP);
+            firstWarrior.Attack(secondWarrior);
 
-            int dataXP = firstWarrior.HP;
+            int dataXP = secondWarrior.HP;
             int expectedXP = 0;
 
             Assert.AreEqual(expectedXP, dataXP);
         }
 
-        [Test]
-        public void AttackShouldReturnCorrectDataWhenAttack()
+        [TestCase(50, 60)]
+        [TestCase(50, 50)]
+        public void AttackShouldReturnCorrectDataWhenAttack(int attackerDamage, int defendedXP)
         {
-            Warrior firstWarrior = new Warrior("Polina", 10, 60);
-            Warrior secondWarrior = new Warrior("Maria", 10, 50);
-            secondWarrior.Attack(firstWarrior);
+            Warrior firstWarrior = new Warrior("Polina", attackerDamage, 100);
+            Warrior secondWarrior = new Warrior("Maria", 30, defendedXP);
+            firstWarrior.Attack(secondWarrior);
 
-            int dataXP = firstWarrior.HP;
-            int expectedXP = 50;
+            int dataXP = secondWarrior.HP;
+            int expectedXP = defendedXP - attackerDamage;
 
             Assert.AreEqual(expectedXP, dataXP);
         }
