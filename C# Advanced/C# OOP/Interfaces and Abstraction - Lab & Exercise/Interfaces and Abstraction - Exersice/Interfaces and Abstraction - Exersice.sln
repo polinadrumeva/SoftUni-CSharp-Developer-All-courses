@@ -11,15 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3.Telephony", "3. Telephony
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4.BorderControl", "4. Border Control\4.BorderControl.csproj", "{A7B191CA-AF71-41E5-B4E4-0E15A7BD6D83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5. Birthday", "5. Birthday Celebrations\5. Birthday.csproj", "{017265B2-5915-43BF-9B58-92978C725133}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5.Birthday", "5. Birthday Celebrations\5.Birthday.csproj", "{017265B2-5915-43BF-9B58-92978C725133}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6. Food Shortage", "6. Food Shortage\6. Food Shortage.csproj", "{BCC54FA4-DA64-4F0E-9A64-2BDF0E582E5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6.FoodShortage", "6. Food Shortage\6.FoodShortage.csproj", "{BCC54FA4-DA64-4F0E-9A64-2BDF0E582E5C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7.MilitaryElite", "7. Military Elite\7.MilitaryElite.csproj", "{6BC1EFF9-1F02-43A2-BEFF-A5CF7C1B76F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "8. Collection Hierarchy", "8. Collection Hierarchy\8. Collection Hierarchy.csproj", "{1EF7E309-2858-4A95-875E-2821B8457BAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "8.CollectionHierarchy", "8. Collection Hierarchy\8.CollectionHierarchy.csproj", "{1EF7E309-2858-4A95-875E-2821B8457BAF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "9. Explicit Interfaces", "9. Explicit Interfaces\9. Explicit Interfaces.csproj", "{8D2A6B99-6C55-4E9E-ABD2-D9B1B2F262DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "9.ExplicitInterfaces", "9. Explicit Interfaces\9.ExplicitInterfaces.csproj", "{8D2A6B99-6C55-4E9E-ABD2-D9B1B2F262DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
