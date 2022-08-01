@@ -1,12 +1,12 @@
-﻿namespace INStock
+﻿namespace FakeAxeAndDummy
 {
     using System;
 
     public class StartUp
     {
-        public static void Main(string[] args)
+        static void Main()
         {
-
+            
         }
     }
 }
