@@ -11,7 +11,7 @@
     public class PilotRepository : IRepository<IPilot>
     {
         private readonly List<IPilot> models;
-        public IReadOnlyCollection<IPilot> Models { get { return (List<IPilot>)models; } }
+        public IReadOnlyCollection<IPilot> Models { get { return models; } }
 
         public PilotRepository()
         {
@@ -19,7 +19,11 @@
         }
         public void Add(IPilot model)
         {
-            this.models.Add(model);
+            if (!this.models.Contains(model))
+            {
+                this.models.Add(model);
+            }
+
         }
 
         public IPilot FindByName(string name)

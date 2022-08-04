@@ -7,10 +7,11 @@
     using System.Text;
 
 
-    public abstract class Pilot : IPilot
+    public class Pilot : IPilot
     {
         private string fullName;
-        private bool canRace;
+        private bool canRace = false;
+        private IFormulaOneCar car;
         public string FullName
         {
             get
@@ -28,7 +29,23 @@
             }
         }
 
-        public IFormulaOneCar Car { get; set; }
+        public IFormulaOneCar Car
+        {
+            get
+            {
+                return this.car;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidCarForPilot));
+
+                }
+
+                this.car = value;
+            }
+        }
 
         public int NumberOfWins { get; private set; }
 
@@ -37,10 +54,10 @@
             get
             { 
                 return canRace;
-            } 
-            private set 
+            }
+            private set
             { 
-                this.canRace = false;
+                this.canRace = value;
             }
         }
 

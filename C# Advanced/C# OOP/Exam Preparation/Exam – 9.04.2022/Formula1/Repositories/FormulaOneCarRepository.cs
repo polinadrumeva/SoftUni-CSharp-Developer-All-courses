@@ -10,16 +10,20 @@ namespace Formula1.Repositories
     public class FormulaOneCarRepository : IRepository<IFormulaOneCar>
     {
         private readonly List<IFormulaOneCar> models;
-        public IReadOnlyCollection<IFormulaOneCar> Models { get { return (List<IFormulaOneCar>)models; } }
+        public IReadOnlyCollection<IFormulaOneCar> Models { get { return models; } }
 
-        private FormulaOneCarRepository()
+        public FormulaOneCarRepository()
         {
             this.models = new List<IFormulaOneCar>();
         }
 
         public void Add(IFormulaOneCar model)
         {
-            this.models.Add(model);
+            if (!this.models.Contains(model))
+            {
+                this.models.Add(model);
+            }
+            
         }
 
         public IFormulaOneCar FindByName(string name)

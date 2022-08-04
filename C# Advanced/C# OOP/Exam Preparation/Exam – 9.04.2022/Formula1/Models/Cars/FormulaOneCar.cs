@@ -18,7 +18,7 @@
             {
                 return this.model;
             }
-            private set 
+            private set
             {
                 if (String.IsNullOrWhiteSpace(value) || value.Length < 3)
                 {
@@ -55,7 +55,7 @@
             }
             private set
             {
-                if (value < 1.6 || value > 2.00)
+                if (value < 1.60 || value > 2.00)
                 {
                     throw new ArgumentException(String.Format(ExceptionMessages.InvalidF1EngineDisplacement, value));
                 }

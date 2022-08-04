@@ -11,13 +11,21 @@
     public class RaceRepository : IRepository<IRace>
     {
         private readonly List<IRace> models;
-        public IReadOnlyCollection<IRace> Models { get { return (List<IRace>)models; } }
+        public IReadOnlyCollection<IRace> Models { get { return models; } }
 
         public void Add(IRace model)
         {
-            this.models.Add(model);
+            if (!this.models.Contains(model))
+            {
+                this.models.Add(model);
+            }
+
         }
 
+        public RaceRepository()
+        {
+            this.models = new List<IRace>();
+        }
         public IRace FindByName(string name)
         {
             IRace raceToFind = this.models.FirstOrDefault(r => r.RaceName == name);

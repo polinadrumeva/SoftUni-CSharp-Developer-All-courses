@@ -11,7 +11,7 @@
     {
         private string raceName;
         private int numberOfLaps;
-        private bool tookPlace;
+        private bool tookPlace = false;
         private ICollection<IPilot> pilots;
 
         public string RaceName
@@ -22,7 +22,7 @@
             }
             private set
             {
-                if (String.IsNullOrWhiteSpace(value) || value.Length < 5)
+                if (String.IsNullOrWhiteSpace(value) || String.IsNullOrEmpty(value) || value.Length < 5)
                 {
                     throw new ArgumentException(String.Format(ExceptionMessages.InvalidRaceName, value));
                 }
@@ -48,16 +48,16 @@
             }
         }
 
-        public bool TookPlace
-        {
+        public bool TookPlace 
+        { 
             get
             {
                 return this.tookPlace;
-            }
-            set
-            {
-                this.tookPlace = false;
-            }
+            } 
+            set 
+            { 
+                this.tookPlace = value;
+            } 
         }
 
         public ICollection<IPilot> Pilots { get;}
@@ -93,7 +93,7 @@
                 sb.AppendLine($"Took place: No");
             }
 
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
     }
 }
