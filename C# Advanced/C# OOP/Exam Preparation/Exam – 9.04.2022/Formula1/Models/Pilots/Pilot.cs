@@ -35,7 +35,7 @@
             {
                 return this.car;
             }
-            set
+            private set
             {
                 if (value == null)
                 {
