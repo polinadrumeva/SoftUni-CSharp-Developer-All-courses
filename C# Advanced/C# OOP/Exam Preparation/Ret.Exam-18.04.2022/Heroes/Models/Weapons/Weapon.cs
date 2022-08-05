@@ -16,7 +16,7 @@ namespace Heroes.Models.Weapons
             { 
                 return this.name;
             }
-            set
+            private set
             {
                 if (String.IsNullOrWhiteSpace(value))
                 {
@@ -32,7 +32,7 @@ namespace Heroes.Models.Weapons
             {
                 return this.durability;
             }
-            set
+            protected set
             {
                 if (value < 0)
                 {

@@ -24,25 +24,7 @@ namespace Heroes.Core.Contracts
 
         public string CreateHero(string type, string name, int health, int armour)
         {
-            IHero hero;
-            if (type == "Knight")
-            {
-                hero = new Knight(name, health, armour); 
-            }
-            else if (type == "Barbarian")
-            {
-                hero = new Barbarian(name, health, armour);
-            }
-            else
-            {
-                throw new InvalidOperationException("Invalid hero type.");
-            }
-
-            
-            if (heroes.FindByName( ))
-            {
-
-            }
+            throw new NotImplementedException();
         }
 
         public string CreateWeapon(string type, string name, int durability)

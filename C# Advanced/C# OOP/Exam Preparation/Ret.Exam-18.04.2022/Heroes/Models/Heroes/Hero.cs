@@ -51,7 +51,7 @@ namespace Heroes.Models.Heroes
             {
                 return this.armour;
             }
-            set
+            private set
             {
                 if (value < 0)
                 {
