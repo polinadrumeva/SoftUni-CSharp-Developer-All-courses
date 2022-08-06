@@ -1,6 +1,7 @@
 ﻿namespace SpaceStation.Models.Astronauts
 {
     using SpaceStation.Models.Astronauts.Contracts;
+    using SpaceStation.Models.Bags;
     using SpaceStation.Models.Bags.Contracts;
     using SpaceStation.Utilities.Messages;
     using System;
@@ -51,7 +52,7 @@
             }
         }
 
-        public bool CanBreath { get; private set; }
+        public bool CanBreath => Oxygen >= 10.00;
 
         public IBag Bag { get; private set; }
 
@@ -59,10 +60,36 @@
         {
            this.Name = name;
             this.Oxygen = oxygen;
+            this.Bag = new Backpack();
         }
         public virtual void Breath()
         {
-            this.Oxygen -= decreaseOxygen;
+            if (this.Oxygen - decreaseOxygen <= 0)
+            {
+                this.Oxygen = 0;
+            }
+            else
+            {
+                this.Oxygen -= decreaseOxygen;
+            }
+            
+        }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"Name: {this.Name}");
+            stringBuilder.AppendLine($"Oxygen: {this.Oxygen}");
+            if (this.Bag.Items.Count == 0)
+            {
+                stringBuilder.AppendLine($"Bag items: none");
+            }
+            else
+            {
+                stringBuilder.AppendLine($"Bag items: {string.Join(", ", this.Bag.Items)}");
+            }
+            
+            return stringBuilder.ToString().TrimEnd();
         }
     }
 }

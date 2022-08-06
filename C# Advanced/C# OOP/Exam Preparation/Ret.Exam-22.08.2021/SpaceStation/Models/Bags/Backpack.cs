@@ -8,7 +8,7 @@
 
     public class Backpack : IBag
     {
-        private readonly List<string> items;
+        private readonly ICollection<string> items;
         public ICollection<string> Items { get { return (List<string>) items; } }
 
         public Backpack()
