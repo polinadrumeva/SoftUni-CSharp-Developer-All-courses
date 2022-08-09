@@ -62,11 +62,82 @@
         {
             Gym gym = new Gym("SportGym", 1);
             Athlete athlete = new Athlete("Polina");
+            gym.AddAthlete(athlete);
+            Athlete athlete1 = new Athlete("Maria");
             Assert.Throws<InvalidOperationException>(() =>
            {
-               gym.AddAthlete(athlete);
+               gym.AddAthlete(athlete1);
            }, "The gym is full.");
 
+        }
+
+        [Test]
+        public void RemoveAthletesShouldReturnCorrectData()
+        {
+            Gym gym = new Gym("SportGym", 10);
+            Athlete athlete = new Athlete("Polina");
+            Athlete athlete1 = new Athlete("Maria");
+            gym.AddAthlete(athlete);
+            gym.AddAthlete(athlete1);
+            gym.RemoveAthlete("Maria");
+            int actualData = gym.Count;
+            int expectedData = 1;
+            Assert.AreEqual(expectedData, actualData);
+        }
+
+        [TestCase("Maria")]
+        public void RemoveAthletesShouldThrowEceptionIfAtletesNotExist(string name)
+        {
+            Gym gym = new Gym("SportGym", 2);
+            Athlete athlete = new Athlete("Polina");
+            gym.AddAthlete(athlete);
+            Athlete athlete1 = new Athlete(name);
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                gym.RemoveAthlete(name);
+            }, $"The athlete {name} doesn't exist.");
+
+        }
+
+        [Test]
+        public void InjureAthletesShouldReturnCorrectData()
+        {
+            Gym gym = new Gym("SportGym", 10);
+            Athlete athlete = new Athlete("Polina");
+            Athlete athlete1 = new Athlete("Maria");
+            gym.AddAthlete(athlete);
+            gym.AddAthlete(athlete1);
+            gym.InjureAthlete("Maria");
+            bool actualInjureData = athlete1.IsInjured;
+            bool expectedInjureData = true;
+            Assert.AreEqual(expectedInjureData, actualInjureData);
+        }
+
+        [TestCase("Maria")]
+        public void InjureAthletesShouldThrowExceptionIfAtletesNotExist(string name)
+        {
+            Gym gym = new Gym("SportGym", 2);
+            Athlete athlete = new Athlete("Polina");
+            Athlete athlete1 = new Athlete(name);
+            gym.AddAthlete(athlete);
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                gym.InjureAthlete(name);
+            }, $"The athlete {name} doesn't exist.");
+
+        }
+
+        [TestCase("Polina")]
+        [TestCase("Maria")]
+        public void ReportShouldReturnCorrectData(string name)
+        {
+            Gym gym = new Gym("SportGym", 10);
+            Athlete athlete = new Athlete(name);
+            gym.AddAthlete(athlete);
+           
+            string actualReport = gym.Report();
+            string expectedReport = $"Active athletes at SportGym: {name}";
+            Assert.AreEqual(expectedReport, actualReport);
         }
     }
 }
