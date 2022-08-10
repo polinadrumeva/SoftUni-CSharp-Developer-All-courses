@@ -8,8 +8,16 @@
 
     public class ProfessionalRacer : Racer
     {
-        public ProfessionalRacer(string username, string racingBehavior, int drivingExperience, ICar car) : base(username, racingBehavior, drivingExperience, car)
+        private const int drivingExperienceProfRacer = 30;
+        private const string racingBehaviourProfRacer = "strict";
+        public ProfessionalRacer(string username, ICar car) : base(username, racingBehaviourProfRacer, drivingExperienceProfRacer, car)
         {
+        }
+
+        public override void Race()
+        {
+            base.Race();
+            this.DrivingExperience += 10;
         }
     }
 }

@@ -7,8 +7,15 @@
 
     public class SuperCar : Car
     {
-        public SuperCar(string make, string model, string vin, int horsePower, double fuelAvailabe, double fuelConsumption) : base(make, model, vin, horsePower, fuelAvailabe, fuelConsumption)
+        private const double fuelAvailableSuperCar = 80;
+        private const double fuelConsumptionSuperCar = 10;
+        public SuperCar(string make, string model, string vin, int horsePower) : base(make, model, vin, horsePower, fuelAvailableSuperCar, fuelConsumptionSuperCar)
         {
+        }
+
+        public override void Drive()
+        {
+            this.FuelAvailable -= this.FuelConsumptionPerRace;
         }
     }
 }

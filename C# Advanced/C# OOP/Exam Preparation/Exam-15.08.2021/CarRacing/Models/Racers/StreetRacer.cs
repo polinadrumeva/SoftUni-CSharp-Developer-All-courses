@@ -8,8 +8,16 @@
 
     public class StreetRacer : Racer
     {
-        public StreetRacer(string username, string racingBehavior, int drivingExperience, ICar car) : base(username, racingBehavior, drivingExperience, car)
+        private const int drivingExperienceStreetRacer = 10;
+        private const string racingBehaviourStreetRacer = "aggressive";
+        public StreetRacer(string username,ICar car) : base(username, racingBehaviourStreetRacer, drivingExperienceStreetRacer, car)
         {
+        }
+
+        public override void Race()
+        {
+            base.Race();
+            this.DrivingExperience += 5;
         }
     }
 }

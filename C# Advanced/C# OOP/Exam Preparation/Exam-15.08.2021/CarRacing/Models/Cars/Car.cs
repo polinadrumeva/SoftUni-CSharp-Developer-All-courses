@@ -1,6 +1,7 @@
 ﻿namespace CarRacing.Models.Cars
 {
     using CarRacing.Models.Cars.Contracts;
+    using CarRacing.Utilities.Messages;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -14,25 +15,118 @@
         private int horsePower;
         private double fuelAvailable;
         private double fuelConsumption;
-        public string Make => throw new NotImplementedException();
+        public string Make
+        {
+            get
+            {
+                return this.make;
+            }
+            private set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidCarMake));
+                }
 
-        public string Model => throw new NotImplementedException();
+                this.make = value;
+            }
+        }
 
-        public string VIN => throw new NotImplementedException();
+        public string Model
+        {
+            get
+            {
+                return this.model;
+            }
+            private set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidCarModel));
+                }
 
-        public int HorsePower => throw new NotImplementedException();
+                this.model = value;
+            }
+        }
 
-        public double FuelAvailable => throw new NotImplementedException();
+        public string VIN
+        {
+            get
+            {
+                return this.vin;
+            }
+            private set
+            {
+                if (value.Length != 17)
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidCarVIN));
+                }
 
-        public double FuelConsumptionPerRace => throw new NotImplementedException();
+                this.vin = value;
+            }
+        }
+
+        public int HorsePower
+        {
+            get
+            {
+                return this.horsePower;
+            }
+            protected set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidCarHorsePower));
+                }
+
+                this.horsePower = value;
+            }
+        }
+
+        public double FuelAvailable
+        {
+            get
+            {
+                return this.fuelAvailable;
+            }
+            protected set
+            {
+                if (value < 0)
+                {
+                    this.fuelAvailable = 0;
+                }
+
+                this.fuelAvailable = value;
+            }
+        }
+
+        public double FuelConsumptionPerRace
+        {
+            get
+            {
+                return this.fuelConsumption;
+            }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidCarFuelConsumption));
+                }
+
+                this.fuelConsumption = value;
+            }
+        }
 
         public Car(string make, string model, string vin, int horsePower, double fuelAvailabe, double fuelConsumption)
         {
-            
+            this.Make = make;
+            this.Model = model;
+            this.VIN = vin;
+            this.HorsePower = horsePower;
+            this.FuelAvailable = fuelAvailabe;
+            this.FuelConsumptionPerRace = fuelConsumption;
+
         }
-        public void Drive()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Drive();
     }
 }

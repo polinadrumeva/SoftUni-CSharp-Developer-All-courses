@@ -7,8 +7,16 @@
 
     public class TunedCar : Car
     {
-        public TunedCar(string make, string model, string vin, int horsePower, double fuelAvailabe, double fuelConsumption) : base(make, model, vin, horsePower, fuelAvailabe, fuelConsumption)
+        private const double fuelAvailableTunedCar = 65;
+        private const double fuelConsumptionTunedCar = 7.5;
+        public TunedCar(string make, string model, string vin, int horsePower) : base(make, model, vin, horsePower, fuelAvailableTunedCar, fuelConsumptionTunedCar)
         {
+        }
+
+        public override void Drive()
+        {
+            this.FuelAvailable -= this.FuelConsumptionPerRace;
+            this.HorsePower -= (int)0.3 * this.HorsePower;
         }
     }
 }
