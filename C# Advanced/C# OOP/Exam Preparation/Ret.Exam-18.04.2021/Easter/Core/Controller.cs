@@ -6,10 +6,12 @@
     using Easter.Models.Dyes;
     using Easter.Models.Eggs;
     using Easter.Models.Eggs.Contracts;
+    using Easter.Models.Workshops;
     using Easter.Repositories;
     using Easter.Utilities.Messages;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
 
@@ -64,12 +66,55 @@
 
         public string ColorEgg(string eggName)
         {
-            throw new NotImplementedException();
+            var availableBunnies = this.bunnies.Models
+               .Where(b => b.Energy >= 50)
+               .OrderByDescending(b => b.Energy)
+               .ToList();
+
+            if (!availableBunnies.Any())
+            {
+                throw new InvalidOperationException(ExceptionMessages.BunniesNotReady);
+            }
+
+            IEgg eggToColor = eggs.FindByName(eggName);
+            Workshop workshop = new Workshop();
+
+            foreach (var suitableBunny in availableBunnies)
+            {
+                workshop.Color(eggToColor, suitableBunny);
+
+                if (suitableBunny.Energy == 0)
+                {
+                    bunnies.Remove(suitableBunny);
+                }
+                if (eggToColor.IsDone() == true)
+                {
+                    break;
+                }
+            }
+
+            return eggToColor.IsDone() == true
+                ? string.Format(OutputMessages.EggIsDone, eggName)
+                : string.Format(OutputMessages.EggIsNotDone, eggName);
         }
 
         public string Report()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            int coloredEggs = eggs.Models.Count(e => e.IsDone() == true);
+            sb.AppendLine($"{coloredEggs} eggs are done!");
+            sb.AppendLine($"Bunnies info: ");
+            
+            foreach (var bunny in this.bunnies.Models)
+            {
+
+                int countDyes = bunny.Dyes.Count(d => d.IsFinished() == false);
+                sb.AppendLine($"Name: {bunny.Name}");
+                sb.AppendLine($"Energy: {bunny.Energy}");
+                sb.AppendLine($"Dyes: {bunny.Dyes.Count} not finished");
+            }
+
+            return sb.ToString().TrimEnd();
         }
     }
 }

@@ -13,6 +13,11 @@
         private readonly IList<IEgg> models;
         public IReadOnlyCollection<IEgg> Models => (List<IEgg>) models;
 
+        public EggRepository()
+        {
+            this.models = new List<IEgg>();
+        }
+
         public void Add(IEgg model) => this.models.Add(model);
 
         public IEgg FindByName(string name)

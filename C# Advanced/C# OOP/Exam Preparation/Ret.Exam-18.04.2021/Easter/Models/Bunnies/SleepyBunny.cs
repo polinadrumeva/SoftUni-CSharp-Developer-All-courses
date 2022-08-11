@@ -9,10 +9,6 @@
     {
         private const int energySleepyBunny = 50;
 
-        public SleepyBunny()
-        {
-        }
-
         public SleepyBunny(string name)
             : base(name, energySleepyBunny)
         {
