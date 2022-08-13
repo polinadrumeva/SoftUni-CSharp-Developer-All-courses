@@ -15,7 +15,6 @@ namespace WarCroft.Entities.Characters.Contracts
         private double armor; 
         private double abilityPoints;
         private Bag bag;
-        private bool isAlive;
         public string Name
         {
             get
@@ -41,7 +40,7 @@ namespace WarCroft.Entities.Characters.Contracts
             }
             set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     this.health = 0;
                 }
@@ -62,7 +61,7 @@ namespace WarCroft.Entities.Characters.Contracts
             }
             private set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     this.armor = 0;
                 }
@@ -79,7 +78,9 @@ namespace WarCroft.Entities.Characters.Contracts
         public Character(string name, double health, double armor, double abilityPoints, Bag bag)
         {
             this.Name = name;
+            this.BaseHealth = health;
             this.Health = health;
+            this.BaseArmor = armor;
             this.Armor = armor;
             this.AbilityPoints = abilityPoints;
             this.Bag = bag;
@@ -89,13 +90,13 @@ namespace WarCroft.Entities.Characters.Contracts
 		{
 			if (!this.IsAlive)
 			{
-				throw new InvalidOperationException(ExceptionMessages.AffectedCharacterDead);
+				throw new InvalidOperationException(string.Format(ExceptionMessages.AffectedCharacterDead));
 			}
 		}
 
         public void TakeDamage(double hitPoints)
         {
-            if (this.isAlive)
+            if (this.IsAlive)
             {
                 double leftPoints;
                 if (this.Armor < hitPoints)
@@ -105,6 +106,7 @@ namespace WarCroft.Entities.Characters.Contracts
                     this.Health -= leftPoints;
                     if (this.Health <= 0)
                     {
+                        this.Health = 0;
                         this.IsAlive = false;
                     }
                 }
@@ -117,7 +119,7 @@ namespace WarCroft.Entities.Characters.Contracts
 
         public void UseItem(Item item)
         {
-            if (this.isAlive)
+            if (this.IsAlive)
             {
                 item.AffectCharacter(this);
             }

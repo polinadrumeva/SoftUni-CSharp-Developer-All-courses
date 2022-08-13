@@ -24,7 +24,7 @@ namespace WarCroft.Entities.Characters
             {
                 if (this == character)
                 {
-                    throw new InvalidOperationException(ExceptionMessages.CharacterAttacksSelf);
+                    throw new InvalidOperationException(string.Format(ExceptionMessages.CharacterAttacksSelf));
                 }
 
                 character.TakeDamage(this.AbilityPoints);
