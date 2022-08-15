@@ -27,6 +27,54 @@ namespace PlanetWars.Tests
                 Assert.AreEqual(expectedPrice, actualPrice);
             }
 
+            [TestCase("Makarov", 200, 100)]
+            public void ConstructorShouldReturnCorrectData(string name, double price, int destructionLevel)
+            {
+                Weapon weapon = new Weapon(name, price, destructionLevel);
+                string actualName = weapon.Name;
+                double actualPrice = weapon.Price;
+                int actualDestruction = weapon.DestructionLevel;
+
+                string expectedName = name;
+                double expectedPrice = price;
+                int expectedLevel = destructionLevel;
+                
+                Assert.AreEqual(expectedName, actualName);
+                Assert.AreEqual(expectedPrice, actualPrice);
+                Assert.AreEqual(expectedLevel, actualDestruction);
+            }
+
+            [Test]
+            public void IncreaseShouldReturnCorrectData()
+            {
+                Weapon weapon = new Weapon("Makarov", 200, 100);
+                weapon.IncreaseDestructionLevel();
+                int actualDestruction = weapon.DestructionLevel;
+                int expectedDestruction = 101;
+
+                Assert.AreEqual(expectedDestruction, actualDestruction);
+            }
+
+            [Test]
+            public void IsNuclearShouldReturnTrue()
+            {
+                Weapon weapon = new Weapon("Makarov", 200, 100);
+                bool actualNuclear = weapon.IsNuclear;
+                bool expectedNuclear = true;
+
+                Assert.AreEqual(expectedNuclear, actualNuclear);
+            }
+
+            [Test]
+            public void IsNuclearShouldReturnFalse()
+            {
+                Weapon weapon = new Weapon("Makarov", 200, 9);
+                bool actualNuclear = weapon.IsNuclear;
+                bool expectedNuclear = false;
+
+                Assert.AreEqual(expectedNuclear, actualNuclear);
+            }
+
             [TestCase(null)]
            [TestCase("")]
             public void NameShouldThrowExceptionIfValueIsNullOrEmtty(string name)
