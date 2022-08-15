@@ -184,10 +184,10 @@
                 throw new InvalidOperationException(String.Format(ExceptionMessages.NoUnitsFound));
             }
 
-            foreach (var unit in planet.Army)
-            {
-                unit.IncreaseEndurance();
-            }
+            //foreach (var unit in planet.Army)
+            //{
+            //    unit.IncreaseEndurance();
+            //}
 
             planet.Spend(sumForSpecializeForces);
             planet.TrainArmy();

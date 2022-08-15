@@ -13,7 +13,7 @@
         private int destructionLevel;
         public double Price { get; private set; }
 
-        public int DestructionLevel 
+        public virtual int DestructionLevel 
         {
             get 
             { 
