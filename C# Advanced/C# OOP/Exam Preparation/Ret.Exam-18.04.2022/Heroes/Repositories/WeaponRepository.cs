@@ -9,54 +9,21 @@ namespace Heroes.Repositories
 {
     public class WeaponRepository : IRepository<IWeapon>
     {
-        //public ICollection<IWeapon> Models { get; set; }
+       
+        private readonly IList<IWeapon> models;
 
-        //public void Add(IWeapon model)
-        //{
-        //    if (!Models.Contains(model))
-        //    {
-        //        Models.Add(model);
-        //    }
+        public IReadOnlyCollection<IWeapon> Models { get { return (List<IWeapon>) models; } }
 
-        //}
-
-        //public bool Remove(IWeapon model)
-        //{
-        //    IWeapon weaponToRemove = Models.FirstOrDefault(h => h.Equals(model));
-        //    if (weaponToRemove != null)
-        //    {
-        //        Models.Remove(weaponToRemove);
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
-
-        //public IWeapon FindByName(string name)
-        //{
-        //    IWeapon searchingWeapon = Models.FirstOrDefault(hero => hero.Name == name);
-        //    if (searchingWeapon != null)
-        //    {
-        //        return searchingWeapon;
-        //    }
-
-        //    return null;
-        //}
-        private IList<IWeapon> models;
-
-        public IReadOnlyCollection<IWeapon> Models { get { return (IReadOnlyList<IWeapon>) models; } }
-
-        public void Add(IWeapon model)
+        public WeaponRepository()
         {
-            if (!models.Contains(model))
-            {
-               models.Add(model);
-            }
+            this.models = new List<IWeapon>();
         }
+
+        public void Add(IWeapon model) => this.models.Add(model);
 
         public IWeapon FindByName(string name)
         {
-            IWeapon searchingWeapon = models.FirstOrDefault(hero => hero.Name == name);
+            IWeapon searchingWeapon = models.FirstOrDefault(w => w.Name == name);
             if (searchingWeapon != null)
             {
                return searchingWeapon;
@@ -67,7 +34,7 @@ namespace Heroes.Repositories
 
         public bool Remove(IWeapon model)
         {
-            IWeapon weaponToRemove = models.FirstOrDefault(h => h.Equals(model));
+            IWeapon weaponToRemove = models.FirstOrDefault(w => w.Equals(model));
             if (weaponToRemove != null)
             {
                  models.Remove(weaponToRemove);

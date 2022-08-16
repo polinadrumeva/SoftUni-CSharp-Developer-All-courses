@@ -2,12 +2,11 @@
 {
     public class Claymore : Weapon
     {
-        private int damage;
+        private const int damage = 20;
 
         public Claymore(string name, int durability)
             : base(name, durability)
         {
-            damage = 20;
         }
 
         public override int DoDamage()

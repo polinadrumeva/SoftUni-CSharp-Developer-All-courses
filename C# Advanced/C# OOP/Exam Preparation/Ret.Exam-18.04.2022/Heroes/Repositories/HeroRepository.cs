@@ -9,22 +9,16 @@ namespace Heroes.Repositories
     public class HeroRepository : IRepository<IHero>
     {
        
-        private IList<IHero> models;
+        private readonly IList<IHero> models;
 
-        public IReadOnlyCollection<IHero> Models { get { return (IReadOnlyList<IHero>)models; } }
+        public IReadOnlyCollection<IHero> Models { get { return (List<IHero>)models; } }
 
         public HeroRepository()
         {
             this.models = new List<IHero>();
         }
 
-        public void Add(IHero model)
-        {
-            if (!models.Contains(model))
-            {
-                models.Add(model);
-            }
-        }
+        public void Add(IHero model) => this.models.Add(model);
 
         public IHero FindByName(string name)
         {
@@ -37,7 +31,7 @@ namespace Heroes.Repositories
              return null;
         }
 
-        public bool Remove(IHero model)
+        public bool Remove(IHero model) 
         {
             IHero heroToRemove = models.FirstOrDefault(h => h.Equals(model));
             if (heroToRemove != null)

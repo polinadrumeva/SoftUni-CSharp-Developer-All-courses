@@ -24,13 +24,13 @@ namespace Heroes.Core.Contracts
         }
         public string AddWeaponToHero(string weaponName, string heroName)
         {
-            Hero hero = (Hero)this.heroes.FindByName(heroName);
-            Weapon weapon = (Weapon)this.weapons.FindByName(weaponName);
+            IHero hero = this.heroes.FindByName(heroName);
+            IWeapon weapon = this.weapons.FindByName(weaponName);
             if (hero == null)
             {
                 throw new InvalidOperationException($"Hero {heroName} does not exist.");
             }
-            else if (weapon == null)
+            if (weapon == null)
             {
                 throw new InvalidOperationException($"Weapon {weaponName} does not exist.");
             }
@@ -48,7 +48,7 @@ namespace Heroes.Core.Contracts
         public string CreateHero(string type, string name, int health, int armour)
         {
 
-            Hero hero;
+            IHero hero;
             if (type == "Knight")
             {
                 hero = new Knight(name, health, armour);
@@ -62,7 +62,7 @@ namespace Heroes.Core.Contracts
                 throw new InvalidOperationException("Invalid hero type.");
             }
 
-            Hero heroToFind = (Hero)this.heroes.FindByName(name);
+            IHero heroToFind = this.heroes.FindByName(name);
             if (heroToFind != null)
             {
                 throw new InvalidOperationException($"The hero {name} already exists.");
@@ -83,7 +83,7 @@ namespace Heroes.Core.Contracts
         public string CreateWeapon(string type, string name, int durability)
         {
 
-            Weapon weapon;
+            IWeapon weapon;
             if (type == "Claymore")
             {
                 weapon = new Claymore(name,durability);
@@ -97,13 +97,14 @@ namespace Heroes.Core.Contracts
                 throw new InvalidOperationException("Invalid weapon type.");
             }
 
-            if (this.weapons.Models.Contains(weapon))
+            IWeapon weaponToFind = this.weapons.FindByName(name);
+            if (weaponToFind != null)
             {
                 throw new InvalidOperationException($"The weapon {name} already exists.");
             }
 
             this.weapons.Add(weapon);
-            return $"A {weapon.GetType().Name.ToLower()} {weapon.Name} is added to the collection.";
+            return $"A {type.ToLower()} {weapon.Name} is added to the collection.";
 
         }
 
@@ -120,8 +121,8 @@ namespace Heroes.Core.Contracts
 
         public string StartBattle()
         {
-            List<IHero> heroes = this.heroes.Models.Where(h => h.IsAlive && h.Weapon != null).ToList();
-            return map.Fight(heroes);
+            List<IHero> heroesToFight = this.heroes.Models.Where(h => h.IsAlive && h.Weapon != null).ToList();
+            return map.Fight(heroesToFight);
         }
     }
 }

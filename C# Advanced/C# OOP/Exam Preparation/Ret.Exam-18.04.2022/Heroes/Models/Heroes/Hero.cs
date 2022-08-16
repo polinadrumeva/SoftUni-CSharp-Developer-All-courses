@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Heroes.Models.Contracts;
 
 
@@ -10,7 +11,6 @@ namespace Heroes.Models.Heroes
         private string name;
         private int health;
         private int armour;
-        private bool isAlive;
         private IWeapon weapon;
 
         public string Name 
@@ -61,25 +61,23 @@ namespace Heroes.Models.Heroes
                 this.armour = value;
             }
         }
-        public bool IsAlive 
-        {
+        public bool IsAlive => this.Health > 0;
+        public IWeapon Weapon 
+        { 
             get
-            {
-                return this.isAlive;
-            }
+            { 
+                return this.weapon; 
+            } 
             private set
             {
-                if (this.health < 0)
+                if (value == null)
                 {
-                    this.isAlive = false;
+                    throw new ArgumentException("Weapon cannot be null.");
                 }
-                else
-                {
-                    this.isAlive = true;
-                }
-            }
+
+                this.weapon = value;
+            } 
         }
-        public IWeapon Weapon { get { return this.weapon; } private set { AddWeapon(value); } }
 
         public Hero(string name, int health, int armour)
         {
@@ -90,35 +88,50 @@ namespace Heroes.Models.Heroes
 
         public void AddWeapon(IWeapon weapon)
         {
-            if (weapon == null)
-            {
-                throw new ArgumentException("Weapon cannot be null.");
-            }
-            if (this.Weapon == null)
-            {
+            
                 this.Weapon = weapon;
-            }
-           
+            
         }
 
         public void TakeDamage(int points)
         {
-            if (this.Armour >= 0)
+            if (this.Armour >= points)
             {
                 this.Armour -= points;
             }
-
-            if (this.Armour <= 0)
+            else
             {
-                this.Health -= this.Armour;
+                int leftPoints = points - this.Armour;
+                int pointsForArmour = points - leftPoints;
+                this.Armour -= pointsForArmour;
                 this.Armour = 0;
+                this.Health -= leftPoints;
+                if (this.Health <= 0)
+                {
+                    this.Health = 0;
+                }
+
             }
 
-            if (this.Health <= 0)
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"{this.GetType().Name}: {this.Name} ");
+            sb.AppendLine($"--Health: {this.Health}");
+            sb.AppendLine($"--Armour: {this.Armour}");
+
+            if (this.Weapon == null)
             {
-                this.isAlive = false;
+                sb.AppendLine($"--Weapon: Unarmed");
+            }
+            else
+            {
+                sb.AppendLine($"--Weapon: {this.Weapon.Name}");
             }
 
+            return sb.ToString().TrimEnd();
         }
     }
 }

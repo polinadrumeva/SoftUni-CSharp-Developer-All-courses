@@ -11,10 +11,11 @@ namespace Heroes.Models.Map
         {
             List<Barbarian> barbarians = new List<Barbarian>();
             List<Knight> knights = new List<Knight>();
+            bool areDeathBarbarian = false;
 
             foreach (var hero in heroes)
             {
-                if (hero is Barbarian)
+                if (hero.GetType().Name == "Barbarian")
                 {
                     barbarians.Add((Barbarian)hero);
                 }
@@ -33,9 +34,22 @@ namespace Heroes.Models.Map
                         if (knight.IsAlive)
                         {
                             barbarian.TakeDamage(knight.Weapon.DoDamage());
+
+                            
                         }
 
                     }
+
+                    if (barbarians.All(h => h.IsAlive == false))
+                    {
+                        areDeathBarbarian = true;
+                        break;
+                    }
+                }
+
+                if (areDeathBarbarian)
+                {
+                    break;
                 }
 
                 foreach (var barbarian in barbarians)
@@ -45,19 +59,28 @@ namespace Heroes.Models.Map
                         if (barbarian.IsAlive)
                         {
                             knight.TakeDamage(barbarian.Weapon.DoDamage());
+                            
                         }
+
+                    }
+                    if (knights.All(h => h.IsAlive == false))
+                    {
+                        break;
                     }
                 }
 
             }
 
+            int deathKnigts = knights.Count() - knights.Where(x => x.IsAlive).Count();
+            int deathBarbarian = barbarians.Count() - barbarians.Where(x => x.IsAlive).Count();
+
             if (knights.Any(x => x.IsAlive))
             {
-                return $"The knights took {knights.Where(k => k.IsAlive).ToList().Count} casualties but won the battle.";
+                return $"The knights took {deathKnigts} casualties but won the battle.";
             }
             else
             {
-                return $"The barbarians took {barbarians.Where(b => b.IsAlive).ToList().Count} casualties but won the battle.";
+                return $"The barbarians took {deathBarbarian} casualties but won the battle.";
             }
         }
     }
