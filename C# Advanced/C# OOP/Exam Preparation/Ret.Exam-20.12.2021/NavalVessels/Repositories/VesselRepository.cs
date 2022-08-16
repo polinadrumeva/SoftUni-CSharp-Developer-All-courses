@@ -17,13 +17,7 @@
         {
             this.models = new List<Vessel>();
         }
-        public void Add(Vessel model)
-        {
-            if (!this.models.Contains(model))
-            {
-                this.models.Add(model); 
-            }
-        }
+        public void Add(Vessel model) => this.models.Add(model);
 
         public Vessel FindByName(string name)
         {

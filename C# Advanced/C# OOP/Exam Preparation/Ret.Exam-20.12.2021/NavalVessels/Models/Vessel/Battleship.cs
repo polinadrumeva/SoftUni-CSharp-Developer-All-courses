@@ -19,12 +19,12 @@
             }
             private set 
             {
-                this.SonarMode = value;
+                this.sonarMode = value;
             }
         }
 
-        public Battleship(string name, double mainWeaponCaliber, double speed, double armorThickness) 
-            : base(name, mainWeaponCaliber, speed, armorThickness)
+        public Battleship(string name, double mainWeaponCaliber, double speed) 
+            : base(name, mainWeaponCaliber, speed, defaultArmorBattleShip)
         {
            
         }
@@ -58,18 +58,18 @@
         {
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($" - {this.Name}");
-            sb.AppendLine($"*Type: {this.GetType().Name}");
-            sb.AppendLine($"*Armor thickness: {this.ArmorThickness}");
-            sb.AppendLine($"*Main weapon caliber: {this.MainWeaponCaliber}");
-            sb.AppendLine($"*Speed: {this.Speed} knots");
+            sb.AppendLine($"- {this.Name}");
+            sb.AppendLine($" *Type: {this.GetType().Name}");
+            sb.AppendLine($" *Armor thickness: {this.ArmorThickness}");
+            sb.AppendLine($" *Main weapon caliber: {this.MainWeaponCaliber}");
+            sb.AppendLine($" *Speed: {this.Speed} knots");
             if (this.Targets.Count == 0)
             {
-                sb.AppendLine($"*Targets: None");
+                sb.AppendLine($" *Targets: None");
             }
             else
             {
-                sb.AppendLine($"*Targets: {string.Join(", ", this.Targets)}");
+                sb.AppendLine($" *Targets: {string.Join(", ", this.Targets)}");
             }
             if (this.SonarMode)
             {
