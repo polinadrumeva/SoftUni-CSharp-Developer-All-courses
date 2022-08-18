@@ -4,6 +4,7 @@ using Bakery.Models.Tables.Contracts;
 using Bakery.Utilities.Messages;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Bakery.Models.Tables
@@ -49,7 +50,7 @@ namespace Bakery.Models.Tables
             }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
                     throw new ArgumentException(string.Format(ExceptionMessages.InvalidNumberOfPeople));
                 }
@@ -75,32 +76,43 @@ namespace Bakery.Models.Tables
         }
         public void Clear()
         {
-            throw new NotImplementedException();
+            this.drinkOrders.Clear();
+            this.foodOrders.Clear();
+            this.IsReserved = false;
+            this.NumberOfPeople = 0;
         }
 
         public decimal GetBill()
         {
-            throw new NotImplementedException();
+            decimal bill = (this.foodOrders.Sum(f => f.Price) + this.drinkOrders.Sum(d => d.Price)) + (this.NumberOfPeople * this.PricePerPerson);
+            return bill;
         }
 
         public string GetFreeTableInfo()
         {
-            throw new NotImplementedException();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"Table: {this.TableNumber}");
+            stringBuilder.AppendLine($"Type: {this.GetType().Name}");
+            stringBuilder.AppendLine($"Capacity: {this.Capacity}");
+            stringBuilder.AppendLine($"Price per Person: {this.PricePerPerson:f2}");
+
+            return stringBuilder.ToString().TrimEnd();
         }
 
         public void OrderDrink(IDrink drink)
         {
-            throw new NotImplementedException();
+            this.drinkOrders.Add(drink);
         }
 
         public void OrderFood(IBakedFood food)
         {
-            throw new NotImplementedException();
+            this.foodOrders.Add(food);
         }
 
         public void Reserve(int numberOfPeople)
         {
-            throw new NotImplementedException();
+            this.IsReserved = true;
+            this.NumberOfPeople = numberOfPeople;
         }
     }
 }
