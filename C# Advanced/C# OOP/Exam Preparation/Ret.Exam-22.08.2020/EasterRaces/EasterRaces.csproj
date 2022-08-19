@@ -5,11 +5,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Cars\Entities\" />
-    <Folder Include="Models\Drivers\Entities\" />
-    <Folder Include="Models\Races\Entities\" />
-    <Folder Include="Repositories\Entities\" />
-  </ItemGroup>
-
 </Project>
