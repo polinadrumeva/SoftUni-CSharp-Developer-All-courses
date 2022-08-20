@@ -67,6 +67,8 @@ namespace OnlineShop.Models.Products.Computers
             this.Model = model;
             this.Price = price;
             this.OverallPerformance = overallPerformance;
+            this.components = new List<IComponent>();
+            this.peripherals = new List<IPeripheral>();
         }
 
         public override string ToString()
