@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype", "Design Pattern\Prototype.csproj", "{EE62C3DA-ABCE-48C5-A90F-404BBD8F44AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prototype", "Design Pattern\Prototype.csproj", "{EE62C3DA-ABCE-48C5-A90F-404BBD8F44AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composite", "Composite\Composite.csproj", "{AC9F6458-A144-46DE-99AF-7369AF4B3077}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Composite", "Composite\Composite.csproj", "{AC9F6458-A144-46DE-99AF-7369AF4B3077}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template Pattern", "Template Pattern\Template Pattern.csproj", "{01E50CFE-2CA9-4E26-B474-7CCE5FAB8D62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AC9F6458-A144-46DE-99AF-7369AF4B3077}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC9F6458-A144-46DE-99AF-7369AF4B3077}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC9F6458-A144-46DE-99AF-7369AF4B3077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E50CFE-2CA9-4E26-B474-7CCE5FAB8D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E50CFE-2CA9-4E26-B474-7CCE5FAB8D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E50CFE-2CA9-4E26-B474-7CCE5FAB8D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E50CFE-2CA9-4E26-B474-7CCE5FAB8D62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
