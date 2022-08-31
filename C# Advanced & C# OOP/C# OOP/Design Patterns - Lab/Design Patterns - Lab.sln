@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singleton", "Singleton\Singleton.csproj", "{783E0CF9-EDE9-444F-AB09-331E7100D993}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade", "Facade\Facade.csproj", "{02765EAD-69B2-4319-8E02-BEC5C8D61367}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command", "Command\Command.csproj", "{C67680A0-9DAE-4087-9A4F-3A223DE701C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{783E0CF9-EDE9-444F-AB09-331E7100D993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783E0CF9-EDE9-444F-AB09-331E7100D993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783E0CF9-EDE9-444F-AB09-331E7100D993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783E0CF9-EDE9-444F-AB09-331E7100D993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02765EAD-69B2-4319-8E02-BEC5C8D61367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02765EAD-69B2-4319-8E02-BEC5C8D61367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02765EAD-69B2-4319-8E02-BEC5C8D61367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02765EAD-69B2-4319-8E02-BEC5C8D61367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C67680A0-9DAE-4087-9A4F-3A223DE701C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C67680A0-9DAE-4087-9A4F-3A223DE701C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C67680A0-9DAE-4087-9A4F-3A223DE701C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C67680A0-9DAE-4087-9A4F-3A223DE701C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C58DABA2-52E9-4FDD-9A75-4012387677A3}
+	EndGlobalSection
+EndGlobal
