@@ -8,9 +8,9 @@ Here are all problems from [**C# Developer courses**](https://softuni.bg/profess
    a) [**C# Advanced course**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20Advanced%20-%20course)
    
    b) [**C# OOP**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Advanced/C%23%20OOP)
-3. [**JS Advanced**](https://github.com/polinadrumeva/JS-Developer---All-courses---SoftUni/tree/main/JS%20Advanced)
+3. JS Advanced
    
-   a) JS Advanced course
+   a) [**JS Advanced course**](https://github.com/polinadrumeva/JS-Developer---All-courses---SoftUni/tree/main/JS%20Advanced)
    
    b) JS Applications
 
