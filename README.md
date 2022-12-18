@@ -12,5 +12,11 @@ Here are all problems from [**C# Developer courses**](https://softuni.bg/profess
    
    a) [**JS Advanced course**](https://github.com/polinadrumeva/JS-Developer---All-courses---SoftUni/tree/main/JS%20Advanced)
    
-   b) JS Applications
+   b) [**JS Applications**](https://github.com/polinadrumeva/JS-Developer---All-courses---SoftUni/tree/main/JS%20Applications)
+   
+4. C# DB
+
+   a) MS SQL
+   
+   b) Entity Framework Core
 
