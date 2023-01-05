@@ -14,7 +14,7 @@ Here are all problems from [**C# Developer courses**](https://softuni.bg/profess
    
    b) [**JS Applications**](https://github.com/polinadrumeva/JS-Developer---All-courses---SoftUni/tree/main/JS%20Applications)
    
-4. C# DB
+4. [**C# DB**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB)
 
    a) MS SQL
    
