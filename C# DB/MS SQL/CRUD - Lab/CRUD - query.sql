@@ -27,3 +27,13 @@ SELECT CountryName, Population
 	WHERE Population > 900000 AND 
 	Capital > 'D'
 	ORDER BY CountryName DESC
+
+--INSERT INTO Peaks(PeakName, Elevation, MountainId)
+	--VALUES ('Botev', 2312, 17)
+
+DELETE FROM Peaks WHERE Id=50
+
+SELECT * 
+	FROM Peaks
+
+
