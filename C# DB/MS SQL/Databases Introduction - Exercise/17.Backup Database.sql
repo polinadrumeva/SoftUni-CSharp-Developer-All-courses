@@ -1,0 +1,6 @@
+
+USE [master]
+
+DROP DATABASE SoftUni
+
+RESTORE DATABASE SoftUni FROM DISK = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\SoftUni.bak' WITH RECOVERY
