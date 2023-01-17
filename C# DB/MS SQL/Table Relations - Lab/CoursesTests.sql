@@ -7,8 +7,7 @@ CREATE TABLE Students_3
 	LastName NVARCHAR(10) NOT NULL, 
 	FacultyNumber CHAR(6) NOT NULL UNIQUE,
 	Photo VARBINARY(MAX), 
-	[Date] DATE, 
-	Courses NVARCHAR(200)
+	[Date] DATE
 )
 
 CREATE TABLE Towns 
@@ -44,4 +43,14 @@ CREATE TABLE StudentsCourses
 	CONSTRAINT PK_StudentsCourses
 		PRIMARY KEY(StudentId, CourseId)
 )
+
+SELECT * 
+	FROM Course
+	JOIN Towns ON Course.TownId = Towns.Id
+
+SELECT sc.FirstName, sc.LastName, sc.FacultyNumber, c.Id, c.Name, s.Mark, t.Name 
+	FROM Course c
+	JOIN Towns t ON c.TownId = t.Id
+	JOIN StudentsCourses s ON s.CourseId = c.Id
+	JOIN Students_3 sc ON sc.Id = s.StudentId
 
