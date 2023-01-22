@@ -1,0 +1,1 @@
+SELECT *, CEILING(CAST(Quantity AS float) / BoxCapacity / PalletCapacity) AS Pallet FROM Products
