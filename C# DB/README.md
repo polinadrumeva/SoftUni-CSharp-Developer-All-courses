@@ -9,6 +9,8 @@
 5. Table Relations - Exercise
 6. [**Built-in Functions - Lab**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/MS%20SQL/Built-in%20Functions%20-%20Lab)
 7. Built-in Functions - Exercise
+8. Subqueries and Joins - Lab
+9. Subqueries and Joins - Exercise
 
 
 ### Entity Framework Core
