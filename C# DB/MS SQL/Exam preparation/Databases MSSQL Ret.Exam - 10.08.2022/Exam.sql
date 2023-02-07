@@ -130,14 +130,27 @@ SELECT DISTINCT (SELECT SUBSTRING(t.Name, (SELECT CHARINDEX(' ',t.Name)), LEN(t.
 	ORDER BY LastName
 
 --11. Tourists Count on a Tourist Site
-CREATE FUNCTION udf_GetTouristsCountOnATouristSite (@Site VARCHAR(100))
+CREATE OR ALTER FUNCTION udf_GetTouristsCountOnATouristSite (@Site VARCHAR(100))
 RETURNS INT
 AS
 	BEGIN 
-	
+		RETURN (SELECT COUNT(s.Id)
+					FROM Sites s
+					LEFT JOIN SitesTourists st ON s.Id = st.SiteId
+					WHERE s.Name = @Site)
 	END
 GO
 
-SELECT * 
-	FROM Sites s
-	LEFT JOIN SitesTourists st ON s.Id = st.SiteId
+SELECT dbo.udf_GetTouristsCountOnATouristSite ('Regional History Museum – Vratsa')
+SELECT dbo.udf_GetTouristsCountOnATouristSite ('Samuil’s Fortress')
+
+
+--12. Annual Reward Lottery
+CREATE PROC usp_AnnualRewardLottery(@TouristName VARCHAR(50))
+AS
+	SELECT * 
+		FROM Tourists t
+		LEFT JOIN SitesTourists st ON t.Id = st.TouristId
+		LEFT JOIN Sites s ON s.Id = st.SiteId
+		WHERE t.Name = 'Mariya Petrova'
+GO
