@@ -94,3 +94,18 @@ SELECT p.FirstName, p.LastName, a.Manufacturer, a.Model, a.FlightHours
 	ORDER BY a.FlightHours DESC, p.FirstName
 
 --07. Top 20 Flight Destinations
+SELECT fd.Id, fd.Start, p.FullName, a.AirportName, fd.TicketPrice
+	FROM FlightDestinations fd
+	LEFT JOIN Airports a ON fd.AirportId = a.Id
+	LEFT JOIN Passengers p ON fd.PassengerId = p.Id
+	WHERE DATEPART(day, Start) % 2 = 0
+	ORDER BY fd.TicketPrice DESC, a.AirportName 
+
+--08. Number of Flights for Each Aircraft
+SELECT fd.AircraftId, a.Manufacturer, a.FlightHours, fd.FlightDestinationsCount, fd.AvgPrice
+	FROM(SELECT fd.AircraftId, COUNT(*) AS FlightDestinationsCount, ROUND(AVG(fd.TicketPrice), 2) AS AvgPrice
+			FROM FlightDestinations fd
+			GROUP BY AircraftId 
+			HAVING COUNT(*)>1) AS fd
+	JOIN Aircraft a ON fd.AircraftId = a.Id
+	ORDER BY fd.FlightDestinationsCount DESC, fd.AircraftId;
