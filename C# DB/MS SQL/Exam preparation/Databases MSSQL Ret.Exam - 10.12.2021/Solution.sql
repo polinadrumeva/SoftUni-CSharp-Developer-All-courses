@@ -109,3 +109,57 @@ SELECT fd.AircraftId, a.Manufacturer, a.FlightHours, fd.FlightDestinationsCount,
 			HAVING COUNT(*)>1) AS fd
 	JOIN Aircraft a ON fd.AircraftId = a.Id
 	ORDER BY fd.FlightDestinationsCount DESC, fd.AircraftId;
+
+--09.Regular Passengers
+SELECT p.FullName, COUNT(fd.PassengerId) AS CountOfAircraft, SUM(fd.TicketPrice) AS TotalPayed
+	FROM Passengers p
+	LEFT JOIN FlightDestinations fd ON p.Id = fd.PassengerId
+	WHERE FullName LIKE '_a%'
+	GROUP BY p.FullName
+	HAVING COUNT(*) > 1
+	ORDER BY p.FullName
+
+
+--10. Full Info for Flight Destinations
+SELECT a.AirportName, fd.Start AS DayTime, fd.TicketPrice,p.FullName, ac.Manufacturer, ac.Model
+	FROM FlightDestinations fd
+	LEFT JOIN Airports a ON fd.AirportId = a.Id
+	LEFT JOIN Aircraft ac ON fd.AircraftId = ac.Id
+	LEFT JOIN Passengers p ON fd.PassengerId = p.Id
+	WHERE (DATEPART(hour, Start) BETWEEN 6 AND 20) AND TicketPrice > 2500
+	ORDER BY ac.Model
+
+--11.Find all Destinations by Email Address
+CREATE FUNCTION udf_FlightDestinationsByEmail(@email VARCHAR(50))
+RETURNS INT
+AS
+	BEGIN
+		RETURN (SELECT COUNT(p.Id)
+			FROM Passengers p
+			JOIN FlightDestinations fd ON p.Id = fd.PassengerId
+			WHERE Email = @email)
+	END
+GO
+
+SELECT dbo.udf_FlightDestinationsByEmail('Montacute@gmail.com')
+SELECT dbo.udf_FlightDestinationsByEmail('MerisShale@gmail.com')
+
+--12.Full Info for Airports
+CREATE PROC usp_SearchByAirportName(@airportName VARCHAR(70))
+AS
+	SELECT a.AirportName, p.FullName, 
+		(CASE 
+			WHEN fd.TicketPrice <= 400 THEN 'Low'
+			WHEN (fd.TicketPrice > 400 AND fd.TicketPrice <=  1500) THEN 'Medium'
+			ELSE 'High'
+		END) AS LevelOfTickerPrice, ac.Manufacturer, ac.Condition, at.TypeName
+		FROM Airports a
+		LEFT JOIN FlightDestinations fd ON a.Id = fd.AirportId
+		LEFT JOIN Passengers p ON fd.PassengerId = p.Id
+		LEFT JOIN Aircraft ac ON fd.AircraftId = ac.Id
+		LEFT JOIN AircraftTypes at ON ac.TypeId = at.Id
+		WHERE a.AirportName = @airportName
+		ORDER BY ac.Manufacturer, p.FullName
+GO
+
+EXEC usp_SearchByAirportName 'Sir Seretse Khama International Airport'
