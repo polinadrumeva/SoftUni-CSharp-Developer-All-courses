@@ -94,7 +94,7 @@ SELECT p.FirstName, p.LastName, a.Manufacturer, a.Model, a.FlightHours
 	ORDER BY a.FlightHours DESC, p.FirstName
 
 --07. Top 20 Flight Destinations
-SELECT fd.Id, fd.Start, p.FullName, a.AirportName, fd.TicketPrice
+SELECT TOP(20) fd.Id, fd.Start, p.FullName, a.AirportName, fd.TicketPrice
 	FROM FlightDestinations fd
 	LEFT JOIN Airports a ON fd.AirportId = a.Id
 	LEFT JOIN Passengers p ON fd.PassengerId = p.Id
