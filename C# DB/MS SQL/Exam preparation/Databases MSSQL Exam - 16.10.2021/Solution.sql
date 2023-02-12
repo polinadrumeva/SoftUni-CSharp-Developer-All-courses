@@ -128,3 +128,51 @@ SELECT TOP(5) c.CigarName, c.PriceForSingleCigar, c.ImageURL
 	ORDER BY c.CigarName, c.PriceForSingleCigar DESC
 
 --09. Clients with ZIP Codes
+SELECT CONCAT(c.FirstName, ' ', c.LastName) AS FullName, a.Country, a.ZIP, CONCAT('$', p.Price) AS CigarPrice
+	FROM (SELECT cc.ClientId, MAX(ci.PriceForSingleCigar) AS Price
+			FROM ClientsCigars cc
+			JOIN Cigars ci ON cc.CigarId = ci.Id
+			GROUP BY cc.ClientId) AS p
+			JOIN Clients c ON p.ClientId = c.Id
+			JOIN Addresses a ON c.Id = a.Id
+			WHERE a.ZIP NOT LIKE '%[^0-9]%'
+			ORDER BY FullName;
+
+--10. Cigars by Size
+SELECT c.LastName, AVG (s.Length) AS CiagrLength, CEILING(AVG(s.RingRange)) AS CiagrRingRange
+	FROM Clients c
+	JOIN ClientsCigars cc ON c.Id = cc.ClientId
+	JOIN Cigars cg ON cc.CigarId = cg.Id
+	JOIN Sizes s ON cg.SizeId = s.Id
+	GROUP BY c.LastName
+	ORDER BY CiagrLength DESC
+
+--11. Client with Cigars
+CREATE FUNCTION udf_ClientWithCigars(@name NVARCHAR(30)) 
+RETURNS INT
+AS
+	BEGIN
+	RETURN (SELECT COUNT(cc.CigarId)
+				FROM Clients c
+				JOIN ClientsCigars cc ON c.Id = cc.ClientId
+				WHERE c.FirstName = @name)
+	END
+GO
+
+SELECT dbo.udf_ClientWithCigars('Betty')
+
+--12. Search for Cigar with Specific Taste
+CREATE PROC usp_SearchByTaste(@taste VARCHAR(20))
+AS
+	SELECT c.CigarName, CONCAT('$', c.PriceForSingleCigar) AS Price,
+			t.TasteType, b.BrandName, CONCAT(s.Length, ' cm') AS CigarLength, 
+			CONCAT(s.RingRange, ' cm') AS CigarRingRange
+		FROM Cigars c
+		JOIN Tastes t ON c.TastId = t.Id
+		JOIN Sizes s ON c.SizeId = s.Id
+		JOIN Brands b ON c.BrandId = b.Id
+		WHERE t.TasteType = @taste
+		ORDER BY CigarLength, CigarRingRange DESC
+GO
+
+EXEC usp_SearchByTaste 'Woody'
