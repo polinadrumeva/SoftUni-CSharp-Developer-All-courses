@@ -91,5 +91,30 @@ UPDATE Jobs
 	SET Status = 'In Progress', MechanicId = 3
 	WHERE Status = 'Pending'
 
---04. Delete
 
+--04. Delete
+DELETE 
+	FROM OrderParts
+	WHERE OrderId = 19
+
+DELETE
+	FROM Orders
+	WHERE OrderId = 19
+
+
+--05. Mechanic Assignments
+
+
+--06. Current Clients
+
+--07. Mechanic Performance
+
+--08. Available Mechanics
+
+--09. Past Expenses
+
+--10. Missing Parts
+
+--11. Place Order
+
+--12. Cost of Order
