@@ -103,18 +103,37 @@ DELETE
 
 
 --05. Mechanic Assignments
+SELECT CONCAT(m.FirstName, ' ', m.LastName) AS Mechanic, j.Status, j.IssueDate 
+	FROM Mechanics m
+	JOIN Jobs j ON m.MechanicId = j.MechanicId
+	ORDER BY m.MechanicId, j.IssueDate, j.JobId
 
 
 --06. Current Clients
+SELECT CONCAT(c.FirstName, ' ', c.LastName) AS Client, DATEDIFF(DAY, j.IssueDate, '2017-04-24') AS [Days going], j.Status
+	FROM Clients c
+	JOIN Jobs j ON c.ClientId = j.ClientId
+	WHERE j.Status <> 'Finished'
+	ORDER BY [Days going] DESC, c.ClientId
 
 --07. Mechanic Performance
 
+
+
 --08. Available Mechanics
+
+
 
 --09. Past Expenses
 
+
+
 --10. Missing Parts
 
+
+
 --11. Place Order
+
+
 
 --12. Cost of Order
