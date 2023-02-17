@@ -117,23 +117,106 @@ SELECT CONCAT(c.FirstName, ' ', c.LastName) AS Client, DATEDIFF(DAY, j.IssueDate
 	ORDER BY [Days going] DESC, c.ClientId
 
 --07. Mechanic Performance
-
+SELECT CONCAT(m.FirstName, ' ', m.LastName) AS Mechanic,
+		Subquery.[Average Days]
+    FROM (SELECT MechanicId, AVG(DATEDIFF(DAY, IssueDate, FinishDate)) AS [Average Days]
+			FROM Jobs 
+			GROUP BY MechanicId) AS Subquery
+	JOIN Mechanics m ON Subquery.MechanicId = m.MechanicId
+	ORDER BY m.MechanicId
 
 
 --08. Available Mechanics
-
-
+SELECT Subquery.Available
+	FROM (SELECT CONCAT(m.FirstName, ' ', m.LastName) AS Available, m.MechanicId
+			FROM Mechanics m 
+			JOIN Jobs j ON m.MechanicId = j.MechanicId
+			WHERE j.Status = 'Finished' OR j.Status = 'Pending') AS Subquery
+	JOIN Mechanics m ON Subquery.MechanicId = m.MechanicId
+	
 
 --09. Past Expenses
-
+SELECT j.JobId, SUM(p.Price) AS Total
+	FROM Jobs j
+	JOIN PartsNeeded pd ON j.JobId = pd.JobId
+	JOIN Parts p ON pd.PartId = p.PartId
+	WHERE j.Status = 'Finished'
+	GROUP BY j.JobId
+	ORDER BY Total DESC, j.JobId
 
 
 --10. Missing Parts
-
+SELECT p.PartId, p.Description, SUM(pn.Quantity) AS Required, SUM(p.StockQty) AS [In Stock], ISNULL(SUM(g.Quantity), 0) AS Ordered
+	FROM Parts p
+	LEFT JOIN PartsNeeded pn ON pn.PartId = p.PartId
+	LEFT JOIN Jobs j ON pn.JobId = j.JobId
+		LEFT JOIN (SELECT op.PartId, op.Quantity
+					FROM Orders AS o
+					JOIN OrderParts AS op ON op.OrderId = o.OrderId
+					WHERE o.Delivered = 0) AS g ON g.PartId = p.PartId
+					WHERE j.Status <> 'Finished'
+					GROUP BY p.PartId, p.Description
+					HAVING SUM(pn.Quantity) > SUM(p.StockQty) + ISNULL(SUM(g.Quantity), 0)
+	ORDER BY p.PartId;
 
 
 --11. Place Order
-
+CREATE OR ALTER PROC usp_PlaceOrder(@jobId INT, @partSerialNumber VARCHAR(50), @quantity INT)
+AS
+BEGIN
+	IF ((SELECT Status
+			FROM Jobs
+			WHERE JobId = @jobId) = 'Finished')
+			THROW 50011, 'This job is not active!', 1;
+			 IF @quantity <= 0
+			    THROW 50012, 'Part quantity must be more than zero!', 1;
+		DECLARE @job INT = (SELECT JobId
+							 FROM Jobs
+							 WHERE JobId = @jobId)
+	    IF @job IS NULL
+	        THROW 50013, 'Job not found!', 1;
+	DECLARE @partId INT = (SELECT PartId
+							 FROM Parts
+							 WHERE SerialNumber = @partSerialNumber)
+	    IF @partId IS NULL
+	        THROW 50014, 'Part not found!', 1;
+	    IF (SELECT OrderId
+				FROM Orders
+				WHERE JobId = @jobId AND IssueDate IS NULL) IS NULL
+	        BEGIN
+	            INSERT INTO Orders (JobId, IssueDate, Delivered)
+	            VALUES (@jobId, NULL, 0)
+	        END
+	DECLARE @orderId int = (SELECT OrderId
+								FROM Orders
+								WHERE JobId = @jobId AND IssueDate IS NULL)
+	DECLARE @orderPartsQuantity INT = (SELECT Quantity
+										 FROM OrderParts
+									     WHERE OrderId = @orderId AND PartId = @partId)
+	    IF @orderPartsQuantity IS NULL
+            INSERT INTO OrderParts (OrderId, PartId, Quantity)
+            VALUES (@orderId, @partId, @quantity)
+	    ELSE
+            UPDATE OrderParts
+            SET Quantity += @quantity
+            WHERE OrderId = @orderId AND PartId = @partId
+END
 
 
 --12. Cost of Order
+CREATE FUNCTION udf_GetCost(@jobId int)
+RETURNS DECIMAL(10,2)
+AS
+BEGIN
+	DECLARE @totalCost DECIMAL(10,2) = (SELECT SUM(p.Price)
+											FROM Parts AS p
+											JOIN OrderParts AS op ON p.PartId = op.PartId
+											JOIN Orders AS o ON o.OrderId = op.OrderId
+											JOIN Jobs AS j ON j.JobId = o.JobId
+											WHERE j.JobId = @jobId)
+		IF @totalCost IS NULL
+			RETURN 0
+	    RETURN @totalCost
+END
+
+SELECT dbo.udf_GetCost(1)
