@@ -91,4 +91,73 @@ DELETE
 
 
 --05. Commits
+SELECT Id, Message, RepositoryId, ContributorId
+	FROM Commits
+	ORDER BY Id, Message, RepositoryId, ContributorId
 
+
+--06. Front-end
+SELECT Id, Name, Size
+	FROM Files
+	WHERE Size > 1000 AND Name LIKE '%html%'
+	ORDER BY Size DESC, Id, Name
+
+
+--07. Issue Assignment
+SELECT i.Id, CONCAT(u.Username, ' : ', i.Title) AS IssueAssignee
+	FROM Issues i
+	LEFT JOIN Users u ON i.AssigneeId = u.Id
+	ORDER BY i.Id DESC, i.AssigneeId
+
+
+--08. Single Files
+SELECT f.Id, f.Name, CONCAT(f.Size, 'KB') AS Size	 
+	FROM Files f
+	LEFT JOIN Files ff ON f.Id = ff.ParentId
+	WHERE ff.ParentId IS NULL
+	ORDER BY f.Id, f.Name, f.Size DESC
+
+
+--09. Commits in Repositories
+SELECT TOP(5) r.Id, r.Name, COUNT(r.Id) AS Commits
+	FROM Repositories r
+	JOIN Commits c ON r.Id = c.RepositoryId
+	JOIN RepositoriesContributors rc ON r.Id = rc.RepositoryId
+	GROUP BY r.Id, r.Name
+	ORDER BY Commits DESC, r.Id, r.Name
+
+
+--10. Average Size
+SELECT u.Username, AVG(f.Size) AS Size 
+	FROM Users u
+	JOIN Commits c ON u.Id = c.ContributorId
+	JOIN Files f ON c.Id = f.CommitId
+	GROUP BY u.Username
+	ORDER BY Size DESC, u.Username
+
+
+--11. All User Commits
+CREATE FUNCTION udf_AllUserCommits(@username VARCHAR(30))
+RETURNS INT
+AS
+	BEGIN
+		RETURN (SELECT COUNT(u.Id)
+				FROM Users u
+				LEFT JOIN Commits c ON u.Id = c.ContributorId
+				WHERE u.Username = @username)
+	END
+GO
+
+SELECT dbo.udf_AllUserCommits('UnderSinduxrein')
+
+
+--12. Search for Files
+CREATE PROC usp_SearchForFiles(@fileExtension VARCHAR(50))
+AS
+	SELECT Id, Name, CONCAT(Size, 'KB') AS Size
+		FROM Files
+		WHERE Name LIKE CONCAT('%', @fileExtension, '%')
+		ORDER BY Id, Name, Size DESC
+GO
+
+EXEC usp_SearchForFiles 'txt'
