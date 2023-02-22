@@ -29,3 +29,22 @@
 4. ORM Fundamentals - Exercise
 5. Entity Framework Introduction - Lab
 6. Entity Framework Introduction - Exercise
+7. Entity Relations - Lab
+8. Entity Relations - Exercise
+9. LINQ - Lab
+10. LINQ - Exercise
+11. Advanced Querying - Lab
+12. Advanced Querying - Exercise
+13. C# Auto Mapping Objects - Lab
+14. Auto Mapping Objects - Exercise
+15. JSON Processing - Lab
+16. JSON Processing - Exercise
+17. XML Processing - Lab
+18. XML Processing - Exercise
+19. Best Practices And Architecture - Lab
+20. Best Practices And Architecture - Exercise
+21. Workshop
+22. NoSQL
+23. Exam preparation
+24. REGULAR EXAM
+
