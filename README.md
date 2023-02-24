@@ -18,5 +18,5 @@ Here are all problems from [**C# Developer courses**](https://softuni.bg/profess
 
    a) [**MS SQL**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/MS%20SQL)
    
-   b) Entity Framework Core
+   b) [**Entity Framework Core**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/Entity%20Framework%20Core)
 
