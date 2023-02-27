@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 
 namespace Demo
 {
@@ -6,7 +7,10 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string connectionString = "";
+            var connection = new SqlConnection("");
+            connection.Open();
+            var query = new SqlCommand("SELECT COUNT(*) FROM Employees");
         }
     }
 }
