@@ -25,10 +25,34 @@ namespace Demo
                 var rowsaffected = cmd.ExecuteNonQuery();
                 Console.WriteLine(rowsaffected);
 
+            }
+
+            using (var connection = new SqlConnection("Server=.;Integrated Security=true;Database=SoftUni"))
+            {
+                connection.Open();
+
+                string queryUpdate = "SELECT COUNT(*) FROM Employees";
+                SqlCommand cmd = new SqlCommand(queryUpdate, connection);
+                var result = (int)cmd.ExecuteScalar();
+                Console.WriteLine(result);
 
             }
-           
-            
+
+            using (var connection = new SqlConnection("Server=.;Integrated Security=true;Database=SoftUni"))
+            {
+                connection.Open();
+
+                string queryUpdate = "SELECT * FROM Employees";
+                var cmd = new SqlCommand(queryUpdate, connection);
+                SqlDataReader result = cmd.ExecuteReader();
+                result.Read();
+                Console.WriteLine(result[1]);
+                result.Read();
+                Console.WriteLine(result[1]);
+                result.Read();
+                Console.WriteLine(result[1]);
+
+            }
         }
     }
 }
