@@ -133,7 +133,7 @@ namespace SoftUni.Data
 
             modelBuilder.Entity<EmployeeProject>(entity =>
             {
-                entity.HasKey(pk => new object[] { pk.EmployeeID, pk.ProjectID });
+                entity.HasKey(pk => new { pk.EmployeeID, pk.ProjectID });
 
                 entity.HasOne(e => e.Employee).WithMany(e => e.EmployeesProjects).HasForeignKey(e => e.EmployeeID);
 
