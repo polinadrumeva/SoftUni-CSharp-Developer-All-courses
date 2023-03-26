@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroductionEFDemo", "IntroductionEFDemo.csproj", "{9D48EBAC-7972-4574-8CA5-92BEB354892C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntroductionEFDemo", "IntroductionEFDemo.csproj", "{9D48EBAC-7972-4574-8CA5-92BEB354892C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirstDemo", "..\CodeFirstDemo\CodeFirstDemo.csproj", "{91FBE38A-F9E1-43E4-B2FC-B54E10CABF03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9D48EBAC-7972-4574-8CA5-92BEB354892C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D48EBAC-7972-4574-8CA5-92BEB354892C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D48EBAC-7972-4574-8CA5-92BEB354892C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91FBE38A-F9E1-43E4-B2FC-B54E10CABF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91FBE38A-F9E1-43E4-B2FC-B54E10CABF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91FBE38A-F9E1-43E4-B2FC-B54E10CABF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91FBE38A-F9E1-43E4-B2FC-B54E10CABF03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
