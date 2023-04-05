@@ -7,25 +7,26 @@ using System.Threading.Tasks;
 
 namespace P03_SalesDatabase.Data.Models
 {
-    public class Product
+    public class Customer
     {
-        public Product()
+        public Customer()
         {
             this.Sales = new HashSet<Sale>();
         }
 
         [Key]
-        public int ProductId { get; set; }
+        public int CustomerId { get; set; }
 
-        [MaxLength(Configurations.maxLengthName)]
+        [MaxLength(Configurations.maxLengthNameCustomer)]
         public string Name { get; set; }
 
-        public double Quantity { get; set; }
+        [MaxLength(Configurations.maxLengthEmail)]
+        public string Email { get; set; }
 
-        public decimal Price { get; set; }
+        public string CreditCardNumber { get; set; }
 
         public virtual ICollection<Sale> Sales { get; set; }
 
-
+       
     }
 }

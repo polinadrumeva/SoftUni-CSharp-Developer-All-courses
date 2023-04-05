@@ -7,25 +7,19 @@ using System.Threading.Tasks;
 
 namespace P03_SalesDatabase.Data.Models
 {
-    public class Product
+    public class Store
     {
-        public Product()
+        public Store()
         {
             this.Sales = new HashSet<Sale>();
         }
 
         [Key]
-        public int ProductId { get; set; }
+        public int StoreId { get; set; }
 
-        [MaxLength(Configurations.maxLengthName)]
+        [MaxLength(Configurations.maxLengthEmail)]
         public string Name { get; set; }
 
-        public double Quantity { get; set; }
-
-        public decimal Price { get; set; }
-
         public virtual ICollection<Sale> Sales { get; set; }
-
-
     }
 }
