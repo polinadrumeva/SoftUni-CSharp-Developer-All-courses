@@ -8,6 +8,7 @@ namespace P01_StudentSystem
         {
            var db = new StudentSystemContext();
 
+            db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
         }
     }
