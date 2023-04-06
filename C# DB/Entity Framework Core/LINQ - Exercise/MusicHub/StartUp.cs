@@ -12,12 +12,10 @@
             MusicHubDbContext context =
                 new MusicHubDbContext();
 
-            //DbInitializer.ResetDatabase(context);
+            DbInitializer.ResetDatabase(context);
 
             ////Test your solutions here
-            ///
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+
         }
 
         public static string ExportAlbumsInfo(MusicHubDbContext context, int producerId)
