@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CarDealer.DTOs.Import;
+using CarDealer.Models;
 
 namespace CarDealer
 {
@@ -6,6 +8,8 @@ namespace CarDealer
     {
         public CarDealerProfile()
         {
+            this.CreateMap<SupplierDTO, Supplier>();
+            this.CreateMap<PartDto, Part>();
 
         }
     }
