@@ -6,7 +6,7 @@
     {
         public Category()
         {
-            CategoriesProducts = new List<CategoryProduct>();
+            CategoriesProducts = new HashSet<CategoryProduct>();
         }
 
         public int Id { get; set; }
