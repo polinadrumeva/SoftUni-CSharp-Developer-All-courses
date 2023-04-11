@@ -60,8 +60,8 @@ namespace SoftUni
             //Console.WriteLine(result);
 
             //15. Remove Town
-            var result = RemoveTown(db);
-            Console.WriteLine(result);
+            //var result = RemoveTown(db);
+            //Console.WriteLine(result);
 
         }
 
@@ -69,7 +69,17 @@ namespace SoftUni
         public static string GetEmployeesFullInformation(SoftUniContext context)
         {
             var sb = new StringBuilder();
-            var employees = context.Employees.OrderBy(e => e.EmployeeId).ToList();
+            var employees = context.Employees.OrderBy(e => e.EmployeeId)
+                            .Select(e => new
+                                { 
+                                    e.FirstName, 
+                                    e.LastName, 
+                                    e.MiddleName, 
+                                    e.JobTitle,
+                                    e.Salary
+                                })    
+                            .ToArray();
+
             foreach (var employee in employees)
             {
                 sb.AppendLine($"{employee.FirstName} {employee.LastName} {employee.MiddleName} {employee.JobTitle} {employee.Salary:f2}");
@@ -83,16 +93,14 @@ namespace SoftUni
         {
             var output = new StringBuilder();
 
-            var highSalaries = context
-                .Employees
-                .Where(e => e.Salary > 50000)
-                .Select(e => new
-                {
-                    e.FirstName,
-                    e.Salary
-                })
-                .OrderBy(e => e.FirstName)
-                .ToArray();
+            var highSalaries = context.Employees.Where(e => e.Salary > 50000)
+                             .Select(e => new
+                                 {
+                                     e.FirstName,
+                                     e.Salary
+                                 })
+                            .OrderBy(e => e.FirstName)
+                            .ToArray();
 
             foreach (var e in highSalaries)
             {
@@ -115,8 +123,7 @@ namespace SoftUni
                                             x.LastName, 
                                             x.Department.Name, 
                                             x.Salary
-                                        })
-                                        .ToArray();
+                                        }).ToArray();
 
             foreach (var e in employeesFromRD)
             {
@@ -141,11 +148,12 @@ namespace SoftUni
             context.SaveChanges();
 
             var sb = new StringBuilder();
-            var employees = context.Employees.OrderByDescending(e => e.AddressId).Select(e => new
-            {
-                e.Address.AddressText
-            })
-                .Take(10).ToArray();
+            var employees = context.Employees.OrderByDescending(e => e.AddressId)
+                            .Select(e => new
+                               {
+                                    e.Address.AddressText
+                               })
+                           .Take(10).ToArray();
 
             foreach (var e in employees)
             {
@@ -160,8 +168,7 @@ namespace SoftUni
         {
             var sb = new StringBuilder();
 
-            var employees = context.Employees./*Where(e => e.EmployeesProjects.Any(ep =>
-                            ep.Project.StartDate.Year >= 2001 && ep.Project.StartDate.Year <= 2003))*/Take(10)
+            var employees = context.Employees.Take(10)
                             .Select(e => new
                             {
                                 e.FirstName,
@@ -198,12 +205,12 @@ namespace SoftUni
         { 
             var sb = new StringBuilder();
             var addresses = context.Addresses.Select(e => new 
-            { 
-              e.AddressText, 
-              TownName = e.Town.Name,
-              Count = e.Employees.Count(),
-            }).OrderByDescending(e => e.Count).ThenBy(e => e.TownName)
-                                    .ThenBy(e => e.AddressText).Take(10).ToArray();
+                              { 
+                                 e.AddressText, 
+                                 TownName = e.Town.Name,
+                                 Count = e.Employees.Count(),
+                              }).OrderByDescending(e => e.Count).ThenBy(e => e.TownName)
+                                 .ThenBy(e => e.AddressText).Take(10).ToArray();
 
             foreach (var e in addresses)
             {
@@ -231,7 +238,7 @@ namespace SoftUni
             {
                 sb.AppendLine($"{e.FirstName} {e.LastName} - {e.JobTitle}");
 
-                foreach (var ep in e.Projects.OrderBy(ep => ep.Name))
+                foreach (var ep in e.Projects.OrderBy(p => p.Name))
                 {
                     sb.AppendLine($"{ep.Name}");
                 }
@@ -246,19 +253,19 @@ namespace SoftUni
             var sb = new StringBuilder();
             
             var departments = context.Departments.Where(d => d.Employees.Count > 5)
-                .OrderBy(d => d.Employees.Count()).ThenBy(d => d.Name)
-                .Select(d => new
-                {
-                    d.Name,
-                    ManagerFirstName = d.Manager.FirstName,
-                    ManagerLastName = d.Manager.LastName,
-                    Employees = d.Employees.Select(e => new
-                    {
-                        e.FirstName,
-                        e.LastName,
-                        e.JobTitle
-                    })
-                }).ToArray();
+                                .OrderBy(d => d.Employees.Count()).ThenBy(d => d.Name)
+                                .Select(d => new
+                                {
+                                   d.Name,
+                                   ManagerFirstName = d.Manager.FirstName,
+                                   ManagerLastName = d.Manager.LastName,
+                                   Employees = d.Employees.Select(e => new
+                                        {
+                                             e.FirstName,
+                                             e.LastName,
+                                             e.JobTitle
+                                        })
+                                }).ToArray();
 
             foreach (var d in departments)
             {
@@ -279,17 +286,16 @@ namespace SoftUni
             var sb = new StringBuilder();
 
             var latesPr = context.Projects.OrderByDescending(p => p.StartDate)
-                .Select(p => new
-                {
-                    p.Name,
-                    p.Description,
-                    StartDate = p.StartDate.ToString("M/d/yyyy h:mm:ss tt")
-                })
-                .Take(10)
-                .ToArray()
-                .OrderBy(p => p.Name);
+                             .Select(p => new
+                             {
+                                 p.Name,
+                                 p.Description,
+                                 StartDate = p.StartDate.ToString("M/d/yyyy h:mm:ss tt")
+                             })
+                             .Take(10)
+                             .ToArray();
 
-            foreach (var p in latesPr)
+            foreach (var p in latesPr.OrderBy(p => p.Name))
             {
                 sb.AppendLine(p.Name).AppendLine(p.Description).AppendLine(p.StartDate);
             }
@@ -331,14 +337,14 @@ namespace SoftUni
             var sb = new StringBuilder();
 
             var employees = context.Employees.Where(e => e.FirstName.StartsWith("Sa"))
-                .Select(e => new
-                {
-                    e.FirstName,
-                    e.LastName,
-                    e.JobTitle,
-                    e.Salary
-                })
-                .OrderBy(e => e.FirstName).ThenBy(e => e.LastName).ToArray();
+                                 .Select(e => new
+                                 {
+                                    e.FirstName,
+                                    e.LastName,
+                                    e.JobTitle,
+                                    e.Salary
+                                })
+                                .OrderBy(e => e.FirstName).ThenBy(e => e.LastName).ToArray();
 
             foreach (var e in employees)
             {
