@@ -24,6 +24,7 @@
             //04. Books by Price
             //var result = GetBooksByPrice(db);
             //Console.WriteLine(result);
+            //Console.WriteLine(result.Length);
 
             //05. Not Released In
             //var year = int.Parse(Console.ReadLine());
@@ -61,7 +62,7 @@
         }
 
         //03. Golden Books
-        public static string GetGoldenBooks(BookShopContext context) 
+        public static string GetGoldenBooks(BookShopContext context)
         {
             var sb = new StringBuilder();
 
@@ -82,7 +83,7 @@
         {
             var sb = new StringBuilder();
 
-            var books = context.Books.Where(b => b.Price > 40)
+            var books = context.Books.Where(b => b.Price >= 40)
                                         .OrderByDescending(b => b.Price)
                                         .Select(b => new { b.Title, b.Price })
                                         .ToArray();
@@ -114,20 +115,21 @@
         //06. Book Titles by Category
         public static string GetBooksByCategory(BookShopContext context, string input)
         {
-            string[] array = input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(c=> c.ToLower()).ToArray();
-            
+            string[] array = input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(c => c.ToLower()).ToArray();
+
             var sb = new StringBuilder();
 
             var books = context.Books.Where(b => b.BookCategories.Any(bc => array.Contains(bc.Category.Name.ToLower()))).ToArray();
-            
-            foreach (var book in books)
+
+            foreach (var book in books.OrderBy(book => book.Title))
             {
-                sb.AppendLine(book);
+                sb.AppendLine(book.Title);
             }
 
             return sb.ToString().TrimEnd();
         }
     }
 }
+
 
 
