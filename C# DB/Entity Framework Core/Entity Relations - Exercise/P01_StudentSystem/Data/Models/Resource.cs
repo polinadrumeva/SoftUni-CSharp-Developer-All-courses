@@ -20,6 +20,7 @@ namespace P01_StudentSystem.Data.Models
         [Key]
         public int ResourceId { get; set; }
 
+        [MaxLength(50)]
         public string Name { get; set; } = null!;
 
         public string Url { get; set; } = null!;
@@ -29,6 +30,6 @@ namespace P01_StudentSystem.Data.Models
         [ForeignKey(nameof(Course))]
         public int CourseId { get; set; }
 
-        public virtual Course Course { get; set; } = null!;
+        public virtual Course Course { get; set; } 
     }
 }

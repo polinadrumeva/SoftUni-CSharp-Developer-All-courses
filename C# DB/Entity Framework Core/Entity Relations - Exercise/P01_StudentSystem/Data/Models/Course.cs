@@ -31,7 +31,7 @@ namespace P01_StudentSystem.Data.Models
         [MaxLength(80)]
         public string Name { get; set; } = null!;
 
-        public string Description { get; set; } = null!;
+        public string Description { get; set; } 
 
         public DateTime StartDate { get; set; }
 

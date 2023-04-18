@@ -19,7 +19,6 @@ namespace P02_FootballBetting.Data.Models
         public int ColorId { get; set; }
 
         [Required]
-        [MaxLength(30)]
         public string Name { get; set; }
 
         [InverseProperty(nameof(Team.PrimaryKitColor))]

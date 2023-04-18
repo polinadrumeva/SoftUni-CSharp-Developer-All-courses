@@ -25,7 +25,7 @@ namespace P01_StudentSystem.Data.Models
         public string Name { get; set; } = null!;
 
         [StringLength(10)]
-        public string PhoneNumber { get; set; } = null!;
+        public string PhoneNumber { get; set; }
 
         [Required]
         public DateTime RegisteredOn { get; set; }

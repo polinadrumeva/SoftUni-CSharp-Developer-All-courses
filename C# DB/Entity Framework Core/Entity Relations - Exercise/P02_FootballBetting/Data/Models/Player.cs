@@ -19,7 +19,6 @@ namespace P02_FootballBetting.Data.Models
         public int PlayerId { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
 
         public int SquadNumber { get; set; }
@@ -27,10 +26,10 @@ namespace P02_FootballBetting.Data.Models
         [ForeignKey(nameof(Team))]
         public int TeamId { get; set; }
         public virtual Team Team { get; set; }
-
+        
+        [ForeignKey(nameof(Position))]
         public int PositionId { get; set; }
 
-        [ForeignKey(nameof(Position))]
         public virtual Position Position { get; set; }
 
         public bool IsInjured { get; set; }

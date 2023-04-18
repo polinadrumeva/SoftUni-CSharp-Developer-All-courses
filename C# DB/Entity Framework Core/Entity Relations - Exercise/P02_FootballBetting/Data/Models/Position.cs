@@ -7,20 +7,19 @@ using System.Threading.Tasks;
 
 namespace P02_FootballBetting.Data.Models
 {
-    public class Country
+    public class Position
     {
-        public Country()
+        public Position()
         {
-            this.Towns = new HashSet<Town>();
+            this.Players = new HashSet<Player>();
         }
 
         [Key]
-        public int CountryId { get; set; }
+        public int PositionId { get; set; }
 
         [Required]
-        [MaxLength(30)]
         public string Name { get; set; }
 
-        public virtual ICollection<Town> Towns { get; set; };
+        public virtual ICollection<Player> Players { get; set; } = null!;
     }
 }

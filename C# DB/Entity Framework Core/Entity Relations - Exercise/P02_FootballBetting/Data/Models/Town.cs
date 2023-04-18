@@ -18,13 +18,12 @@ namespace P02_FootballBetting.Data.Models
         public int TownId { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
        
         [ForeignKey("Country")]
         public int CountryId { get; set; }
 
-        public virtual Country Country { get; set; };
+        public virtual Country Country { get; set; }
 
         public virtual ICollection<Team> Teams { get; set; } = null!;
     }

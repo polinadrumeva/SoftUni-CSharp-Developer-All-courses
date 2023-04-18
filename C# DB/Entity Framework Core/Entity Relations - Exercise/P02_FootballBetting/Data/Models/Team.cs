@@ -18,14 +18,12 @@ namespace P02_FootballBetting.Data.Models
         public int TeamId { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
 
-        [MaxLength(2048)]
+       
         public string LogoUrl { get; set; }
 
-        [Required]
-        [MaxLength(5)]
+       
         public string Initials { get; set; }
 
         public decimal Budget { get; set; }

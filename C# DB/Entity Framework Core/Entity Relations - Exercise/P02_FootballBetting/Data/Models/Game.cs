@@ -41,7 +41,7 @@ namespace P02_FootballBetting.Data.Models
 
         public double DrawBetRate { get; set; }
         
-        [MaxLength(10)]
+      
         public string? Result { get; set; }
 
         public virtual ICollection<PlayerStatistic> PlayerStatistics { get; set; } = null!;

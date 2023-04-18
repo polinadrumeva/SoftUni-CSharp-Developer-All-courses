@@ -36,7 +36,7 @@ namespace P02_FootballBetting.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=FootballBet;Integrated security=true");
+                optionsBuilder.UseSqlServer("Server=.;Database=FootballBookmakerSystem;Integrated security=true");
             }
         }
 
