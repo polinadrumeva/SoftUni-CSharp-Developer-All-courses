@@ -11,8 +11,9 @@ namespace P01_HospitalDatabase.Data.Models
     {
         public Patient()
         {
+            this.Prescriptions = new HashSet<PatientMedicament>();
             this.Visitations = new HashSet<Visitation>();
-            this.Diagnoses = new HashSet<Diagnose>();   
+            this.Diagnoses = new HashSet<Diagnose>();
         }
 
         [Key]
@@ -31,6 +32,8 @@ namespace P01_HospitalDatabase.Data.Models
         public string Email { get; set; } = null!;
 
         public bool HasInsurance { get; set; }
+
+        public virtual ICollection<PatientMedicament> Prescriptions { get; set; }
 
         public virtual ICollection<Visitation> Visitations { get; set; }
 
