@@ -11,6 +11,6 @@
         [StringLength(30, MinimumLength = 3)]
         public string Name { get; set; } = null!;
 
-        public ICollection<Item> Items { get; set; } = new List<Item>();
+        public virtual ICollection<Item> Items { get; set; } = new List<Item>();
     }
 }

@@ -23,11 +23,12 @@
         [NotMapped]
         public decimal TotalPrice { get; set; }
 
+        [ForeignKey(nameof(Employee))]
         public int EmployeeId { get; set; }
 
         [Required]
-        public Employee Employee { get; set; } = null!;
+        public virtual Employee Employee { get; set; } = null!;
 
-        public ICollection<OrderItem>? OrderItems { get; set; } = new List<OrderItem>();
+        public virtual ICollection<OrderItem>? OrderItems { get; set; } = new List<OrderItem>();
     }
 }
