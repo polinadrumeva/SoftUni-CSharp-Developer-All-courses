@@ -21,17 +21,17 @@ namespace ProductShop
 
             //string inputJson = File.ReadAllText(@"../../../Datasets/categories-products.json");
 
-            string result = GetProductsInRange(db);
+            //string result = ImportCategoryProducts(db, inputJson);
+            //Console.WriteLine(result);
+
+            var result = GetProductsInRange(db);
             Console.WriteLine(result);
-
-
 
         }
 
         //01. Import Users
         public static string ImportUsers(ProductShopContext context, string inputJson)
         {
-
             var mapper = new Mapper(new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<ProductShopProfile>();
@@ -62,12 +62,19 @@ namespace ProductShop
             }));
 
             var productDto = JsonConvert.DeserializeObject<ProductDTO[]>(inputJson);
-            var products = mapper.Map<Product[]>(productDto);
+            var products = new HashSet<Product>();
+
+            foreach (var product in productDto)
+            {
+                var newProduct = mapper.Map<Product>(product);
+
+                products.Add(newProduct);
+            }
            
             context.Products.AddRange(products);
             context.SaveChanges();
 
-            return $"Successfully imported {products.Length}";
+            return $"Successfully imported {products.Count}";
         }
 
         //03. Import Categories
@@ -82,6 +89,7 @@ namespace ProductShop
             var categoriesDto = JsonConvert.DeserializeObject<CategoriesDTO[]>(inputJson);
 
             var validCategories = new HashSet<Category>();
+            
             foreach (var c in categoriesDto)
             {
                 if (c.Name != null)
@@ -100,7 +108,7 @@ namespace ProductShop
         }
 
         //04. Import Categories and Products
-        public static string ImportCategoryProducts(ProductShopContext context, string inputJson)
+        public static string ImportCategoryProducts(ProductShopContext context, string inputJson)   
         {
             var mapper = new Mapper(new MapperConfiguration(cfg =>
             {
@@ -110,13 +118,14 @@ namespace ProductShop
             var categoriesDto = JsonConvert.DeserializeObject<CategoryProductDTO[]>(inputJson);
 
             var validCategories = new HashSet<CategoryProduct>();
+            
             foreach (var cp in categoriesDto)
             {
-                if (!context.Categories.Any(c => c.Id == cp.CategoryId) || 
-                    !context.Products.Any(p => p.Id == cp.ProductId))
-                {
-                    continue;
-                }    
+                //if (!context.Categories.Any(c => c.Id == cp.CategoryId) || 
+                //    !context.Products.Any(p => p.Id == cp.ProductId))
+                //{
+                //    continue;
+                //}    
                 
                 
                 var categ = mapper.Map<CategoryProduct>(cp);
@@ -146,6 +155,12 @@ namespace ProductShop
                                  .ToArray();
 
             return JsonConvert.SerializeObject(products, Formatting.Indented);
+        }
+
+        //06. Export Sold Products
+        public static string GetSoldProducts(ProductShopContext context)
+        { 
+            
         }
     }
 }

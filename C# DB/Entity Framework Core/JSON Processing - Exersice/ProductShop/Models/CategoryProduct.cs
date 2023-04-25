@@ -1,4 +1,7 @@
-﻿namespace ProductShop.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System;
+
+namespace ProductShop.Models
 {
     public class CategoryProduct
     {

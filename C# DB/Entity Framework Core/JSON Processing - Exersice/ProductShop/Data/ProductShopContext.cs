@@ -29,6 +29,7 @@ namespace ProductShop.Data
                 optionsBuilder
                     .UseSqlServer(Configuration.ConnectionString);
             }
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
