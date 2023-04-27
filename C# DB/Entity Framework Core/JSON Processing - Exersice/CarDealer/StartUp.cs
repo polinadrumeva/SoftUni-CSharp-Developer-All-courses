@@ -2,6 +2,8 @@
 using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
+using Castle.Core.Resource;
+using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 using Newtonsoft.Json;
 
 namespace CarDealer
@@ -15,6 +17,8 @@ namespace CarDealer
             //var jsonString = File.ReadAllText(@"../../../Datasets/suppliers.json");
             //var jsonString = File.ReadAllText(@"../../../Datasets/parts.json");
             var jsonString = File.ReadAllText(@"../../../Datasets/cars.json");
+            //var jsonString = File.ReadAllText(@"../../../Datasets/customers.json");
+            //var jsonString = File.ReadAllText(@"../../../Datasets/sales.json");
             var result = ImportCars(db, jsonString);
             Console.WriteLine(result);
         }
@@ -108,6 +112,47 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {validCars.Count}.";
+        }
+
+        //12. Import Customers
+        public static string ImportCustomers(CarDealerContext context, string inputJson)
+        {
+            var mapper = new Mapper(new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<CarDealerProfile>();
+            }));
+
+            var customersDto = JsonConvert.DeserializeObject<CustomerDTO[]>(inputJson);
+
+            var customers = new HashSet<Customer>();
+
+            foreach (var customer in customersDto)
+            {
+                var newCustomer = mapper.Map<Customer>(customer);
+                customers.Add(newCustomer);
+            }
+
+            context.Customers.AddRange(customers);
+            context.SaveChanges();
+
+            return $"Successfully imported {customers.Count}.";
+        }
+
+        //13. Import Sales
+        public static string ImportSales(CarDealerContext context, string inputJson)
+        {
+            var mapper = new Mapper(new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<CarDealerProfile>();
+            }));
+
+            var salesDto = JsonConvert.DeserializeObject<SaleDTO[]>(inputJson);
+            var sales = mapper.Map<Sale[]>(salesDto);
+
+            context.Sales.AddRange(sales);
+            context.SaveChanges();
+
+            return $"Successfully imported {sales.Length}.";
         }
     }
 }
