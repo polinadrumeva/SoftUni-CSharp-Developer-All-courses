@@ -15,5 +15,11 @@
 13. [**Auto Mapping Objects - Exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/Entity%20Framework%20Core/Auto%20Mapping%20Objects%20-%20Exercise)
 14. [**JSON Processing - Lab**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/Entity%20Framework%20Core/JSON%20Processing%20-%20Lab)
 15. [**JSON Processing - Exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/Entity%20Framework%20Core/JSON%20Processing%20-%20Exersice)
-16. XML Processing - Lab
-17. XML Processing - Exercise
+16. [**XML Processing - Lab**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/Entity%20Framework%20Core/XML%20Processing%20-Lab)
+17. [**XML Processing - Exercise**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/Entity%20Framework%20Core/XML%20Processing%20-%20Exersice)
+18. Best Practices And Architecture
+19. Workshop - 1
+20. Workshop - 2
+21. NoSQL
+22. Exam preparation
+23. EXAM
