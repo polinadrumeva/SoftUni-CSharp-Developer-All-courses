@@ -24,7 +24,7 @@ namespace CarDealer
             //string inputXml = File.ReadAllText("../../../Datasets/cars.xml");
             //string inputXml = File.ReadAllText("../../../Datasets/customers.xml");
             string inputXml = File.ReadAllText("../../../Datasets/sales.xml");
-            Console.WriteLine(GetCarsFromMakeBmw(db));
+            Console.WriteLine(GetTotalSalesByCustomer(db));
         }
 
         //09. Import Suppliers
@@ -255,5 +255,91 @@ namespace CarDealer
         }
 
         //16. Export Local Suppliers
+        public static string GetLocalSuppliers(CarDealerContext context)
+        {
+            var mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<CarDealerProfile>()));
+            var sb = new StringBuilder();
+
+            var suppliers = context.Suppliers.Where(s => s.IsImporter == false)
+                              .ProjectTo<ExportSupplierDTO>(mapper.ConfigurationProvider)
+                              .ToArray();
+
+            var namespaces = new XmlSerializerNamespaces();
+            namespaces.Add(string.Empty, string.Empty);
+
+            var xmlRoot = new XmlRootAttribute("suppliers");
+            var serializer = new XmlSerializer(typeof(ExportSupplierDTO[]), xmlRoot);
+            using var writer = new StringWriter(sb);
+            serializer.Serialize(writer, suppliers, namespaces);
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //17. Export Cars With Their List Of Parts
+        public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+            var mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<CarDealerProfile>()));
+            var sb = new StringBuilder();
+
+            var cars = context.Cars.OrderByDescending(c => c.TraveledDistance)
+                              .ThenBy(c => c.Model)
+                              .Take(5)
+                              .ProjectTo<ExportCarWithPartsDTO>(mapper.ConfigurationProvider)
+                              .ToArray();
+
+            var namespaces = new XmlSerializerNamespaces();
+            namespaces.Add(string.Empty, string.Empty);
+
+            var xmlRoot = new XmlRootAttribute("cars");
+            var serializer = new XmlSerializer(typeof(ExportCarWithPartsDTO[]), xmlRoot);
+            using var writer = new StringWriter(sb);
+            serializer.Serialize(writer, cars, namespaces);
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //18. Export Total Sales By Customer
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            var mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<CarDealerProfile>()));
+            var sb = new StringBuilder();
+
+            var customers = context.Customers.Where(c => c.Sales.Any())
+                .Select(c => new
+                {
+                    Name = c.Name,
+                    Cars = c.Sales.Count(),
+                    Money1 = c.Sales.Select(s => new
+                    {
+                        Prices = c.IsYoungDriver
+                                ? s.Car.PartsCars.Sum(pc => Math.Round((double)pc.Part.Price * 0.95, 2))
+                                : s.Car.PartsCars.Sum(pc => (double)pc.Part.Price)
+                    }).ToArray()
+                }).ToArray();
+
+           var total = customers.OrderByDescending(x => x.Money1.Sum(y => y.Prices))
+                .Select(x => new ExportCustomerDTO()
+                {
+                    Name = x.Name,
+                    Cars = x.Cars,
+                    Cost = (Math.Round((decimal)x.Money1.Sum(y => y.Prices), 2))
+                }).ToArray();
+
+            var namespaces = new XmlSerializerNamespaces();
+            namespaces.Add(string.Empty, string.Empty);
+
+            var xmlRoot = new XmlRootAttribute("customers");
+            var serializer = new XmlSerializer(typeof(ExportCustomerDTO[]), xmlRoot);
+            using var writer = new StringWriter(sb);
+            serializer.Serialize(writer, total, namespaces);
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //19. Export Sales With Applied Discount
+        public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+        { 
+            
+        }
     }
 }
