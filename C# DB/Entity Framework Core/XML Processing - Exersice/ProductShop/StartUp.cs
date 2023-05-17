@@ -193,29 +193,15 @@ namespace ProductShop
                                 { 
                                     FirstName = u.FirstName,
                                     LastName = u.LastName,
-                                    Products = new ExportProductDTO
-                                    { 
-                                        
+                                    Products = new[](new ExportProductDTO()
+                                    {
                                     }
+                                    ).ToArray()
                                   
-                                }).T
+                                }).Take(10)
                                 .ToArray();
 
-            var mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<ProductShopProfile>()));
-            var sb = new StringBuilder();
-
-            var products = context.Products.Where(p => p.Price >= 500 && p.Price <= 1000)
-                                  .OrderBy(p => p.Price)
-                                  .Take(10)
-                                  .Select(p => new ExportProductInRangeDto
-                                  {
-                                      Name = p.Name,
-                                      Price = p.Price,
-                                      BuyerFullName = $"{p.Buyer.FirstName} {p.Buyer.LastName}"
-                                  }).ToArray();
-
             
-
             var xmlRoot = new XmlRootAttribute("Products");
             var serializer = new XmlSerializer(typeof(ExportProductInRangeDto[]), xmlRoot);
             using var writer = new StringWriter(sb);
