@@ -15,6 +15,9 @@ namespace Demo.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Message"] = "Inserting data from controller";
+            ViewBag.Result = "Yes! It works";
+
             return View();
         }
 
