@@ -32,5 +32,17 @@ namespace MVCIntroExerciseDemo.Controllers
 		{
 			return View(products);
 		}
+
+		public IActionResult ById(int id)
+		{
+			var product = products.FirstOrDefault(p => p.Id == id);
+
+			if (product == null)
+			{
+				return BadRequest();
+			}
+
+			return View(product);
+		}
 	}
 }

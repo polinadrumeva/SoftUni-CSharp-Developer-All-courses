@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVCIntroExerciseDemo.Models;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace MVCIntroExerciseDemo.Controllers
 {
@@ -43,6 +44,16 @@ namespace MVCIntroExerciseDemo.Controllers
 		{
 			ViewBag.Count = count;
 			return this.View();
+		}
+
+		public IActionResult AllAsJson()
+		{
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            return Json(products,options);
 		}
 
 		public IActionResult Privacy()
