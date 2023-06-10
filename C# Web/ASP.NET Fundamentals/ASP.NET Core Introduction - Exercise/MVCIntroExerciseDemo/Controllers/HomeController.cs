@@ -46,17 +46,9 @@ namespace MVCIntroExerciseDemo.Controllers
 			return this.View();
 		}
 
-		public IActionResult AllAsJson()
-		{
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true
-            };
+        
 
-            return Json(products,options);
-		}
-
-		public IActionResult Privacy()
+        public IActionResult Privacy()
         {
             return View();
         }
