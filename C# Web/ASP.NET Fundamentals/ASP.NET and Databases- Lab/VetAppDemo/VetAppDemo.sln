@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetAppDemo", "VetAppDemo.csproj", "{7AC08DC3-3BEC-4434-87A9-108C97DC2261}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VetApp.Infrastructure", "..\VetApp.Infrastructure\VetApp.Infrastructure.csproj", "{13C96B36-9E07-43D8-9BA8-DBF518A0E171}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AC08DC3-3BEC-4434-87A9-108C97DC2261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC08DC3-3BEC-4434-87A9-108C97DC2261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC08DC3-3BEC-4434-87A9-108C97DC2261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC08DC3-3BEC-4434-87A9-108C97DC2261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13C96B36-9E07-43D8-9BA8-DBF518A0E171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C96B36-9E07-43D8-9BA8-DBF518A0E171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C96B36-9E07-43D8-9BA8-DBF518A0E171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C96B36-9E07-43D8-9BA8-DBF518A0E171}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C7A8692-DF4A-4D7A-BA15-40738786FE96}
+	EndGlobalSection
+EndGlobal
