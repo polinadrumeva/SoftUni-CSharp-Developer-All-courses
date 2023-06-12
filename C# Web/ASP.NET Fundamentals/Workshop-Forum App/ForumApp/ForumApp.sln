@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp", "ForumApp.csproj", "{C11E4FDB-1CEC-48D8-BCD6-AED28543C79E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForumApp", "ForumApp.csproj", "{C11E4FDB-1CEC-48D8-BCD6-AED28543C79E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp.Base", "..\ForumApp.Base\ForumApp.Base.csproj", "{87DF3C92-5CAD-4F43-B620-2278083B489B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForumApp.Base", "..\ForumApp.Base\ForumApp.Base.csproj", "{87DF3C92-5CAD-4F43-B620-2278083B489B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp.ViewModels", "..\ForumApp.ViewModels\ForumApp.ViewModels.csproj", "{B6FE68A2-6F04-4076-A9A1-EF6CA90CADF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp.Services", "..\ForumApp.Services\ForumApp.Services.csproj", "{14A3FA7E-2015-44A4-9EC7-83AC25FE59AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{87DF3C92-5CAD-4F43-B620-2278083B489B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87DF3C92-5CAD-4F43-B620-2278083B489B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87DF3C92-5CAD-4F43-B620-2278083B489B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6FE68A2-6F04-4076-A9A1-EF6CA90CADF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6FE68A2-6F04-4076-A9A1-EF6CA90CADF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6FE68A2-6F04-4076-A9A1-EF6CA90CADF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6FE68A2-6F04-4076-A9A1-EF6CA90CADF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14A3FA7E-2015-44A4-9EC7-83AC25FE59AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14A3FA7E-2015-44A4-9EC7-83AC25FE59AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14A3FA7E-2015-44A4-9EC7-83AC25FE59AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14A3FA7E-2015-44A4-9EC7-83AC25FE59AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

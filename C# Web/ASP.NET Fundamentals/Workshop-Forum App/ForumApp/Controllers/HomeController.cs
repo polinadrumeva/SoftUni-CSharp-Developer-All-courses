@@ -1,4 +1,4 @@
-﻿using ForumApp.Models;
+﻿using ForumApp.ViewModels.Post;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
