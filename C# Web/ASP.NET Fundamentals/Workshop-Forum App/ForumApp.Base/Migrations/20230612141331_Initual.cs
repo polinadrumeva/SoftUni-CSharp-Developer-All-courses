@@ -7,7 +7,7 @@
 namespace ForumApp.Base.Migrations
 {
     /// <inheritdoc />
-    public partial class Initua : Migration
+    public partial class Initual : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

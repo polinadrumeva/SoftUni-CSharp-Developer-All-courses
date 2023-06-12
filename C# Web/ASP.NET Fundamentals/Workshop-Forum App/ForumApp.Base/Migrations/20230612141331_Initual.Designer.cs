@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForumApp.Base.Migrations
 {
     [DbContext(typeof(ForumDbContext))]
-    [Migration("20230611204609_Initua")]
-    partial class Initua
+    [Migration("20230612141331_Initual")]
+    partial class Initual
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
