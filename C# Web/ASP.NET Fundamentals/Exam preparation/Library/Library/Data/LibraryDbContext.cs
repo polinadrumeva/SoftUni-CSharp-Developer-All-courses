@@ -28,7 +28,7 @@ namespace Library.Data
                    Id = 5,
                    Title = "Ana Karenina",
                    Author = "Leo Tolstoy",
-                   ImageUrl = "~/root/images/ana karenina.jpg",
+                   ImageUrl = "~/images/ana.karenina.png",
                    Description = "Anna Karenina is a novel by the Russian author Leo Tolstoy, first published in book form in 1878. Widely considered to be one of the greatest works of literature ever written,Tolstoy himself called it his first true novel.",
                    CategoryId = 1,
                    Rating = 9.5m
