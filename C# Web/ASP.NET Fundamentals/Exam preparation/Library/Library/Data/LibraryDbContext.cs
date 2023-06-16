@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Library.Database.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Data
@@ -10,51 +11,66 @@ namespace Library.Data
         {
         }
 
+        public DbSet<Book> Books { get; set; }
+        
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<IdentityUserBook> IdentityUserBooks { get; set; }
+
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            /* builder
-                .Entity<Book>()
-                .HasData(new Book()
-                {
-                    Id = 5,
-                    Title = "Lorem Ipsum",
-                    Author = "Dolor Sit",
-                    ImageUrl = "https://img.freepik.com/free-psd/book-cover-mock-up-arrangement_23-2148622888.jpg?w=826&t=st=1666106877~exp=1666107477~hmac=5dea3e5634804683bccfebeffdbde98371db37bc2d1a208f074292c862775e1b",
-                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    CategoryId = 1,
-                    Rating = 9.5m
-                });
-              
-                 builder
-                .Entity<Category>()
-                .HasData(new Category()
-                {
-                    Id = 1,
-                    Name = "Action"
-                },
-                new Category()
-                {
-                    Id = 2,
-                    Name = "Biography"
-                },
-                new Category()
-                {
-                    Id = 3,
-                    Name = "Children"
-                },
-                new Category()
-                {
-                    Id = 4,
-                    Name = "Crime"
-                },
-                new Category()
-                {
-                    Id = 5,
-                    Name = "Fantasy"
-                });
-            */
+            builder
+               .Entity<Book>()
+               .HasData(new Book()
+               {
+                   Id = 5,
+                   Title = "Ana Karenina",
+                   Author = "Leo Tolstoy",
+                   ImageUrl = "~/root/images/ana karenina.jpg",
+                   Description = "Anna Karenina is a novel by the Russian author Leo Tolstoy, first published in book form in 1878. Widely considered to be one of the greatest works of literature ever written,Tolstoy himself called it his first true novel.",
+                   CategoryId = 1,
+                   Rating = 9.5m
+               });
+
+            builder
+           .Entity<Category>()
+           .HasData(new Category()
+           {
+               Id = 1,
+               Name = "Action"
+           },
+           new Category()
+           {
+               Id = 2,
+               Name = "Biography"
+           },
+           new Category()
+           {
+               Id = 3,
+               Name = "Children"
+           },
+           new Category()
+           {
+               Id = 4,
+               Name = "Crime"
+           },
+           new Category()
+           {
+               Id = 5,
+               Name = "Fantasy"
+           });
+
 
             base.OnModelCreating(builder);
+
+            builder.Entity<IdentityUserBook>()
+				.HasKey(x => new { x.CollectorId, x.BookId });
+
+            builder.Entity<Book>()
+                .Property(x => x.Rating)
+                .HasPrecision(10, 2);
         }
     }
 }
