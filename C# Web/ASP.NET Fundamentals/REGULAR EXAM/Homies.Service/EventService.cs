@@ -111,11 +111,17 @@ namespace Homies.Service
                 }).ToListAsync();
         }
 
-       
+		public async Task LeaveEventAsync(string userId, JoinEventViewModel model)
+		{
+            var eventModel = dbContext.EventsParticipants.FirstOrDefault(x => x.EventId == model.Id && x.HelperId == userId);
 
-
-       
-    }
+            if (eventModel != null)
+            {
+				dbContext.EventsParticipants.Remove(eventModel);
+				dbContext.SaveChanges();
+			}
+		}
+	}
 }
 
     
