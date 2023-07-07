@@ -7,7 +7,12 @@ namespace HouseRentingSystem.Data.Models
 {
 	public class House
 	{
-		[Key]
+        public House()
+        {
+			this.Id = Guid.NewGuid();
+        }
+
+        [Key]
         public Guid Id { get; set; }
 
 		[Required]
@@ -35,7 +40,7 @@ namespace HouseRentingSystem.Data.Models
 		public virtual Category Category { get; set; } = null!;
 
 		[Required]
-		public string AgentId { get; set; } = null!;
+		public Guid AgentId { get; set; } 
 
 		public virtual Agent Agent { get; set; } = null!;
 

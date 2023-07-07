@@ -19,7 +19,11 @@ namespace HouseRentingSystem
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
             {
-                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 4;
             })
                 .AddEntityFrameworkStores<HouseRentingDbContext>();
             builder.Services.AddControllersWithViews();
