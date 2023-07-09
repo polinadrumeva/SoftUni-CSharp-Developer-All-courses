@@ -9,6 +9,9 @@ namespace HouseRentingSystem.Data.Configurations
 	{
 		public void Configure(EntityTypeBuilder<House> builder)
 		{
+			builder.Property(h => h.CreatedOn)
+				.HasDefaultValue(DateTime.UtcNow);
+
 			builder.HasData(GenerateHouse());
 		}
 
