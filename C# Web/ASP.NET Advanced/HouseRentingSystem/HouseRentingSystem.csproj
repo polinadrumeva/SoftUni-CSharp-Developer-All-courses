@@ -21,6 +21,7 @@
     <ProjectReference Include="..\HouseRentingSystem.Data.Service\HouseRentingSystem.Data.Service.csproj" />
     <ProjectReference Include="..\HouseRentingSystem.Data\HouseRentingSystem.Data.csproj" />
     <ProjectReference Include="..\HouseRentingSystem.ViewModels\HouseRentingSystem.ViewModels.csproj" />
+    <ProjectReference Include="..\HouseRentingSystem.Web.Infrastructure\HouseRentingSystem.Web.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

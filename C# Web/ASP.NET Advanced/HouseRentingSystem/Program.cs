@@ -1,5 +1,6 @@
 using HouseRentingSystem.Data;
 using HouseRentingSystem.Data.Models;
+using HouseRentingSystem.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +27,9 @@ namespace HouseRentingSystem
                 options.Password.RequiredLength = 4;
             })
                 .AddEntityFrameworkStores<HouseRentingDbContext>();
+
+            builder.Services.AddAppServices();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
