@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ChatApp.Models;
+using System.Net;
 
 namespace ChatApp.Controllers
 {
@@ -35,9 +36,11 @@ namespace ChatApp.Controllers
         public IActionResult Send(ChatViewModel chat)
         {
             var newMessage = chat.CurrentMessage;
+            //Solution for XSS
+            var message = WebUtility.HtmlEncode(newMessage.MessageText);
 
             Messages.Add(new KeyValuePair<string, string>
-                (newMessage.Sender, newMessage.MessageText));
+                (newMessage.Sender, message));
 
             return RedirectToAction("Show");
         }

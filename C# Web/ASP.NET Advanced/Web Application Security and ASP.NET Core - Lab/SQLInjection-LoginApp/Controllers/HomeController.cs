@@ -23,7 +23,9 @@ namespace SQLInjection_LoginApp.Controllers
                 "SELECT * FROM Users WHERE username = '" + user.Username +
                 "' AND Password = '" + user.Password + "'";
 
-            var userExists = this.data.Users.FromSqlRaw(sqlQuery).Any();
+            // Solution 1: Use Entity Framework Core protection or parameterized queries
+            var userExists = this.data.Users.Where(u => u.Username == user.Username &&
+                           u.Password == user.Password).Any();
 
             if (userExists)
             {

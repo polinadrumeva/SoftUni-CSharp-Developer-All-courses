@@ -14,7 +14,8 @@
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
                     @*Do not use Html.Raw() because it does not prevent you from XSS attacks!*@
-                    <p>@Html.Raw(message.MessageText)<p>
+                    @*<p>@Html.Raw(message.MessageText)<p>*@
+                    <p>@message.MessageText<p>
                         <footer class="blockquote-footer">@message.Sender</footer>
                 </blockquote>
             </div>
