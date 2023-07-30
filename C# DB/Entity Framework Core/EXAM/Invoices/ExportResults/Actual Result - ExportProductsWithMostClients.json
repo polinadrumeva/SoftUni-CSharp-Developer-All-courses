@@ -1,0 +1,73 @@
+[
+  {
+    "Name": "DAF Lightbulb U58/9KIT",
+    "Price": 53.66,
+    "Category": "Lights",
+    "Clients": [
+      {
+        "Name": "LOPERBEN SL",
+        "NumberVat": "ESB24242765"
+      },
+      {
+        "Name": "TRANS CARGO",
+        "NumberVat": "EL099517837"
+      }
+    ]
+  },
+  {
+    "Name": "MAHLE KC 522D",
+    "Price": 108.3,
+    "Category": "Others",
+    "Clients": [
+      {
+        "Name": "FREIGHTS PC",
+        "NumberVat": "EL801106064"
+      },
+      {
+        "Name": "LOPERBEN SL",
+        "NumberVat": "ESB24242765"
+      }
+    ]
+  },
+  {
+    "Name": "MAHLE KX400KIT",
+    "Price": 26.13,
+    "Category": "Others",
+    "Clients": [
+      {
+        "Name": "FREIGHTS PC",
+        "NumberVat": "EL801106064"
+      },
+      {
+        "Name": "TRANS CARGO",
+        "NumberVat": "EL099517837"
+      }
+    ]
+  },
+  {
+    "Name": "MAHLE OX434D",
+    "Price": 91.37,
+    "Category": "Others",
+    "Clients": [
+      {
+        "Name": "LOPERBEN SL",
+        "NumberVat": "ESB24242765"
+      },
+      {
+        "Name": "TRANS CARGO",
+        "NumberVat": "EL099517837"
+      }
+    ]
+  },
+  {
+    "Name": "ADR Kit H601/4",
+    "Price": 6.05,
+    "Category": "ADR",
+    "Clients": [
+      {
+        "Name": "TRANS CARGO",
+        "NumberVat": "EL099517837"
+      }
+    ]
+  }
+]
