@@ -11,6 +11,7 @@ namespace HouseRentingSystem.Web.Infrastructure.Extensions
         { 
             services.AddScoped<IHouseService, HouseService>();
             services.AddScoped<IAgentService, AgentService>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
     }
 }

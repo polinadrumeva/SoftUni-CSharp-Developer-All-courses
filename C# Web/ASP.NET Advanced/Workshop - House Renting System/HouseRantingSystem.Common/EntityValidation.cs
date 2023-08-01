@@ -16,8 +16,8 @@
 			public const int DescriptionMinLength = 50;
 			public const int AddressMaxLength = 150;
 			public const int AddressMinLength = 30;
-			public const decimal PricePerMonthMinValue = 0;
-			public const decimal PricePerMonthMaxValue = 2000;
+			public const string PricePerMonthMinValue = "0";
+			public const string PricePerMonthMaxValue = "2000";
 		}
 
 		public static class Agent
