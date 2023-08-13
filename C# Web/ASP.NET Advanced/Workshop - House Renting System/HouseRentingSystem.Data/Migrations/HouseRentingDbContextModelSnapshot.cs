@@ -164,7 +164,7 @@ namespace HouseRentingSystem.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 14, 13, 40, 32, 895, DateTimeKind.Utc).AddTicks(3791));
+                        .HasDefaultValue(new DateTime(2023, 8, 12, 7, 59, 3, 955, DateTimeKind.Utc).AddTicks(3383));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -199,7 +199,7 @@ namespace HouseRentingSystem.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("90c2dfdf-60e1-4d1d-9697-68b0ef5408b0"),
+                            Id = new Guid("712a6e5a-0335-4376-b550-1d8e7d1df373"),
                             Address = "North London, UK (near the border)",
                             AgentId = new Guid("a20081f6-6da7-4cef-acb4-c480ff961cff"),
                             CategoryId = 3,
@@ -212,7 +212,7 @@ namespace HouseRentingSystem.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("46954c54-e83d-4009-b67a-57ac5bc9dcb2"),
+                            Id = new Guid("0dcb0b89-9e64-4ce2-bea4-e833e0932b99"),
                             Address = "Near the Sea Garden in Burgas, Bulgaria",
                             AgentId = new Guid("a20081f6-6da7-4cef-acb4-c480ff961cff"),
                             CategoryId = 2,
@@ -224,7 +224,7 @@ namespace HouseRentingSystem.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("60c49abe-5ff7-4588-9465-b76dddb759de"),
+                            Id = new Guid("cc06ed65-cd66-403c-94c2-de9fca5daa26"),
                             Address = "Boyana Neighbourhood, Sofia, Bulgaria",
                             AgentId = new Guid("a20081f6-6da7-4cef-acb4-c480ff961cff"),
                             CategoryId = 2,

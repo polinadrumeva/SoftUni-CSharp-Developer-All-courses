@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseRentingSystem.Data.Migrations
 {
     [DbContext(typeof(HouseRentingDbContext))]
-    [Migration("20230707110630_SeedDb")]
-    partial class SeedDb
+    [Migration("20230812075904_InitualDb")]
+    partial class InitualDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -163,6 +163,11 @@ namespace HouseRentingSystem.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 8, 12, 7, 59, 3, 955, DateTimeKind.Utc).AddTicks(3383));
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -196,10 +201,11 @@ namespace HouseRentingSystem.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0de724f5-17bc-4991-a542-91d55af7b450"),
+                            Id = new Guid("712a6e5a-0335-4376-b550-1d8e7d1df373"),
                             Address = "North London, UK (near the border)",
                             AgentId = new Guid("a20081f6-6da7-4cef-acb4-c480ff961cff"),
                             CategoryId = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "A big house for your whole family. Don't miss to buy a house with three bedrooms.",
                             ImageUrl = "https://www.luxury-architecture.net/wpcontent/uploads/2017/12/1513217889-7597-FAIRWAYS-010.jpg",
                             PricePerMonth = 2100.00m,
@@ -208,10 +214,11 @@ namespace HouseRentingSystem.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7af592ba-1d3a-44bd-80f7-bf9931e3db75"),
+                            Id = new Guid("0dcb0b89-9e64-4ce2-bea4-e833e0932b99"),
                             Address = "Near the Sea Garden in Burgas, Bulgaria",
                             AgentId = new Guid("a20081f6-6da7-4cef-acb4-c480ff961cff"),
                             CategoryId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "It has the best comfort you will ever ask for. With two bedrooms,it is great for your family.",
                             ImageUrl = "https://cf.bstatic.com/xdata/images/hotel/max1024x768/179489660.jpg?k=2029f6d9589b49c95dcc9503a265e292c2cdfcb5277487a0050397c3f8dd545a & o = &hp = 1",
                             PricePerMonth = 1200.00m,
@@ -219,10 +226,11 @@ namespace HouseRentingSystem.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c298cc05-3202-4b53-b279-f5045b48fbdf"),
+                            Id = new Guid("cc06ed65-cd66-403c-94c2-de9fca5daa26"),
                             Address = "Boyana Neighbourhood, Sofia, Bulgaria",
                             AgentId = new Guid("a20081f6-6da7-4cef-acb4-c480ff961cff"),
                             CategoryId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "This luxurious house is everything you will need. It is just excellent.",
                             ImageUrl = "https://i.pinimg.com/originals/a6/f5/85/a6f5850a77633c56e4e4ac4f867e3c00.jpg",
                             PricePerMonth = 2000.00m,
