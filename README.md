@@ -20,8 +20,8 @@ Here are all problems from [**C# Developer courses**](https://softuni.bg/profess
    
    b) [**Entity Framework Core**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20DB/Entity%20Framework%20Core)
 
-5. C# Web
+5. [**C# Web**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Web)
 
-   a) ASP.NET Fundamentals
+   a) [**ASP.NET Fundamentals**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Web/ASP.NET%20Fundamentals)
    
-   b) ASP.NET Advanced
+   b) [**ASP.NET Advanced**](https://github.com/polinadrumeva/SoftUni-CSharp-Developer-All-courses/tree/main/C%23%20Web/ASP.NET%20Advanced)
